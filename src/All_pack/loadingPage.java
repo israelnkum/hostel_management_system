@@ -60,9 +60,9 @@ public class loadingPage extends javax.swing.JFrame  implements Runnable{
             Thread.sleep(50);
     }
     }
-    catch(Exception e){
+    catch(InterruptedException e){
     
-        JOptionPane.showMessageDialog(null, e);
+        JOptionPane.showMessageDialog(null, "no Internet");
      
     }
     }

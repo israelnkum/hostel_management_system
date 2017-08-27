@@ -7,11 +7,15 @@ package All_pack;
 
 
 import com.sun.glass.events.KeyEvent;
+import java.awt.HeadlessException;
+import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
@@ -19,7 +23,7 @@ import javax.swing.JOptionPane;
  *
  * @author oSikaNi iSraeL
  */
-public class login_form extends javax.swing.JFrame {
+public final class login_form extends javax.swing.JFrame {
     
     Connection conn;
     ResultSet rs;
@@ -29,9 +33,11 @@ public class login_form extends javax.swing.JFrame {
      * Creates new form login_form
      */
     public login_form() {
-        internet_checking();
+        
         conn = java_connection.getConnection();
         initComponents();
+        connection.setVisible(false);
+       no_connection.setVisible(false);
          jLabel11.setVisible(false);
         lbl_up.setVisible(false);
         lbl_down.setVisible(false);
@@ -45,48 +51,48 @@ public class login_form extends javax.swing.JFrame {
         password.setVisible(false);
           userName.setVisible(false);
            jLabel9.setVisible(false);
+          internet_connection();
           
         
     }
     
-    public void internet_checking(){
+    public void internet_connection(){
     
-        Socket sock = new Socket();
-        InetSocketAddress addr = new InetSocketAddress("www.google.com",80);
-        try{
-        
-            sock.connect(addr,3000);
-            JOptionPane.showMessageDialog(null, "good");
-        }
-        
-        catch (Exception e){
-        
-            JOptionPane.showMessageDialog(null, "not gud");
-             jLabel11.setVisible(false);
-        jLabel9.setVisible(false);
-         jLabel10.setVisible(false);
-         jButton1.setVisible(false);
-         jLabel7.setVisible(false);
-        jLabel3.setVisible(false);
-        jLabel4.setVisible(false);
-        login.setVisible(false);
-        fogrt.setVisible(false);
-        jSeparator1.setVisible(false);
-        jSeparator2.setVisible(false);
-        password.setVisible(false);
-          userName.setVisible(false);
-        }
-        finally{
-        
-            try{
-                sock.close();
-            }
-            catch(Exception e){
+        Thread timer = new Thread(){
+        @Override
+        public void run(){
             
-                
-            }
+       for(;;){
+           
+           Socket sock = new Socket();
+           InetSocketAddress address =new InetSocketAddress("www.google.com",80);
+           try{
+           
+               sock.connect(address);
+                connection.setVisible(true);
+                no_connection.setVisible(false);
+           }
+           catch(IOException e){
+                connection.setVisible(false);
+                   // jLabel12.setText("no Internet");
+                no_connection.setVisible(true);
+            
+           }
+            try{
+                sleep(100);
         }
-    }
+        catch(InterruptedException e){
+        
+            e.printStackTrace();
+        }
+            
+        }
+           
+       }
+     
+        };
+        timer.start();
+    }          
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,11 +109,15 @@ public class login_form extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         fogrt = new javax.swing.JButton();
         login = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        no_connection = new javax.swing.JLabel();
+        connection = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -166,6 +176,7 @@ public class login_form extends javax.swing.JFrame {
         getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 280, 40));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, 280, 10));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 280, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 51, 0));
@@ -188,6 +199,11 @@ public class login_form extends javax.swing.JFrame {
         fogrt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Forgot Password_15px.png"))); // NOI18N
         fogrt.setText("Forgot Password");
         fogrt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fogrt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fogrtActionPerformed(evt);
+            }
+        });
         getContentPane().add(fogrt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, -1, -1));
 
         login.setBackground(new java.awt.Color(189, 228, 196));
@@ -199,6 +215,11 @@ public class login_form extends javax.swing.JFrame {
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginActionPerformed(evt);
+            }
+        });
+        login.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginKeyPressed(evt);
             }
         });
         getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 380, -1, -1));
@@ -215,6 +236,26 @@ public class login_form extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, 130));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minimize Window_20px_1.png"))); // NOI18N
+        jLabel14.setToolTipText("Minimize");
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, -1));
+
+        no_connection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/No Connection_20px_2.png"))); // NOI18N
+        no_connection.setToolTipText("No internet Acces");
+        no_connection.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(no_connection, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, -1));
+
+        connection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Signal_20px_1.png"))); // NOI18N
+        connection.setToolTipText("Internet Acces");
+        connection.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(connection, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_20px_2.png"))); // NOI18N
         jLabel2.setToolTipText("Close");
@@ -272,6 +313,7 @@ public class login_form extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
         
+        
         lbl_up.setVisible(false);
         lbl_down.setVisible(false);
         
@@ -286,8 +328,10 @@ public class login_form extends javax.swing.JFrame {
     }
        
        else{
+    
        
-            String sql = "select * from users where  user_name=? and user_password=?";
+         //  internet_connection();
+              String sql = "select * from users where  user_name=? and user_password=?";
         try{
        
             pst=conn.prepareStatement(sql);
@@ -310,7 +354,7 @@ public class login_form extends javax.swing.JFrame {
             
             else {
             
-                JOptionPane.showMessageDialog(null, "Invalid user name");
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password");
                 userName.setText(null);
                 password.setText(null);
                 
@@ -320,8 +364,11 @@ public class login_form extends javax.swing.JFrame {
         
         catch(Exception e){
         
-        JOptionPane.showMessageDialog(null, e);
+        JOptionPane.showMessageDialog(null, "Check your internet connection","No internet",JOptionPane.ERROR_MESSAGE);
         }
+       
+     
+         
         
         finally{
         
@@ -334,8 +381,7 @@ public class login_form extends javax.swing.JFrame {
                 
                 
                 }
-      
-        
+
         } 
        }
         
@@ -356,7 +402,7 @@ public class login_form extends javax.swing.JFrame {
         
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-             lbl_up.setVisible(false);
+                  lbl_up.setVisible(false);
         lbl_down.setVisible(false);
         
         if(userName.getText().equals("")){
@@ -370,8 +416,10 @@ public class login_form extends javax.swing.JFrame {
     }
        
        else{
+    
        
-            String sql = "select * from users where  user_name=? and user_password=?";
+         //  internet_connection();
+              String sql = "select * from users where  user_name=? and user_password=?";
         try{
        
             pst=conn.prepareStatement(sql);
@@ -394,7 +442,7 @@ public class login_form extends javax.swing.JFrame {
             
             else {
             
-                JOptionPane.showMessageDialog(null, "Invalid user name");
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password");
                 userName.setText(null);
                 password.setText(null);
                 
@@ -404,8 +452,11 @@ public class login_form extends javax.swing.JFrame {
         
         catch(Exception e){
         
-        JOptionPane.showMessageDialog(null, e);
+        JOptionPane.showMessageDialog(null, "Check your internet connection","No internet",JOptionPane.ERROR_MESSAGE);
         }
+       
+     
+         
         
         finally{
         
@@ -418,8 +469,7 @@ public class login_form extends javax.swing.JFrame {
                 
                 
                 }
-      
-        
+
         } 
        }
         }
@@ -429,7 +479,7 @@ public class login_form extends javax.swing.JFrame {
         // TODO add your handling code here:
          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-             lbl_up.setVisible(false);
+                  lbl_up.setVisible(false);
         lbl_down.setVisible(false);
         
         if(userName.getText().equals("")){
@@ -443,8 +493,10 @@ public class login_form extends javax.swing.JFrame {
     }
        
        else{
+    
        
-            String sql = "select * from users where  user_name=? and user_password=?";
+         //  internet_connection();
+              String sql = "select * from users where  user_name=? and user_password=?";
         try{
        
             pst=conn.prepareStatement(sql);
@@ -467,7 +519,7 @@ public class login_form extends javax.swing.JFrame {
             
             else {
             
-                JOptionPane.showMessageDialog(null, "Invalid user name");
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password");
                 userName.setText(null);
                 password.setText(null);
                 
@@ -477,8 +529,11 @@ public class login_form extends javax.swing.JFrame {
         
         catch(Exception e){
         
-        JOptionPane.showMessageDialog(null, e);
+        JOptionPane.showMessageDialog(null, "Check your internet connection","No internet",JOptionPane.ERROR_MESSAGE);
         }
+       
+     
+         
         
         finally{
         
@@ -491,8 +546,7 @@ public class login_form extends javax.swing.JFrame {
                 
                 
                 }
-      
-        
+
         } 
        }
         }
@@ -500,7 +554,7 @@ public class login_form extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         internet_checking();
+    
          jLabel11.setVisible(true);
         jLabel9.setVisible(true);
          jLabel10.setVisible(false);
@@ -544,6 +598,96 @@ public class login_form extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowActivated
 
+    private void loginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginKeyPressed
+        // TODO add your handling code here:
+        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+                  lbl_up.setVisible(false);
+        lbl_down.setVisible(false);
+        
+        if(userName.getText().equals("")){
+        
+        lbl_up.setVisible(true);
+        
+        }
+       if(String.valueOf(password.getPassword()).equals("")){
+    
+            lbl_down.setVisible(true);
+    }
+       
+       else{
+    
+       
+         //  internet_connection();
+              String sql = "select * from users where  user_name=? and user_password=?";
+        try{
+       
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, userName.getText());
+            pst.setString(2, password.getText());
+            
+            rs=pst.executeQuery();
+            
+            if(rs.next() ){
+            rs.close();
+            pst.close();
+            
+            setVisible(false);
+            loadingPage on = new loadingPage();
+            on.setUpLoading1();
+            on.setVisible(true);
+            
+      
+            }
+            
+            else {
+            
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password");
+                userName.setText(null);
+                password.setText(null);
+                
+            }
+       
+        }
+        
+        catch(Exception e){
+        
+        JOptionPane.showMessageDialog(null, "Check your internet connection","No internet",JOptionPane.ERROR_MESSAGE);
+        }
+       
+     
+         
+        
+        finally{
+        
+            try{
+            rs.close();
+            pst.close();
+            
+        }
+        catch(Exception e){
+                
+                
+                }
+
+        } 
+       }
+        }
+    }//GEN-LAST:event_loginKeyPressed
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void fogrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fogrtActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        Fogort_password fp = new Fogort_password();
+        fp.setVisible(true);
+    }//GEN-LAST:event_fogrtActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -580,11 +724,14 @@ public class login_form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel connection;
     private javax.swing.JButton fogrt;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -599,6 +746,7 @@ public class login_form extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_down;
     private javax.swing.JLabel lbl_up;
     private javax.swing.JButton login;
+    private javax.swing.JLabel no_connection;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables

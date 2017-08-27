@@ -336,7 +336,7 @@ public class update_info extends javax.swing.JFrame {
             }
         });
         getContentPane().add(search_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 220, 40));
-        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, -1, -1));
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, 100, -1));
 
         referesh.setBackground(new java.awt.Color(213, 229, 216));
         referesh.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
@@ -355,11 +355,12 @@ public class update_info extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 630));
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Menu_20px_5.png"))); // NOI18N
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_border.png"))); // NOI18N
         jMenu1.setText("File");
 
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_20px.png"))); // NOI18N
         jMenuItem3.setText("Back");
+        jMenuItem3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -369,6 +370,7 @@ public class update_info extends javax.swing.JFrame {
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_20px.png"))); // NOI18N
         jMenuItem1.setText("Logout");
+        jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -378,6 +380,7 @@ public class update_info extends javax.swing.JFrame {
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_20px_2.png"))); // NOI18N
         jMenuItem2.setText("Close");
+        jMenuItem2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -544,7 +547,8 @@ public class update_info extends javax.swing.JFrame {
 
     private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
         // TODO add your handling code here:
-        try{
+
+                try{
                 String value1=id.getText();
                 String value2=fname.getText();
                 String value3=lname.getText();
@@ -591,6 +595,11 @@ public class update_info extends javax.swing.JFrame {
         
         
         }}
+            
+            
+        
+        
+        
     }//GEN-LAST:event_save_btnActionPerformed
 
     private void refereshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refereshActionPerformed

@@ -7,6 +7,10 @@ package All_pack;
 
 import com.sun.glass.events.KeyEvent;
 import java.awt.print.PrinterException;
+import java.io.IOException;
+import static java.lang.Thread.sleep;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,16 +59,54 @@ public class payment extends javax.swing.JFrame {
              l_name.setVisible(false);
               grand_amt.setVisible(false);
              
- 
+
         conn = java_connection.getConnection();
+         internet_connection();
         currentDate();
+        internet_connection();
         Update_table();
         Update_table_1();
         
         
     }
      
-          
+     public void internet_connection(){
+    
+        Thread timer = new Thread(){
+        @Override
+        public void run(){
+            
+       for(;;){
+           
+           Socket sock = new Socket();
+           InetSocketAddress address =new InetSocketAddress("www.google.com",80);
+           try{
+           
+               sock.connect(address);
+              //  connection.setVisible(true);
+               // no_connection.setVisible(false);
+           }
+           catch(IOException e){
+               // connection.setVisible(false);
+                   // jLabel12.setText("no Internet");
+               // no_connection.setVisible(true);
+            
+           }
+            try{
+                sleep(100);
+        }
+        catch(InterruptedException e){
+        
+            e.printStackTrace();
+        }
+            
+        }
+           
+       }
+     
+        };
+        timer.start();
+    }        
      private void filter (String sql){
     
           model_1 =(DefaultTableModel) jTable2.getModel();
@@ -259,7 +301,6 @@ public class payment extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -679,7 +720,7 @@ public class payment extends javax.swing.JFrame {
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 730));
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Menu_20px_5.png"))); // NOI18N
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_border.png"))); // NOI18N
         jMenu1.setText("File");
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_20px_2.png"))); // NOI18N
@@ -713,9 +754,6 @@ public class payment extends javax.swing.JFrame {
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -1448,7 +1486,9 @@ public class payment extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new payment().setVisible(true);
+                
             }
         });
     }
@@ -1493,7 +1533,6 @@ public class payment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
