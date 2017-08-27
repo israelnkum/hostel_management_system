@@ -4,12 +4,13 @@ package All_pack;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 
 public class java_connection {
 
-   
+ //  DefaultTableModel model_4 = new DefaultTableModel();
     public static Connection getConnection(){
         
          Connection conn = null;

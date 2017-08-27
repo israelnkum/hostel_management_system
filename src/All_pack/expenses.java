@@ -9,10 +9,11 @@ package All_pack;
  *
  * @author oSikaNi iSraeL
  */
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,6 +38,16 @@ public class expenses extends javax.swing.JFrame {
         
         conn = java_connection.getConnection();
         initComponents();
+        biil_id.setVisible(false);
+        time_bill.setVisible(false);
+        bill_date.setVisible(false);
+        maintani_id.setVisible(false);
+        maint_date.setVisible(false);
+        maint_time.setVisible(false);
+        other_id.setVisible(false);
+        others_date_update.setVisible(false);
+        others_time_update.setVisible(false);
+        
     Update_bill_table();
     update_maintenace_table();
     update_othrs();
@@ -87,7 +98,8 @@ public class expenses extends javax.swing.JFrame {
             bill_table.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog( null, e);
+       JOptionPane.showMessageDialog(null, "Check your internet");
+  
         }
         }
    
@@ -102,7 +114,7 @@ public class expenses extends javax.swing.JFrame {
             maintenace_table.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog( null, e);
+            JOptionPane.showMessageDialog(null, "Check your internet");
         }
         }
    
@@ -117,7 +129,7 @@ public class expenses extends javax.swing.JFrame {
             othrs.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog( null, e);
+            JOptionPane.showMessageDialog(null, "Check your internet");
         }
         }
    
@@ -130,20 +142,17 @@ public class expenses extends javax.swing.JFrame {
         int month = cal.get(Calendar.MONTH);
         int year = cal.get(Calendar.YEAR);
         int day = cal.get(Calendar.DAY_OF_MONTH);
-        date_.setText(year+"/"+(month+1)+"/"+day);
+        bill_date.setText(year+"/"+(month+1)+"/"+day);
         maint_date.setText(year+"/"+(month+1)+"/"+day);
-        others_date.setText(year+"/"+(month+1)+"/"+day);
+    others_date_update.setText(year+"/"+(month+1)+"/"+day);
         
 
-   
-     
-         
          Date date = new Date();
          String strDateFormat = "HH:mm:ss a";
          SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
-          time.setText(sdf.format(date));
+          time_bill.setText(sdf.format(date));
           maint_time.setText(sdf.format(date));
-         othres_time.setText(sdf.format(date));
+      others_time_update.setText(sdf.format(date));
     }
 
      public void total_bills(){
@@ -209,16 +218,16 @@ public class expenses extends javax.swing.JFrame {
         bill_table = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         bill_search = new javax.swing.JTextField();
-        descript = new javax.swing.JTextField();
+        dis_update_bill = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        amt = new javax.swing.JTextField();
+        amt_update_bill = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        save_btn_bill = new javax.swing.JButton();
+        update_btn_bill = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        time = new javax.swing.JTextField();
-        date_ = new javax.swing.JTextField();
+        time_bill = new javax.swing.JTextField();
+        bill_date = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         biil_id = new javax.swing.JTextField();
@@ -237,13 +246,13 @@ public class expenses extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         maintenace_table = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
-        amt_m = new javax.swing.JTextField();
-        m_disc = new javax.swing.JTextField();
+        amt_update_maint = new javax.swing.JTextField();
+        dis_update_maint = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
         maint_search = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        update_btn_maint = new javax.swing.JButton();
+        save_btn_maint = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         maint_time = new javax.swing.JTextField();
@@ -256,31 +265,29 @@ public class expenses extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel19 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         othrs = new javax.swing.JTable();
-        des_2 = new javax.swing.JTextField();
-        des_1 = new javax.swing.JTextField();
-        others_amt = new javax.swing.JTextField();
-        others_descr = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         other_search = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        othres_time = new javax.swing.JTextField();
-        others_date = new javax.swing.JTextField();
-        otherhs = new javax.swing.JTextField();
+        update_btn = new javax.swing.JButton();
+        save_btn = new javax.swing.JButton();
+        other_id = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         jButton18 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        amt_update = new javax.swing.JTextField();
+        dis_update = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        others_time_update = new javax.swing.JLabel();
+        others_date_update = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -321,6 +328,11 @@ public class expenses extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         other_tbl.setForeground(new java.awt.Color(0, 0, 0));
@@ -350,7 +362,7 @@ public class expenses extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 320, 50));
 
         jButton5.setBackground(new java.awt.Color(218, 230, 216));
-        jButton5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Print_20px_3.png"))); // NOI18N
         jButton5.setText("Print");
@@ -375,6 +387,11 @@ public class expenses extends javax.swing.JFrame {
         ));
         bill_table.setRowHeight(25);
         bill_table.setRowMargin(2);
+        bill_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bill_tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(bill_table);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 930, 250));
@@ -395,35 +412,40 @@ public class expenses extends javax.swing.JFrame {
         });
         jPanel1.add(bill_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 200, 40));
 
-        descript.setBackground(new java.awt.Color(204, 228, 202));
-        descript.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        descript.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(descript, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 260, 50));
+        dis_update_bill.setBackground(new java.awt.Color(204, 228, 202));
+        dis_update_bill.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        dis_update_bill.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(dis_update_bill, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 300, 50));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 51, 51));
         jLabel22.setText("Amount Used");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, -1, -1));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, -1, -1));
 
         jButton8.setBackground(new java.awt.Color(218, 230, 216));
-        jButton8.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jButton8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(0, 0, 0));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Ok_20px.png"))); // NOI18N
-        jButton8.setText("Enter");
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Add List_20px.png"))); // NOI18N
+        jButton8.setText("Add");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 440, -1, -1));
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, -1, -1));
 
-        amt.setBackground(new java.awt.Color(204, 228, 202));
-        amt.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        amt.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(amt, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 170, 50));
+        amt_update_bill.setBackground(new java.awt.Color(204, 228, 202));
+        amt_update_bill.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        amt_update_bill.setForeground(new java.awt.Color(0, 0, 0));
+        amt_update_bill.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                amt_update_billKeyTyped(evt);
+            }
+        });
+        jPanel1.add(amt_update_bill, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 170, 50));
 
         jButton1.setBackground(new java.awt.Color(218, 230, 216));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Refresh_20px.png"))); // NOI18N
         jButton1.setText("Refresh");
@@ -433,26 +455,36 @@ public class expenses extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 440, -1, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 440, -1, 40));
 
-        jButton2.setBackground(new java.awt.Color(218, 230, 216));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Save_20px_1.png"))); // NOI18N
-        jButton2.setText("Save");
-        jButton2.setIconTextGap(0);
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, -1, -1));
+        save_btn_bill.setBackground(new java.awt.Color(218, 230, 216));
+        save_btn_bill.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        save_btn_bill.setForeground(new java.awt.Color(0, 0, 0));
+        save_btn_bill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Save_20px_1.png"))); // NOI18N
+        save_btn_bill.setText("Save");
+        save_btn_bill.setIconTextGap(0);
+        save_btn_bill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_btn_billActionPerformed(evt);
+            }
+        });
+        jPanel1.add(save_btn_bill, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 100, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(218, 230, 216));
-        jButton3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit Property_20px_2.png"))); // NOI18N
-        jButton3.setText("Update");
-        jButton3.setIconTextGap(0);
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, -1, -1));
+        update_btn_bill.setBackground(new java.awt.Color(218, 230, 216));
+        update_btn_bill.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        update_btn_bill.setForeground(new java.awt.Color(0, 0, 0));
+        update_btn_bill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit Property_20px_2.png"))); // NOI18N
+        update_btn_bill.setText("Update");
+        update_btn_bill.setIconTextGap(0);
+        update_btn_bill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_btn_billActionPerformed(evt);
+            }
+        });
+        jPanel1.add(update_btn_bill, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, -1, -1));
 
         jButton16.setBackground(new java.awt.Color(218, 230, 216));
-        jButton16.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton16.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton16.setForeground(new java.awt.Color(0, 0, 0));
         jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Trash_20px.png"))); // NOI18N
         jButton16.setText("Delete");
@@ -462,26 +494,26 @@ public class expenses extends javax.swing.JFrame {
                 jButton16ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, -1, -1));
-        jPanel1.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 110, 30));
-        jPanel1.add(date_, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 400, 110, 30));
+        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, -1, 40));
+        jPanel1.add(time_bill, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 110, 30));
+        jPanel1.add(bill_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 400, 110, 30));
 
         jLabel26.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 51, 51));
         jLabel26.setText("Description");
         jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 470, -1));
-        jPanel1.add(biil_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, -1, -1));
+        jPanel1.add(biil_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 110, -1));
 
         jLabel30.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(0, 0, 0));
         jLabel30.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, 240, 50));
+        jPanel1.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, 230, 50));
 
         jLabel31.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(0, 51, 51));
         jLabel31.setText(" Total ");
-        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, -1, -1));
+        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 1120));
@@ -501,7 +533,7 @@ public class expenses extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 51));
         jLabel8.setText("Amount Used");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 51));
@@ -520,15 +552,16 @@ public class expenses extends javax.swing.JFrame {
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 250, 50));
 
         jButton6.setBackground(new java.awt.Color(218, 230, 216));
-        jButton6.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jButton6.setText("Enter");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Add List_20px.png"))); // NOI18N
+        jButton6.setText("Add");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 440, -1, -1));
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, -1, -1));
 
         maintenace_table.setBackground(new java.awt.Color(218, 230, 216));
         maintenace_table.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -543,6 +576,11 @@ public class expenses extends javax.swing.JFrame {
         ));
         maintenace_table.setRowHeight(25);
         maintenace_table.setRowMargin(2);
+        maintenace_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                maintenace_tableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(maintenace_table);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 930, 250));
@@ -552,15 +590,20 @@ public class expenses extends javax.swing.JFrame {
         jLabel13.setText("H O S T E L");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 130, 50));
 
-        amt_m.setBackground(new java.awt.Color(204, 228, 202));
-        amt_m.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        amt_m.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(amt_m, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 170, 50));
+        amt_update_maint.setBackground(new java.awt.Color(204, 228, 202));
+        amt_update_maint.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        amt_update_maint.setForeground(new java.awt.Color(0, 0, 0));
+        amt_update_maint.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                amt_update_maintKeyTyped(evt);
+            }
+        });
+        jPanel2.add(amt_update_maint, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 170, 50));
 
-        m_disc.setBackground(new java.awt.Color(204, 228, 202));
-        m_disc.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        m_disc.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(m_disc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 270, 50));
+        dis_update_maint.setBackground(new java.awt.Color(204, 228, 202));
+        dis_update_maint.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        dis_update_maint.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(dis_update_maint, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 290, 50));
         jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 200, -1));
 
         maint_search.setBackground(new java.awt.Color(221, 231, 220));
@@ -575,7 +618,7 @@ public class expenses extends javax.swing.JFrame {
         jPanel2.add(maint_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 200, 40));
 
         jButton4.setBackground(new java.awt.Color(218, 230, 216));
-        jButton4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Trash_20px.png"))); // NOI18N
         jButton4.setText("Delete");
@@ -585,25 +628,35 @@ public class expenses extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, -1, -1));
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 100, 40));
 
-        jButton11.setBackground(new java.awt.Color(218, 230, 216));
-        jButton11.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(0, 0, 0));
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit Property_20px_2.png"))); // NOI18N
-        jButton11.setText("Update");
-        jButton11.setIconTextGap(0);
-        jPanel2.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, -1, -1));
+        update_btn_maint.setBackground(new java.awt.Color(218, 230, 216));
+        update_btn_maint.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        update_btn_maint.setForeground(new java.awt.Color(0, 0, 0));
+        update_btn_maint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit Property_20px_2.png"))); // NOI18N
+        update_btn_maint.setText("Update");
+        update_btn_maint.setIconTextGap(0);
+        update_btn_maint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_btn_maintActionPerformed(evt);
+            }
+        });
+        jPanel2.add(update_btn_maint, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, 100, -1));
 
-        jButton12.setBackground(new java.awt.Color(218, 230, 216));
-        jButton12.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(0, 0, 0));
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Save_20px_1.png"))); // NOI18N
-        jButton12.setText("Save");
-        jButton12.setIconTextGap(0);
-        jPanel2.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, -1, -1));
+        save_btn_maint.setBackground(new java.awt.Color(218, 230, 216));
+        save_btn_maint.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        save_btn_maint.setForeground(new java.awt.Color(0, 0, 0));
+        save_btn_maint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Save_20px_1.png"))); // NOI18N
+        save_btn_maint.setText("Save");
+        save_btn_maint.setIconTextGap(0);
+        save_btn_maint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_btn_maintActionPerformed(evt);
+            }
+        });
+        jPanel2.add(save_btn_maint, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, -1, -1));
 
-        jButton9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Print_20px_3.png"))); // NOI18N
         jButton9.setText("Print");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -611,19 +664,19 @@ public class expenses extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 100, -1, -1));
+        jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 100, -1, -1));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(0, 51, 51));
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Search_20px_3.png"))); // NOI18N
         jLabel27.setText("Search:");
         jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
-        jPanel2.add(maint_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 400, 110, 30));
+        jPanel2.add(maint_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 510, 110, 30));
         jPanel2.add(maint_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 110, 30));
-        jPanel2.add(maintani_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, -1, -1));
+        jPanel2.add(maintani_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 80, -1));
 
         jButton17.setBackground(new java.awt.Color(218, 230, 216));
-        jButton17.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton17.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton17.setForeground(new java.awt.Color(0, 0, 0));
         jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Refresh_20px.png"))); // NOI18N
         jButton17.setText("Refresh");
@@ -633,17 +686,17 @@ public class expenses extends javax.swing.JFrame {
                 jButton17ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 440, -1, 40));
+        jPanel2.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 440, -1, 40));
 
         jLabel25.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 240, 50));
+        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, 240, 50));
 
         jLabel29.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(0, 51, 51));
         jLabel29.setText(" Total ");
-        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, -1, -1));
+        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, -1));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 1120));
@@ -658,12 +711,7 @@ public class expenses extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 51, 51));
         jLabel16.setText("Total");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, -1));
-
-        jLabel17.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel17.setText("Description");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 82, 12));
@@ -675,15 +723,6 @@ public class expenses extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(0, 82, 12));
         jLabel19.setText("J O D O K ");
         jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 250, 70));
-
-        jButton7.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jButton7.setText("Enter");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 440, -1, -1));
 
         othrs.setBackground(new java.awt.Color(218, 230, 216));
         othrs.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -707,26 +746,6 @@ public class expenses extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 930, 250));
 
-        des_2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        des_2.setForeground(new java.awt.Color(0, 0, 0));
-        des_2.setText("jTextField1");
-        jPanel3.add(des_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 130, 50));
-
-        des_1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        des_1.setForeground(new java.awt.Color(0, 0, 0));
-        des_1.setText("jTextField1");
-        jPanel3.add(des_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 240, 50));
-
-        others_amt.setBackground(new java.awt.Color(204, 228, 202));
-        others_amt.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        others_amt.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(others_amt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 170, 50));
-
-        others_descr.setBackground(new java.awt.Color(204, 228, 202));
-        others_descr.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        others_descr.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(others_descr, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 290, 50));
-
         jLabel20.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 82, 12));
         jLabel20.setText("H O S T E L");
@@ -744,7 +763,9 @@ public class expenses extends javax.swing.JFrame {
         });
         jPanel3.add(other_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 240, 40));
 
-        jButton10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton10.setBackground(new java.awt.Color(218, 230, 216));
+        jButton10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(0, 0, 0));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Print_20px_3.png"))); // NOI18N
         jButton10.setText("Print");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -752,10 +773,10 @@ public class expenses extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 100, -1, -1));
+        jPanel3.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 100, -1, 30));
 
         jButton13.setBackground(new java.awt.Color(218, 230, 216));
-        jButton13.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton13.setForeground(new java.awt.Color(0, 0, 0));
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Trash_20px.png"))); // NOI18N
         jButton13.setText("Delete");
@@ -765,31 +786,39 @@ public class expenses extends javax.swing.JFrame {
                 jButton13ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, -1, -1));
+        jPanel3.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, -1, 40));
 
-        jButton14.setBackground(new java.awt.Color(218, 230, 216));
-        jButton14.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(0, 0, 0));
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit Property_20px_2.png"))); // NOI18N
-        jButton14.setText("Update");
-        jButton14.setIconTextGap(0);
-        jPanel3.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, -1, -1));
+        update_btn.setBackground(new java.awt.Color(218, 230, 216));
+        update_btn.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        update_btn.setForeground(new java.awt.Color(0, 0, 0));
+        update_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit Property_20px_2.png"))); // NOI18N
+        update_btn.setText("Update");
+        update_btn.setIconTextGap(0);
+        update_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_btnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(update_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, -1, -1));
 
-        jButton15.setBackground(new java.awt.Color(218, 230, 216));
-        jButton15.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton15.setForeground(new java.awt.Color(0, 0, 0));
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Save_20px_1.png"))); // NOI18N
-        jButton15.setText("Save");
-        jButton15.setIconTextGap(0);
-        jPanel3.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, -1, -1));
-        jPanel3.add(othres_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 110, 30));
-        jPanel3.add(others_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 110, 30));
-        jPanel3.add(otherhs, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, -1, -1));
+        save_btn.setBackground(new java.awt.Color(218, 230, 216));
+        save_btn.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        save_btn.setForeground(new java.awt.Color(0, 0, 0));
+        save_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Save_20px_1.png"))); // NOI18N
+        save_btn.setText("Save");
+        save_btn.setIconTextGap(0);
+        save_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_btnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(save_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, -1, -1));
+        jPanel3.add(other_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, 100, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, 220, 50));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, 220, 50));
 
         jLabel28.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 51, 51));
@@ -797,13 +826,8 @@ public class expenses extends javax.swing.JFrame {
         jLabel28.setText("Search:");
         jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel24.setText("Amount Used");
-        jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, -1));
-
         jButton18.setBackground(new java.awt.Color(218, 230, 216));
-        jButton18.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton18.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton18.setForeground(new java.awt.Color(0, 0, 0));
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Refresh_20px.png"))); // NOI18N
         jButton18.setText("Refresh");
@@ -813,7 +837,54 @@ public class expenses extends javax.swing.JFrame {
                 jButton18ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 440, -1, 40));
+        jPanel3.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(848, 440, 110, 40));
+
+        jButton7.setBackground(new java.awt.Color(218, 230, 216));
+        jButton7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(0, 0, 0));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Add List_20px.png"))); // NOI18N
+        jButton7.setText("Add");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, -1));
+
+        amt_update.setBackground(new java.awt.Color(218, 230, 216));
+        amt_update.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        amt_update.setForeground(new java.awt.Color(0, 0, 0));
+        amt_update.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                amt_updateKeyTyped(evt);
+            }
+        });
+        jPanel3.add(amt_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 150, 50));
+
+        dis_update.setBackground(new java.awt.Color(218, 230, 216));
+        dis_update.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        dis_update.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(dis_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 310, 50));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel24.setText("Amount Used");
+        jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, 40));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel17.setText("Description");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, 50));
+
+        others_time_update.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        others_time_update.setForeground(new java.awt.Color(0, 0, 0));
+        others_time_update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(others_time_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 100, 40));
+
+        others_date_update.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        others_date_update.setForeground(new java.awt.Color(0, 0, 0));
+        others_date_update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(others_date_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 100, 40));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
         jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -910,28 +981,9 @@ public class expenses extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-         try {
-          
-                
-                    String sql = "Insert into bills(description, amount_used,  date_used, time_) values (?,?,?,?)";
-                    
-                    pst=conn.prepareStatement(sql);
-                    pst.setString(1, descript.getText());
-                    pst.setString(2, amt.getText());
-                     pst.setString(3, date_.getText());
-                     pst.setString(4, time.getText());
-               
-                    pst.execute();
-                   
-                    descript.setText(null);
-                    amt.setText(null);
-           
-                    JOptionPane.showMessageDialog(null," Success");
-        
-        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog( null, e);
-        }
+         setVisible(false);
+         bills_expenses be = new bills_expenses();
+         be.setVisible(true);
 
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -939,11 +991,14 @@ public class expenses extends javax.swing.JFrame {
         // TODO add your handling code here:
          Update_bill_table();
           total_bills();
+          dis_update_bill.setText(null);
+        amt_update_bill.setText(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-        
+        dis_update_maint.setText(null);
+        amt_update_maint.setText(null);
         update_maintenace_table();
          total_maintenace();
     }//GEN-LAST:event_jButton17ActionPerformed
@@ -957,60 +1012,12 @@ public class expenses extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         
-         try {
-          
-                
-                    String sql = "Insert into maintenace(description, amt_used,  date_used, time_) values (?,?,?,?)";
-                    
-                    pst=conn.prepareStatement(sql);
-                    pst.setString(1, m_disc.getText());
-                    pst.setString(2, amt_m.getText());
-                     pst.setString(3, maint_date.getText());
-                     pst.setString(4, maint_time.getText());
-               
-                    pst.execute();
-                   
-                    maint_date.setText(null);
-                    maint_time.setText(null);
-                     m_disc.setText(null);
-                    amt_m.setText(null);
-           
-                    JOptionPane.showMessageDialog(null," Success");
+        setVisible(false);
+        Add_maintainace am = new Add_maintainace();
+        am.setVisible(true);
         
-        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog( null, e);
-        }
+        
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-        
-         try {
-          
-                
-                    String sql = "Insert into others(description, amt_used,  date_used, time_) values (?,?,?,?)";
-                    
-                    pst=conn.prepareStatement(sql);
-                    pst.setString(1, others_descr.getText());
-                    pst.setString(2, others_amt.getText());
-                     pst.setString(3, others_date.getText());
-                     pst.setString(4, othres_time.getText());
-               
-                    pst.execute();
-                   
-                    others_date.setText(null);
-                    othres_time.setText(null);
-                     others_descr.setText(null);
-                    others_amt.setText(null);
-           
-                    JOptionPane.showMessageDialog(null," Success");
-        
-        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog( null, e);
-        }
-    }//GEN-LAST:event_jButton7ActionPerformed
 
     private void bill_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bill_searchKeyReleased
         // TODO add your handling code here:
@@ -1111,7 +1118,7 @@ public class expenses extends javax.swing.JFrame {
         }
 
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+     JOptionPane.showMessageDialog(null, "Check your internet");
         
         }
         }
@@ -1133,7 +1140,7 @@ public class expenses extends javax.swing.JFrame {
                  int c = JOptionPane.showConfirmDialog(null, "Do you realy wanna Delete","Delete",JOptionPane.YES_NO_OPTION);
       
         if(c==0){
-        String sql =" DELETE FROM maintenance WHERE maintenance_id =?";
+        String sql =" DELETE FROM maintenace WHERE maintenance_id =?";
         try{
         
             pst=conn.prepareStatement(sql);
@@ -1146,7 +1153,7 @@ public class expenses extends javax.swing.JFrame {
         }
 
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+   JOptionPane.showMessageDialog(null, "Check your internet");
         
         }
         }
@@ -1168,11 +1175,11 @@ public class expenses extends javax.swing.JFrame {
                  int c = JOptionPane.showConfirmDialog(null, "Do you realy wanna Delete","Delete",JOptionPane.YES_NO_OPTION);
       
         if(c==0){
-        String sql =" DELETE FROM maintenance WHERE maintenance_id =?";
+        String sql =" DELETE FROM others WHERE others_id =?";
         try{
         
             pst=conn.prepareStatement(sql);
-            pst.setString(1,otherhs.getText());
+            pst.setString(1,other_id.getText());
             pst.execute();
             
             JOptionPane.showMessageDialog(null, " Deleted Successfully");
@@ -1181,7 +1188,7 @@ public class expenses extends javax.swing.JFrame {
         }
 
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Check your internet");
         
         }
         }
@@ -1192,12 +1199,349 @@ public class expenses extends javax.swing.JFrame {
     private void othrsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_othrsMouseClicked
         // TODO add your handling code here:
        
+        update_btn.setEnabled(true);
+        dis_update.setEnabled(false);
+        amt_update.setEnabled(false);
+       
+        
+         try{
+
+            int row = othrs.getSelectedRow();
+            String Table_click=(othrs.getModel().getValueAt(row,0).toString());
+
+            String sql ="SELECT * FROM others WHERE  others_id = '"+Table_click+"'";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+
+            if(rs.next()){
+
+                  String dead = rs.getString("others_id");
+                other_id.setText(dead);
+                
+                String layer = rs.getString("description");
+              dis_update.setText(layer);
+
+                String pen = rs.getString("amt_used");
+          amt_update.setText(pen);
+
+               
+
+       
+            }
+
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Check your internet");
+        }
+       
     }//GEN-LAST:event_othrsMouseClicked
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         // TODO add your handling code here:
        
     }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        save_btn_maint.setEnabled(false);
+        update_btn_maint.setEnabled(false);
+        update_btn.setEnabled(false);
+        save_btn.setEnabled(false);
+          save_btn_bill.setEnabled(false);
+        update_btn_bill.setEnabled(false);
+        
+    }//GEN-LAST:event_formWindowActivated
+
+    private void update_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_btnActionPerformed
+        // TODO add your handling code here:
+         save_btn.setEnabled(true);
+        update_btn.setEnabled(false);
+         dis_update.setEnabled(true);
+        amt_update.setEnabled(true);
+    }//GEN-LAST:event_update_btnActionPerformed
+
+    private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
+        // TODO add your handling code here:
+   
+       update_btn.setEnabled(false);
+        save_btn.setEnabled(false);
+        
+        try{
+                String value1=other_id.getText();
+                String value2=dis_update.getText();
+                String value3=amt_update.getText();
+                String value4=others_date_update.getText();
+                String value5=others_time_update.getText();
+
+               
+
+                String sql ="update others set others_id='"+value1+"', description='"+value2+"', "
+                        + "amt_used='"+value3+"', date_used='"+value4+"', time_='"+value5+"'  where others_id='"+value1+"'";
+
+                pst=conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Update Successful");
+                
+               
+                
+             dis_update.setText(null);
+        amt_update.setText(null);
+        
+
+            }
+
+            catch(Exception e){
+
+                JOptionPane.showMessageDialog(null, e);
+            }
+              finally{
+        
+        try{
+         rs.close();
+         pst.close();
+        }
+        catch(Exception e){
+        
+        
+        }}
+    
+       
+    }//GEN-LAST:event_save_btnActionPerformed
+
+    private void amt_update_maintKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amt_update_maintKeyTyped
+        // TODO add your handling code here:
+         char check = evt.getKeyChar();
+        
+        if(!(Character.isDigit(check)
+                || check ==KeyEvent.VK_ENTER 
+                ||  check ==KeyEvent.VK_BACK_SPACE
+                ||  check ==KeyEvent.VK_DELETE  ))
+        {
+        
+            evt.consume();
+           // JOptionPane.showMessageDialog(null, "Figures Only");
+        }
+    }//GEN-LAST:event_amt_update_maintKeyTyped
+
+    private void amt_update_billKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amt_update_billKeyTyped
+        // TODO add your handling code here:
+         char check = evt.getKeyChar();
+        
+        if(!(Character.isDigit(check)
+                || check ==KeyEvent.VK_ENTER 
+                ||  check ==KeyEvent.VK_BACK_SPACE
+                ||  check ==KeyEvent.VK_DELETE  ))
+        {
+        
+            evt.consume();
+            //JOptionPane.showMessageDialog(null, "Figures Only");
+        }
+    }//GEN-LAST:event_amt_update_billKeyTyped
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        Add_others ad = new Add_others();
+        ad.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void update_btn_maintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_btn_maintActionPerformed
+        // TODO add your handling code here:
+        
+         save_btn_maint.setEnabled(true);
+        update_btn_maint.setEnabled(false);
+         dis_update_maint.setEnabled(true);
+        amt_update_maint.setEnabled(true);
+    }//GEN-LAST:event_update_btn_maintActionPerformed
+
+    private void save_btn_maintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btn_maintActionPerformed
+        // TODO add your handling code here:
+        update_btn_maint.setEnabled(false);
+        save_btn_maint.setEnabled(false);
+        
+        try{
+                String value1=maintani_id.getText();
+                String value2=dis_update_maint.getText();
+                String value3=amt_update_maint.getText();
+                String value4=maint_date.getText();
+                String value5=maint_time.getText();
+
+               
+
+                String sql ="update maintenace set maintenance_id='"+value1+"', description='"+value2+"', "
+                        + "amt_used='"+value3+"', date_used='"+value4+"', time_='"+value5+"'  where maintenance_id='"+value1+"'";
+
+                pst=conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Update Successful");
+                
+               
+                
+             dis_update.setText(null);
+        amt_update.setText(null);
+        
+
+            }
+
+            catch(Exception e){
+
+                JOptionPane.showMessageDialog(null, e);
+            }
+              finally{
+        
+        try{
+         rs.close();
+         pst.close();
+        }
+        catch(Exception e){
+        
+        
+        }}
+    }//GEN-LAST:event_save_btn_maintActionPerformed
+
+    private void maintenace_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maintenace_tableMouseClicked
+        // TODO add your handling code here:
+         update_btn_maint.setEnabled(true);
+        dis_update_maint.setEnabled(false);
+        amt_update_maint.setEnabled(false);
+       
+        
+         try{
+
+            int row = maintenace_table.getSelectedRow();
+            String Table_click=(maintenace_table.getModel().getValueAt(row,0).toString());
+
+            String sql ="SELECT * FROM maintenace WHERE  maintenance_id = '"+Table_click+"'";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+
+            if(rs.next()){
+
+                  String dead = rs.getString("maintenance_id");
+                maintani_id.setText(dead);
+                
+                String layer = rs.getString("description");
+              dis_update_maint.setText(layer);
+
+                String pen = rs.getString("amt_used");
+          amt_update_maint.setText(pen);
+
+               
+
+       
+            }
+
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Check your internet");
+        }
+    }//GEN-LAST:event_maintenace_tableMouseClicked
+
+    private void update_btn_billActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_btn_billActionPerformed
+        // TODO add your handling code here:
+         save_btn_bill.setEnabled(true);
+        update_btn_bill.setEnabled(false);
+         dis_update_bill.setEnabled(true);
+        amt_update_bill.setEnabled(true);
+    }//GEN-LAST:event_update_btn_billActionPerformed
+
+    private void save_btn_billActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btn_billActionPerformed
+        // TODO add your handling code here:
+        update_btn_bill.setEnabled(false);
+        save_btn_bill.setEnabled(false);
+        
+        try{
+                String value1=biil_id.getText();
+                String value2=dis_update_bill.getText();
+                String value3=amt_update_bill.getText();
+                String value4=bill_date.getText();
+                String value5=time_bill.getText();
+
+               
+
+                String sql ="update bills set bill_id='"+value1+"', description='"+value2+"', "
+                        + "amount_used='"+value3+"', date_used='"+value4+"', time_='"+value5+"'  where bill_id='"+value1+"'";
+
+                pst=conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Update Successful");
+                
+               
+                
+             dis_update_bill.setText(null);
+        amt_update_bill.setText(null);
+        
+
+            }
+
+            catch(Exception e){
+
+                JOptionPane.showMessageDialog(null, e);
+            }
+              finally{
+        
+        try{
+         rs.close();
+         pst.close();
+        }
+        catch(Exception e){
+        
+        
+        }}
+    }//GEN-LAST:event_save_btn_billActionPerformed
+
+    private void bill_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bill_tableMouseClicked
+        // TODO add your handling code here:.
+        update_btn_bill.setEnabled(true);
+        dis_update_bill.setEnabled(false);
+        amt_update_bill.setEnabled(false);
+       
+        
+         try{
+
+            int row = bill_table.getSelectedRow();
+            String Table_click=(bill_table.getModel().getValueAt(row,0).toString());
+
+            String sql ="SELECT * FROM bills WHERE  bill_id = '"+Table_click+"'";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+
+            if(rs.next()){
+
+                  String dead = rs.getString("bill_id");
+                biil_id.setText(dead);
+                
+                String layer = rs.getString("description");
+              dis_update_bill.setText(layer);
+
+                String pen = rs.getString("amount_used");
+          amt_update_bill.setText(pen);
+
+               
+
+       
+            }
+
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Check your internet");
+        }
+    }//GEN-LAST:event_bill_tableMouseClicked
+
+    private void amt_updateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amt_updateKeyTyped
+        // TODO add your handling code here:
+         char check = evt.getKeyChar();
+        
+        if(!(Character.isDigit(check)
+                || check ==KeyEvent.VK_ENTER 
+                ||  check ==KeyEvent.VK_BACK_SPACE
+                ||  check ==KeyEvent.VK_DELETE  ))
+        {
+        
+            evt.consume();
+           // JOptionPane.showMessageDialog(null, "Figures Only");
+        }
+    }//GEN-LAST:event_amt_updateKeyTyped
 
     /**
      * @param args the command line arguments
@@ -1235,27 +1579,22 @@ public class expenses extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField amt;
-    private javax.swing.JTextField amt_m;
+    private javax.swing.JTextField amt_update;
+    private javax.swing.JTextField amt_update_bill;
+    private javax.swing.JTextField amt_update_maint;
     private javax.swing.JTextField biil_id;
+    private javax.swing.JTextField bill_date;
     private javax.swing.JTextField bill_search;
     private javax.swing.JTable bill_table;
-    private javax.swing.JTextField date_;
-    private javax.swing.JTextField des_1;
-    private javax.swing.JTextField des_2;
-    private javax.swing.JTextField descript;
+    private javax.swing.JTextField dis_update;
+    private javax.swing.JTextField dis_update_bill;
+    private javax.swing.JTextField dis_update_maint;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -1315,20 +1654,23 @@ public class expenses extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JTextField m_disc;
     private javax.swing.JTextField maint_date;
     private javax.swing.JTextField maint_search;
     private javax.swing.JTextField maint_time;
     private javax.swing.JTextField maintani_id;
     private javax.swing.JTable maintenace_table;
+    private javax.swing.JTextField other_id;
     private javax.swing.JTextField other_search;
     private javax.swing.JTabbedPane other_tbl;
-    private javax.swing.JTextField otherhs;
-    private javax.swing.JTextField others_amt;
-    private javax.swing.JTextField others_date;
-    private javax.swing.JTextField others_descr;
-    private javax.swing.JTextField othres_time;
+    private javax.swing.JLabel others_date_update;
+    private javax.swing.JLabel others_time_update;
     private javax.swing.JTable othrs;
-    private javax.swing.JTextField time;
+    private javax.swing.JButton save_btn;
+    private javax.swing.JButton save_btn_bill;
+    private javax.swing.JButton save_btn_maint;
+    private javax.swing.JTextField time_bill;
+    private javax.swing.JButton update_btn;
+    private javax.swing.JButton update_btn_bill;
+    private javax.swing.JButton update_btn_maint;
     // End of variables declaration//GEN-END:variables
 }

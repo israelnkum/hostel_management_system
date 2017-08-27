@@ -62,7 +62,7 @@ public class update_info extends javax.swing.JFrame {
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog( null, e);
+            JOptionPane.showMessageDialog( null, "You Cant update Information without Internet","Infomation",JOptionPane.PLAIN_MESSAGE);
         }
         }
     

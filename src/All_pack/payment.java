@@ -43,6 +43,8 @@ public class payment extends javax.swing.JFrame {
     
      public payment() {
         initComponents();
+        conn = java_connection.getConnection();
+        
         amt_left.setVisible(false);
         amt_paid.setVisible(false);
         new_ARREAS.setVisible(false);
@@ -59,18 +61,18 @@ public class payment extends javax.swing.JFrame {
              l_name.setVisible(false);
               grand_amt.setVisible(false);
              
-
-        conn = java_connection.getConnection();
-         internet_connection();
+//internet_connection();
+        
+      //   internet_connection();
         currentDate();
-        internet_connection();
+     
         Update_table();
         Update_table_1();
         
         
     }
      
-     public void internet_connection(){
+  /*public void internet_connection(){
     
         Thread timer = new Thread(){
         @Override
@@ -106,7 +108,7 @@ public class payment extends javax.swing.JFrame {
      
         };
         timer.start();
-    }        
+    }*/     
      private void filter (String sql){
     
           model_1 =(DefaultTableModel) jTable2.getModel();

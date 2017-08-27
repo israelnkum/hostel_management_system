@@ -6,20 +6,29 @@
 package All_pack;
 
 
-
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.MessageFormat;
-import javax.swing.JLabel;
+import java.util.Set;
+import java.util.TreeMap;
+
 
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 /**
@@ -32,6 +41,7 @@ public class summary extends javax.swing.JFrame {
           DefaultTableModel model_1;
           DefaultTableModel model_2;
           DefaultTableModel model_3;
+          DefaultTableModel model_4;
       Connection conn;
     ResultSet rs;
     PreparedStatement pst;
@@ -45,6 +55,7 @@ public class summary extends javax.swing.JFrame {
       
          model_1 =(DefaultTableModel) jTable3.getModel(); 
      model = (DefaultTableModel) jTable1.getModel();
+
         Update_table();
         Student();
         Update_Payment();
@@ -56,6 +67,61 @@ public class summary extends javax.swing.JFrame {
        
     }
     
+ private String getCellValue( int x, int y)
+    {
+    
+        return model_4.getValueAt(x, y).toString();
+    }
+    
+    private void writeToExcel(){
+        
+      
+                   
+    
+    XSSFWorkbook wb = new XSSFWorkbook();
+        XSSFSheet ws = wb.createSheet();
+        
+        TreeMap<String,Object[]> data = new TreeMap();
+        
+        data.put("-1",new Object[]{model_4.getColumnName(0),model_4.getColumnName(1),model_4.getColumnName(2),model_4.getColumnName(3),model_4.getColumnName(4),model_4.getColumnName(5),model_4.getColumnName(6),model_4.getColumnName(7)});
+        
+        for(int i=0; i<model_4.getRowCount();i++){
+        
+            data.put(Integer.toString(i), new Object[]{getCellValue(i,0),getCellValue(i,1),getCellValue(i,2),getCellValue(i,3),getCellValue(i,4),getCellValue(i,5),getCellValue(i,6),getCellValue(i,7)});
+        }
+        
+        Set<String> ids=data.keySet();
+        XSSFRow row;
+        int rowID=0;
+        
+        for(String key: ids){
+        
+            row = ws.createRow(rowID++);
+            
+            Object[] values=data.get(key);
+            
+            int cellid =0;
+            
+            for(Object o: values){
+            
+                Cell cell = row.createCell(cellid++);
+                cell.setCellValue(o.toString());
+            }
+        }
+        
+        try{
+        FileOutputStream fos = new FileOutputStream("C:/Users/oSikaNi iSraeL/Documents/payment.xls");
+        wb.write(fos);
+        fos.close();
+        
+        }
+        
+        catch (IOException e){
+        
+            JOptionPane.showMessageDialog(null, e);
+        
+    }
+    }
     
     private void Update_table(){
     
@@ -199,6 +265,7 @@ public class summary extends javax.swing.JFrame {
          tr.setRowFilter(RowFilter.regexFilter(sql));
      }
      
+     //Filter Student Table
        private void student_filter (String sql){
     
           model_3 =(DefaultTableModel) jTable3.getModel();
@@ -277,6 +344,7 @@ public class summary extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -505,6 +573,14 @@ public class summary extends javax.swing.JFrame {
         jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
         jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 270, 10));
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, -1, -1));
+
         jLabel22.setFont(new java.awt.Font("Segoe UI Light", 0, 70)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 102, 0));
         jLabel22.setText("JODOK ");
@@ -628,6 +704,11 @@ public class summary extends javax.swing.JFrame {
         student_filter (txt_1);
     }//GEN-LAST:event_std_filtKeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        writeToExcel();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -666,6 +747,7 @@ public class summary extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arreas;
     private javax.swing.JLabel feesPaid;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
