@@ -78,6 +78,9 @@ public class new_info extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jTextField1 = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -92,6 +95,7 @@ public class new_info extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -101,6 +105,11 @@ public class new_info extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Male User_100px_4.png"))); // NOI18N
@@ -153,6 +162,9 @@ public class new_info extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 roomKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                roomKeyTyped(evt);
+            }
         });
         getContentPane().add(room, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 250, 30));
 
@@ -162,6 +174,9 @@ public class new_info extends javax.swing.JFrame {
         bed.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 bedKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                bedKeyTyped(evt);
             }
         });
         getContentPane().add(bed, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 250, 30));
@@ -183,6 +198,9 @@ public class new_info extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 hostel_feeKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hostel_feeKeyTyped(evt);
+            }
         });
         getContentPane().add(hostel_fee, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 250, 30));
         getContentPane().add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, 250, -1));
@@ -193,6 +211,9 @@ public class new_info extends javax.swing.JFrame {
         phone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 phoneKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                phoneKeyTyped(evt);
             }
         });
         getContentPane().add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 250, 30));
@@ -243,6 +264,20 @@ public class new_info extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, -1, -1));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(214, 239, 220));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Add Button:\n\nFill all the neccessary information about the new \nhosteler and press enter or click the add button \nto add new hosteler\n\nReset Button:\n\nThe reset Button clear's every information \nprovided in the filed with just a single clik.\n\nBack Button:\n \nThis button takes you back to the previous page.");
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 410, 40));
+
+        jTextField1.setText("jTextField1");
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, -1, -1));
 
         jSeparator10.setBackground(new java.awt.Color(0, 51, 0));
         jSeparator10.setForeground(new java.awt.Color(0, 51, 0));
@@ -303,10 +338,23 @@ public class new_info extends javax.swing.JFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/new_.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 420, 560));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/newLOginBack.png"))); // NOI18N
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel14.setText("jLabel14");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_border.png"))); // NOI18N
         jMenu1.setText("File");
@@ -345,6 +393,11 @@ public class new_info extends javax.swing.JFrame {
 
         jMenu2.setText("Help");
         jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -402,7 +455,7 @@ else{
             
             if(rs.next() ){
           
-            JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+            JOptionPane.showMessageDialog(null, "Room or Bed Number is Already Occupied");
       
             }
             
@@ -426,6 +479,8 @@ else{
                     
                     pst.execute();
                    
+                    JOptionPane.showMessageDialog(null," Success");
+                    
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
@@ -435,7 +490,7 @@ else{
                     hostel_fee.setText(null);
                     phone.setText(null);
                     
-                    JOptionPane.showMessageDialog(null," Success");
+          
         
         }
         catch (Exception e) {
@@ -1225,6 +1280,78 @@ else{
         mp.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void roomKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_roomKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c)
+                || c == KeyEvent.VK_ENTER
+                || c == KeyEvent.VK_DELETE
+                || c == KeyEvent.VK_BACK_SPACE)){
+        
+        
+            evt.consume();
+        }
+    }//GEN-LAST:event_roomKeyTyped
+
+    private void bedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bedKeyTyped
+        // TODO add your handling code here:
+             char c = evt.getKeyChar();
+        if(!(Character.isDigit(c)
+                || c == KeyEvent.VK_ENTER
+                || c == KeyEvent.VK_DELETE
+                || c == KeyEvent.VK_BACK_SPACE)){
+        
+        
+            evt.consume();
+        }
+    }//GEN-LAST:event_bedKeyTyped
+
+    private void hostel_feeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hostel_feeKeyTyped
+        // TODO add your handling code here:
+             char c = evt.getKeyChar();
+        if(!(Character.isDigit(c)
+                || c == KeyEvent.VK_ENTER
+                || c == KeyEvent.VK_DELETE
+                || c == KeyEvent.VK_BACK_SPACE)){
+        
+        
+            evt.consume();
+        }
+    }//GEN-LAST:event_hostel_feeKeyTyped
+
+    private void phoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneKeyTyped
+        // TODO add your handling code here:
+             char c = evt.getKeyChar();
+        if(!(Character.isDigit(c)
+                || c == KeyEvent.VK_ENTER
+                || c == KeyEvent.VK_DELETE
+                || c == KeyEvent.VK_BACK_SPACE)){
+        
+        
+            evt.consume();
+        }
+    }//GEN-LAST:event_phoneKeyTyped
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        jTextArea1.setVisible(false);
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // TODO add your handling code here:
+        jTextArea1.setVisible(true);
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+         jTextArea1.setVisible(false);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        // TODO add your handling code here:
+         jTextArea1.setVisible(false);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1274,6 +1401,7 @@ else{
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1288,6 +1416,7 @@ else{
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1297,6 +1426,8 @@ else{
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField lname;
     private javax.swing.JTextField phone;
     private javax.swing.JTextField prog;

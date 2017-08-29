@@ -549,7 +549,22 @@ public class update_info extends javax.swing.JFrame {
     private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
         // TODO add your handling code here:
 
-                try{
+          String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+        try{
+       
+            pst=conn.prepareStatement(sql_1);
+            pst.setString(1, room.getText());
+            pst.setString(2, bed.getText());
+            
+            rs=pst.executeQuery();
+            
+            
+            if(rs.next() ){
+                //JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+                int c = JOptionPane.showConfirmDialog(null,"Room or Bed Number is already Occupied\nDo you want to continue?","Confrim",JOptionPane.YES_NO_OPTION);
+             if(c==0){
+             
+                  try{
                 String value1=id.getText();
                 String value2=fname.getText();
                 String value3=lname.getText();
@@ -596,6 +611,72 @@ public class update_info extends javax.swing.JFrame {
         
         
         }}
+             
+             }
+            }
+            
+            else{
+          
+             int c = JOptionPane.showConfirmDialog(null,"Confirm?","Confrim",JOptionPane.YES_NO_OPTION);
+             if(c==0){
+             
+                  try{
+                String value1=id.getText();
+                String value2=fname.getText();
+                String value3=lname.getText();
+                String value4=prog.getText();
+                String value5=room.getText();
+                String value6=bed.getText();
+                String value7= hostel_fee.getText();
+                String value8=phone.getText();
+                String value9=((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText();
+               
+
+                String sql ="update new_info set customer_id='"+value1+"', fname='"+value2+"', "
+                        + "lname='"+value3+"', program='"+value4+"', roo_no='"+value5+"',"
+                        + "bed_no='"+value6+"', hostel_fee='"+value7+"', phone='"+value8+"',"
+                        + "date_reg='"+value9+"'  where customer_id='"+value1+"'";
+
+                pst=conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Update Successful");
+                
+               
+                
+             fname.setText(null);
+        lname.setText(null);
+        prog.setText(null);
+        room.setText(null);
+        bed.setText(null);
+        hostel_fee.setText(null);
+        phone.setText(null);
+        jDateChooser1.setDate(null);
+            }
+
+            catch(Exception e){
+
+                JOptionPane.showMessageDialog(null, e);
+            }
+              finally{
+        
+        try{
+         rs.close();
+         pst.close();
+        }
+        catch(Exception e){
+        
+        
+        }}
+             
+             }
+            }
+         
+        }
+            catch(Exception e){
+                    
+                    }
+        
+               
             
             
         
