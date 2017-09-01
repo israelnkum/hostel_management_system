@@ -80,7 +80,6 @@ public class new_info extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -274,10 +273,7 @@ public class new_info extends javax.swing.JFrame {
         jTextArea1.setText("Add Button:\n\nFill all the neccessary information about the new \nhosteler and press enter or click the add button \nto add new hosteler\n\nReset Button:\n\nThe reset Button clear's every information \nprovided in the filed with just a single clik.\n\nBack Button:\n \nThis button takes you back to the previous page.");
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 410, 40));
-
-        jTextField1.setText("jTextField1");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 410, 350));
 
         jSeparator10.setBackground(new java.awt.Color(0, 51, 0));
         jSeparator10.setForeground(new java.awt.Color(0, 51, 0));
@@ -517,7 +513,7 @@ else{
         
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-            if(
+                 if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -544,7 +540,7 @@ else{
             
             if(rs.next() ){
           
-            JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+            JOptionPane.showMessageDialog(null, "Room or Bed Number is Already Occupied");
       
             }
             
@@ -568,6 +564,8 @@ else{
                     
                     pst.execute();
                    
+                    JOptionPane.showMessageDialog(null," Success");
+                    
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
@@ -576,6 +574,8 @@ else{
                     bed.setText(null);
                     hostel_fee.setText(null);
                     phone.setText(null);
+                    
+          
         
         }
         catch (Exception e) {
@@ -598,9 +598,9 @@ else{
 
     private void lnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lnameKeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+           if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-            if(
+                 if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -627,7 +627,7 @@ else{
             
             if(rs.next() ){
           
-            JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+            JOptionPane.showMessageDialog(null, "Room or Bed Number is Already Occupied");
       
             }
             
@@ -651,6 +651,8 @@ else{
                     
                     pst.execute();
                    
+                    JOptionPane.showMessageDialog(null," Success");
+                    
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
@@ -659,6 +661,8 @@ else{
                     bed.setText(null);
                     hostel_fee.setText(null);
                     phone.setText(null);
+                    
+          
         
         }
         catch (Exception e) {
@@ -683,7 +687,7 @@ else{
         // TODO add your handling code here:
          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-            if(
+                 if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -710,7 +714,7 @@ else{
             
             if(rs.next() ){
           
-            JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+            JOptionPane.showMessageDialog(null, "Room or Bed Number is Already Occupied");
       
             }
             
@@ -734,6 +738,8 @@ else{
                     
                     pst.execute();
                    
+                    JOptionPane.showMessageDialog(null," Success");
+                    
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
@@ -742,6 +748,8 @@ else{
                     bed.setText(null);
                     hostel_fee.setText(null);
                     phone.setText(null);
+                    
+          
         
         }
         catch (Exception e) {
@@ -764,9 +772,9 @@ else{
 
     private void roomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_roomKeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-            if(
+                 if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -793,7 +801,7 @@ else{
             
             if(rs.next() ){
           
-            JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+            JOptionPane.showMessageDialog(null, "Room or Bed Number is Already Occupied");
       
             }
             
@@ -817,6 +825,8 @@ else{
                     
                     pst.execute();
                    
+                    JOptionPane.showMessageDialog(null," Success");
+                    
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
@@ -825,6 +835,8 @@ else{
                     bed.setText(null);
                     hostel_fee.setText(null);
                     phone.setText(null);
+                    
+          
         
         }
         catch (Exception e) {
@@ -847,9 +859,9 @@ else{
 
     private void bedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bedKeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-            if(
+                 if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -876,7 +888,7 @@ else{
             
             if(rs.next() ){
           
-            JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+            JOptionPane.showMessageDialog(null, "Room or Bed Number is Already Occupied");
       
             }
             
@@ -900,6 +912,8 @@ else{
                     
                     pst.execute();
                    
+                    JOptionPane.showMessageDialog(null," Success");
+                    
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
@@ -908,6 +922,8 @@ else{
                     bed.setText(null);
                     hostel_fee.setText(null);
                     phone.setText(null);
+                    
+          
         
         }
         catch (Exception e) {
@@ -930,9 +946,9 @@ else{
 
     private void hostel_feeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hostel_feeKeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-            if(
+                 if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -959,7 +975,7 @@ else{
             
             if(rs.next() ){
           
-            JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+            JOptionPane.showMessageDialog(null, "Room or Bed Number is Already Occupied");
       
             }
             
@@ -983,6 +999,8 @@ else{
                     
                     pst.execute();
                    
+                    JOptionPane.showMessageDialog(null," Success");
+                    
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
@@ -991,6 +1009,8 @@ else{
                     bed.setText(null);
                     hostel_fee.setText(null);
                     phone.setText(null);
+                    
+          
         
         }
         catch (Exception e) {
@@ -1016,7 +1036,7 @@ else{
         
          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-            if(
+                 if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -1043,7 +1063,7 @@ else{
             
             if(rs.next() ){
           
-            JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+            JOptionPane.showMessageDialog(null, "Room or Bed Number is Already Occupied");
       
             }
             
@@ -1067,6 +1087,8 @@ else{
                     
                     pst.execute();
                    
+                    JOptionPane.showMessageDialog(null," Success");
+                    
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
@@ -1075,6 +1097,8 @@ else{
                     bed.setText(null);
                     hostel_fee.setText(null);
                     phone.setText(null);
+                    
+          
         
         }
         catch (Exception e) {
@@ -1097,9 +1121,9 @@ else{
 
     private void date_txtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_date_txtKeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-            if(
+                 if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -1126,7 +1150,7 @@ else{
             
             if(rs.next() ){
           
-            JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+            JOptionPane.showMessageDialog(null, "Room or Bed Number is Already Occupied");
       
             }
             
@@ -1150,6 +1174,8 @@ else{
                     
                     pst.execute();
                    
+                    JOptionPane.showMessageDialog(null," Success");
+                    
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
@@ -1158,6 +1184,8 @@ else{
                     bed.setText(null);
                     hostel_fee.setText(null);
                     phone.setText(null);
+                    
+          
         
         }
         catch (Exception e) {
@@ -1180,9 +1208,9 @@ else{
 
     private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+           if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-            if(
+                 if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -1209,7 +1237,7 @@ else{
             
             if(rs.next() ){
           
-            JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+            JOptionPane.showMessageDialog(null, "Room or Bed Number is Already Occupied");
       
             }
             
@@ -1233,6 +1261,8 @@ else{
                     
                     pst.execute();
                    
+                    JOptionPane.showMessageDialog(null," Success");
+                    
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
@@ -1241,6 +1271,8 @@ else{
                     bed.setText(null);
                     hostel_fee.setText(null);
                     phone.setText(null);
+                    
+          
         
         }
         catch (Exception e) {
@@ -1427,7 +1459,6 @@ else{
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField lname;
     private javax.swing.JTextField phone;
     private javax.swing.JTextField prog;

@@ -1251,6 +1251,13 @@ public class expenses extends javax.swing.JFrame {
         save_btn.setEnabled(false);
           save_btn_bill.setEnabled(false);
         update_btn_bill.setEnabled(false);
+        dis_update_bill.setEnabled(false);
+        amt_update_bill.setEnabled(false);
+        dis_update_maint.setEnabled(false);
+          amt_update_maint.setEnabled(false);
+            dis_update.setEnabled(false);
+              amt_update.setEnabled(false);
+        
         
     }//GEN-LAST:event_formWindowActivated
 

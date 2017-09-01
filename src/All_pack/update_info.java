@@ -222,13 +222,13 @@ public class update_info extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 82, 12));
         jLabel5.setText("H O S T E L");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 210, 70));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 470, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 210, 70));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 470, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 60)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 82, 12));
         jLabel4.setText("J O D O K ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 440, 70));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 440, 70));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
