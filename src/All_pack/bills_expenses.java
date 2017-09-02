@@ -6,6 +6,7 @@
 package All_pack;
 
 import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,10 +21,12 @@ import javax.swing.JOptionPane;
  * @author oSikaNi iSraeL
  */
 public class bills_expenses extends javax.swing.JFrame {
-    
+        int xMouse;
+        int yMouse;
     Connection conn;
     ResultSet rs;
     PreparedStatement pst;
+
 
     /**
      * Creates new form bills_expenses
@@ -35,6 +38,9 @@ public class bills_expenses extends javax.swing.JFrame {
         
         bill_date.setVisible(false);
         bill_time.setVisible(false);
+        
+          bill_des.setBackground(new Color(0,0,0,0));
+       bill_amt.setBackground(new Color(0,0,0,0));
        
 
 
@@ -85,6 +91,16 @@ public class bills_expenses extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel17.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -112,6 +128,16 @@ public class bills_expenses extends javax.swing.JFrame {
         bill_amt.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         bill_amt.setForeground(new java.awt.Color(0, 0, 0));
         bill_amt.setBorder(null);
+        bill_amt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                bill_amtMouseDragged(evt);
+            }
+        });
+        bill_amt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                bill_amtMousePressed(evt);
+            }
+        });
         bill_amt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 bill_amtKeyPressed(evt);
@@ -348,15 +374,44 @@ public class bills_expenses extends javax.swing.JFrame {
          char check = evt.getKeyChar();
         
         if(!(Character.isDigit(check)
-                || check ==java.awt.event.KeyEvent.VK_ENTER 
-                ||  check ==java.awt.event.KeyEvent.VK_BACK_SPACE
-                ||  check ==java.awt.event.KeyEvent.VK_DELETE  ))
+                || check ==KeyEvent.VK_ENTER 
+                ||  check ==KeyEvent.VK_BACKSPACE
+                ||  check ==KeyEvent.VK_DELETE  
+                || check ==KeyEvent.VK_PERIOD))
         {
         
             evt.consume();
            // JOptionPane.showMessageDialog(null, "Figures Only");
         }
     }//GEN-LAST:event_bill_amtKeyTyped
+
+    private void bill_amtMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bill_amtMouseDragged
+        // TODO add your handling code here:
+        
+       
+    }//GEN-LAST:event_bill_amtMouseDragged
+
+    private void bill_amtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bill_amtMousePressed
+        // TODO add your handling code here:
+        
+     
+    }//GEN-LAST:event_bill_amtMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        
+         int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x-xMouse, y-yMouse);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        
+           xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_formMousePressed
 
     /**
      * @param args the command line arguments

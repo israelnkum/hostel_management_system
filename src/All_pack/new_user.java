@@ -11,26 +11,24 @@ import java.awt.Color;
  *
  * @author oSikaNi iSraeL
  */
-public class Fogort_password extends javax.swing.JFrame {
-    
-    
+public class new_user extends javax.swing.JFrame {
+
     int xMouse;
     int yMouse;
-
     /**
-     * Creates new form Fogort_password
+     * Creates new form new_user
      */
-    public Fogort_password() {
+    public new_user() {
         initComponents();
         
-       user_name.setBackground(new Color(0,0,0,0));
+          user_name.setBackground(new Color(0,0,0,0));
        f_name.setBackground(new Color(0,0,0,0));
-       l_name.setBackground(new Color(0,0,0,0));
-       sec_ques.setBackground(new Color(0,0,0,0));
-       password.setBackground(new Color(0,0,0,0));
-      // user_name.setBackground(new Color(0,0,0,0));
-       
-                
+         l_name.setBackground(new Color(0,0,0,0));
+       phone.setBackground(new Color(0,0,0,0));
+         pass.setBackground(new Color(0,0,0,0));
+       ansa.setBackground(new Color(0,0,0,0));
+      //   phone.setBackground(new Color(0,0,0,0));
+     //  date_txt.setBackground(new Color(0,0,0,0));
     }
 
     /**
@@ -48,6 +46,7 @@ public class Fogort_password extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
@@ -55,17 +54,25 @@ public class Fogort_password extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        phone = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         f_name = new javax.swing.JTextField();
         l_name = new javax.swing.JTextField();
-        sec_ques = new javax.swing.JTextField();
-        password = new javax.swing.JTextField();
+        ansa = new javax.swing.JTextField();
+        pass = new javax.swing.JTextField();
         user_name = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         minimize = new javax.swing.JLabel();
         minus_fill = new javax.swing.JLabel();
         logout_fill = new javax.swing.JLabel();
@@ -95,41 +102,57 @@ public class Fogort_password extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 260, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 260, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 0));
-        jLabel2.setText("Security Question:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 160, -1));
+        jLabel2.setText("Date of birth:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 160, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 0));
-        jLabel3.setText("Password:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, -1, -1));
+        jLabel3.setText("Phone:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 0));
         jLabel7.setText("Last name:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, 30));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 51, 0));
         jLabel11.setText("First name:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 51, 0));
         jLabel12.setText("Username:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 51, 0));
+        jLabel10.setText("Security Question:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 160, -1));
+
         jButton1.setBackground(new java.awt.Color(211, 228, 210));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Unlock 2_20px.png"))); // NOI18N
+        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 0));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_20px_2.png"))); // NOI18N
+        jButton1.setText("Cancel");
         jButton1.setToolTipText("Retrieve password");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 330, 30, -1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 540, 120, 30));
 
         jButton2.setBackground(new java.awt.Color(211, 228, 210));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Search_20px_3.png"))); // NOI18N
+        jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 51, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Add User Male_20px_1.png"))); // NOI18N
+        jButton2.setText("Add");
         jButton2.setToolTipText("Search");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -137,16 +160,24 @@ public class Fogort_password extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 50, 30, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 540, 90, 30));
 
         jSeparator3.setBackground(new java.awt.Color(0, 51, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 51, 0));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, 230));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 260, -1));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 260, 10));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 260, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 260, -1));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 260, 10));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 260, -1));
         getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, 260, -1));
+        getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, 260, -1));
+
+        phone.setBackground(new java.awt.Color(211, 228, 210));
+        phone.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        phone.setForeground(new java.awt.Color(0, 0, 0));
+        phone.setBorder(null);
+        phone.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        getContentPane().add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 260, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Name_20px_2.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 130, -1, -1));
@@ -164,35 +195,42 @@ public class Fogort_password extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
 
-        f_name.setEditable(false);
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 0));
+        jLabel5.setText("Password:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 51, 0));
+        jLabel13.setText("Answer:");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 160, -1));
+
         f_name.setBackground(new java.awt.Color(211, 228, 210));
         f_name.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         f_name.setForeground(new java.awt.Color(0, 0, 0));
         f_name.setBorder(null);
-        f_name.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(f_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 260, 40));
+        f_name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        getContentPane().add(f_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 260, 40));
 
-        l_name.setEditable(false);
         l_name.setBackground(new java.awt.Color(211, 228, 210));
         l_name.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         l_name.setForeground(new java.awt.Color(0, 0, 0));
         l_name.setBorder(null);
-        l_name.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(l_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 260, 40));
+        l_name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        getContentPane().add(l_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 260, 40));
 
-        sec_ques.setBackground(new java.awt.Color(211, 228, 210));
-        sec_ques.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        sec_ques.setForeground(new java.awt.Color(0, 0, 0));
-        sec_ques.setBorder(null);
-        getContentPane().add(sec_ques, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 260, 40));
+        ansa.setBackground(new java.awt.Color(211, 228, 210));
+        ansa.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ansa.setForeground(new java.awt.Color(0, 0, 0));
+        ansa.setBorder(null);
+        getContentPane().add(ansa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 260, 40));
 
-        password.setEditable(false);
-        password.setBackground(new java.awt.Color(179, 222, 166));
-        password.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        password.setForeground(new java.awt.Color(0, 0, 0));
-        password.setBorder(null);
-        password.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 260, 40));
+        pass.setBackground(new java.awt.Color(179, 222, 166));
+        pass.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        pass.setForeground(new java.awt.Color(0, 0, 0));
+        pass.setBorder(null);
+        pass.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 260, 40));
 
         user_name.setBackground(new java.awt.Color(211, 228, 210));
         user_name.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -200,11 +238,28 @@ public class Fogort_password extends javax.swing.JFrame {
         user_name.setBorder(null);
         getContentPane().add(user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, 260, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 930, 490));
+        jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 130, -1));
 
-        jPanel1.setBackground(new java.awt.Color(219, 231, 217));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jComboBox2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What is your mother's maiden name?", "What is the name of your favorite teacher?", "Who is your best friend?", "What color is your favorite?", "Which day were you born?", " " }));
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 310, 30));
+
+        jDateChooser1.setDateFormatString(" yyyy-MM-dd");
+        jDateChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 200, 30));
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 51, 0));
+        jLabel14.setText("Gender:");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 160, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 930, 600));
+
+        jPanel5.setBackground(new java.awt.Color(219, 231, 217));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minus_15px_1.png"))); // NOI18N
         minimize.setToolTipText("Resize down");
@@ -220,7 +275,7 @@ public class Fogort_password extends javax.swing.JFrame {
                 minimizeMouseExited(evt);
             }
         });
-        jPanel1.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -10, -1, 40));
+        jPanel5.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -10, -1, 40));
 
         minus_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/minus_fill.png"))); // NOI18N
         minus_fill.setToolTipText("Resize down");
@@ -233,7 +288,7 @@ public class Fogort_password extends javax.swing.JFrame {
                 minus_fillMouseEntered(evt);
             }
         });
-        jPanel1.add(minus_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 20));
+        jPanel5.add(minus_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 20));
 
         logout_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_15px_3.png"))); // NOI18N
         logout_fill.setToolTipText("Logout");
@@ -243,7 +298,7 @@ public class Fogort_password extends javax.swing.JFrame {
                 logout_fillMouseClicked(evt);
             }
         });
-        jPanel1.add(logout_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
+        jPanel5.add(logout_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
 
         logout_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_15px_4.png"))); // NOI18N
         logout_lite.setToolTipText("Logout");
@@ -259,7 +314,7 @@ public class Fogort_password extends javax.swing.JFrame {
                 logout_liteMouseExited(evt);
             }
         });
-        jPanel1.add(logout_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
+        jPanel5.add(logout_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
 
         cancel_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_15px_4.png"))); // NOI18N
         cancel_lite.setToolTipText("Close");
@@ -275,7 +330,7 @@ public class Fogort_password extends javax.swing.JFrame {
                 cancel_liteMouseExited(evt);
             }
         });
-        jPanel1.add(cancel_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
+        jPanel5.add(cancel_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
 
         cancel_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_15px_3.png"))); // NOI18N
         cancel_fill.setToolTipText("Close");
@@ -288,7 +343,7 @@ public class Fogort_password extends javax.swing.JFrame {
                 cancel_fillMouseEntered(evt);
             }
         });
-        jPanel1.add(cancel_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
+        jPanel5.add(cancel_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
 
         back_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_2.png"))); // NOI18N
         back_lite.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -302,7 +357,7 @@ public class Fogort_password extends javax.swing.JFrame {
                 back_liteMouseExited(evt);
             }
         });
-        jPanel1.add(back_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
+        jPanel5.add(back_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
 
         back_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_1.png"))); // NOI18N
         back_fill.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -310,7 +365,7 @@ public class Fogort_password extends javax.swing.JFrame {
                 back_fillMouseClicked(evt);
             }
         });
-        jPanel1.add(back_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
+        jPanel5.add(back_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
 
         help_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px_1.png"))); // NOI18N
         help_lite.setToolTipText("");
@@ -322,14 +377,14 @@ public class Fogort_password extends javax.swing.JFrame {
                 help_liteMouseExited(evt);
             }
         });
-        jPanel1.add(help_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, -1, 20));
+        jPanel5.add(help_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 20, 20));
 
         help_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px.png"))); // NOI18N
-        jPanel1.add(help_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, -1, 20));
+        jPanel5.add(help_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 20, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 20));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 20));
 
-        setSize(new java.awt.Dimension(930, 509));
+        setSize(new java.awt.Dimension(930, 617));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -339,7 +394,6 @@ public class Fogort_password extends javax.swing.JFrame {
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         // TODO add your handling code here:
-        
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         
@@ -349,11 +403,17 @@ public class Fogort_password extends javax.swing.JFrame {
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         // TODO add your handling code here:
         
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-        
-        
+        xMouse=evt.getX();
+        yMouse=evt.getY();
     }//GEN-LAST:event_formMousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here
+        
+        setVisible(false);
+        mainPage mp =new mainPage();
+        mp.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
         // TODO add your handling code here:
@@ -445,6 +505,14 @@ public class Fogort_password extends javax.swing.JFrame {
         cancel_fill.setToolTipText("Close");
     }//GEN-LAST:event_cancel_fillMouseEntered
 
+    private void back_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_liteMouseClicked
+        // TODO add your handling code here:
+
+        setVisible(false);
+        mainPage lf = new mainPage();
+        lf.setVisible(true);
+    }//GEN-LAST:event_back_liteMouseClicked
+
     private void back_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_liteMouseEntered
         // TODO add your handling code here:
         back_fill.setVisible(true);
@@ -457,42 +525,34 @@ public class Fogort_password extends javax.swing.JFrame {
         back_lite.setVisible(true);
     }//GEN-LAST:event_back_liteMouseExited
 
-    private void back_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_liteMouseClicked
-        // TODO add your handling code here:
-        
-        setVisible(false);
-        login_form lf = new login_form();
-        lf.setVisible(true);
-    }//GEN-LAST:event_back_liteMouseClicked
-
     private void back_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_fillMouseClicked
         // TODO add your handling code here:
-         setVisible(false);
-        login_form lf = new login_form();
+        setVisible(false);
+        mainPage lf = new mainPage();
         lf.setVisible(true);
     }//GEN-LAST:event_back_fillMouseClicked
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
-        help_fill.setVisible(false);
-        minus_fill.setVisible(false);
-        cancel_fill.setVisible(false);
-        logout_fill.setVisible(false);
-        back_fill.setVisible(false);
-    }//GEN-LAST:event_formWindowActivated
 
     private void help_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseEntered
         // TODO add your handling code here:
         help_fill.setVisible(true);
         help_lite.setVisible(false);
-        
     }//GEN-LAST:event_help_liteMouseEntered
 
     private void help_liteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseExited
         // TODO add your handling code here:
-         help_fill.setVisible(false);
+        help_fill.setVisible(false);
         help_lite.setVisible(true);
     }//GEN-LAST:event_help_liteMouseExited
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        
+         help_fill.setVisible(false);
+        minus_fill.setVisible(false);
+        cancel_fill.setVisible(false);
+        logout_fill.setVisible(false);
+        back_fill.setVisible(false);
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -511,25 +571,26 @@ public class Fogort_password extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Fogort_password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(new_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Fogort_password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(new_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Fogort_password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(new_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Fogort_password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(new_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Fogort_password().setVisible(true);
+                new new_user().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ansa;
     private javax.swing.JLabel back_fill;
     private javax.swing.JLabel back_lite;
     private javax.swing.JLabel cancel_fill;
@@ -539,30 +600,38 @@ public class Fogort_password extends javax.swing.JFrame {
     private javax.swing.JLabel help_lite;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextField l_name;
     private javax.swing.JLabel logout_fill;
     private javax.swing.JLabel logout_lite;
     private javax.swing.JLabel minimize;
     private javax.swing.JLabel minus_fill;
-    private javax.swing.JTextField password;
-    private javax.swing.JTextField sec_ques;
+    private javax.swing.JTextField pass;
+    private javax.swing.JTextField phone;
     private javax.swing.JTextField user_name;
     // End of variables declaration//GEN-END:variables
 }

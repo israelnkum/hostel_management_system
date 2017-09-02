@@ -5,6 +5,7 @@
  */
 package All_pack;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,6 +24,9 @@ public class new_info extends javax.swing.JFrame {
     Connection conn;
     ResultSet rs;
     PreparedStatement pst;
+    
+    int xMouse;
+    int yMouse;
 
     /**
      * Creates new form new_info
@@ -32,6 +36,15 @@ public class new_info extends javax.swing.JFrame {
 
         conn = java_connection.getConnection();
         currentDate();
+          fname.setBackground(new Color(0,0,0,0));
+       lname.setBackground(new Color(0,0,0,0));
+         prog.setBackground(new Color(0,0,0,0));
+       room.setBackground(new Color(0,0,0,0));
+         bed.setBackground(new Color(0,0,0,0));
+       hostel_fee.setBackground(new Color(0,0,0,0));
+         phone.setBackground(new Color(0,0,0,0));
+       date_txt.setBackground(new Color(0,0,0,0));
+        
     }
     
     
@@ -95,15 +108,30 @@ public class new_info extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jPanel5 = new javax.swing.JPanel();
+        minimize = new javax.swing.JLabel();
+        minus_fill = new javax.swing.JLabel();
+        logout_fill = new javax.swing.JLabel();
+        logout_lite = new javax.swing.JLabel();
+        cancel_lite = new javax.swing.JLabel();
+        cancel_fill = new javax.swing.JLabel();
+        back_lite = new javax.swing.JLabel();
+        back_fill = new javax.swing.JLabel();
+        help_lite = new javax.swing.JLabel();
+        help_fill = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -113,14 +141,14 @@ public class new_info extends javax.swing.JFrame {
 
         d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Male User_100px_4.png"))); // NOI18N
         d.setText("jLabel2");
-        getContentPane().add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 100, 90));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 250, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 250, -1));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 250, -1));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, 250, -1));
-        getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 250, -1));
-        getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 250, -1));
-        getContentPane().add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 250, -1));
+        getContentPane().add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 100, 90));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 250, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 250, -1));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 250, -1));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 250, -1));
+        getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 250, -1));
+        getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 250, -1));
+        getContentPane().add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, 250, -1));
 
         date_txt.setEditable(false);
         date_txt.setBackground(new java.awt.Color(145, 216, 169));
@@ -132,7 +160,7 @@ public class new_info extends javax.swing.JFrame {
                 date_txtKeyPressed(evt);
             }
         });
-        getContentPane().add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 250, 30));
+        getContentPane().add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 480, 250, 30));
 
         lname.setBackground(new java.awt.Color(195, 230, 201));
         lname.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -142,7 +170,7 @@ public class new_info extends javax.swing.JFrame {
                 lnameKeyPressed(evt);
             }
         });
-        getContentPane().add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 250, 30));
+        getContentPane().add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 250, 30));
 
         prog.setBackground(new java.awt.Color(214, 239, 220));
         prog.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -152,7 +180,7 @@ public class new_info extends javax.swing.JFrame {
                 progKeyPressed(evt);
             }
         });
-        getContentPane().add(prog, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 250, 30));
+        getContentPane().add(prog, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 250, 30));
 
         room.setBackground(new java.awt.Color(214, 239, 220));
         room.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -165,7 +193,7 @@ public class new_info extends javax.swing.JFrame {
                 roomKeyTyped(evt);
             }
         });
-        getContentPane().add(room, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 250, 30));
+        getContentPane().add(room, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 250, 30));
 
         bed.setBackground(new java.awt.Color(214, 239, 220));
         bed.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -178,7 +206,7 @@ public class new_info extends javax.swing.JFrame {
                 bedKeyTyped(evt);
             }
         });
-        getContentPane().add(bed, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 250, 30));
+        getContentPane().add(bed, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 250, 30));
 
         fname.setBackground(new java.awt.Color(202, 229, 203));
         fname.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -188,7 +216,7 @@ public class new_info extends javax.swing.JFrame {
                 fnameKeyPressed(evt);
             }
         });
-        getContentPane().add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 250, 30));
+        getContentPane().add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 250, 30));
 
         hostel_fee.setBackground(new java.awt.Color(205, 234, 211));
         hostel_fee.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -201,8 +229,8 @@ public class new_info extends javax.swing.JFrame {
                 hostel_feeKeyTyped(evt);
             }
         });
-        getContentPane().add(hostel_fee, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 250, 30));
-        getContentPane().add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, 250, -1));
+        getContentPane().add(hostel_fee, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 250, 30));
+        getContentPane().add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 250, -1));
 
         phone.setBackground(new java.awt.Color(170, 223, 183));
         phone.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -215,7 +243,7 @@ public class new_info extends javax.swing.JFrame {
                 phoneKeyTyped(evt);
             }
         });
-        getContentPane().add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 250, 30));
+        getContentPane().add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 250, 30));
 
         jButton1.setBackground(new java.awt.Color(91, 199, 126));
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -229,7 +257,7 @@ public class new_info extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(91, 199, 126));
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -243,7 +271,7 @@ public class new_info extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 510, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 530, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(91, 199, 126));
         jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -262,7 +290,7 @@ public class new_info extends javax.swing.JFrame {
                 jButton3KeyPressed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 530, -1, -1));
 
         jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(214, 239, 220));
@@ -273,65 +301,65 @@ public class new_info extends javax.swing.JFrame {
         jTextArea1.setText("Add Button:\n\nFill all the neccessary information about the new \nhosteler and press enter or click the add button \nto add new hosteler\n\nReset Button:\n\nThe reset Button clear's every information \nprovided in the filed with just a single clik.\n\nBack Button:\n \nThis button takes you back to the previous page.");
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 410, 350));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 410, 350));
 
         jSeparator10.setBackground(new java.awt.Color(0, 51, 0));
         jSeparator10.setForeground(new java.awt.Color(0, 51, 0));
         jSeparator10.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, 230));
+        getContentPane().add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, 230));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 51, 0));
         jLabel11.setText("HOSTEL");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 80)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 51, 0));
         jLabel12.setText("JODOK");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Program:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Last Name:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Room No:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Date:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Phone No:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Hostel Fee:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("First Name:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Bed No:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/new_.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -339,7 +367,7 @@ public class new_info extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 420, 560));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 420, 580));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/newLOginBack.png"))); // NOI18N
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -347,58 +375,138 @@ public class new_info extends javax.swing.JFrame {
                 jLabel10MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, 560));
 
         jLabel14.setText("jLabel14");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, -1, -1));
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_border.png"))); // NOI18N
-        jMenu1.setText("File");
+        jPanel5.setBackground(new java.awt.Color(219, 231, 217));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_20px_2.png"))); // NOI18N
-        jMenuItem2.setText("Close");
-        jMenuItem2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_20px.png"))); // NOI18N
-        jMenuItem1.setText("Logout");
-        jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_20px.png"))); // NOI18N
-        jMenuItem3.setText("Back");
-        jMenuItem3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Help");
-        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+        minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minus_15px_1.png"))); // NOI18N
+        minimize.setToolTipText("Resize down");
+        minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
+                minimizeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minimizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                minimizeMouseExited(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        jPanel5.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -10, -1, 40));
 
-        setJMenuBar(jMenuBar1);
+        minus_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/minus_fill.png"))); // NOI18N
+        minus_fill.setToolTipText("Resize down");
+        minus_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minus_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minus_fillMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minus_fillMouseEntered(evt);
+            }
+        });
+        jPanel5.add(minus_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 20));
 
-        setSize(new java.awt.Dimension(856, 587));
+        logout_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_15px_3.png"))); // NOI18N
+        logout_fill.setToolTipText("Logout");
+        logout_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logout_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logout_fillMouseClicked(evt);
+            }
+        });
+        jPanel5.add(logout_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
+
+        logout_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_15px_4.png"))); // NOI18N
+        logout_lite.setToolTipText("Logout");
+        logout_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logout_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logout_liteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logout_liteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logout_liteMouseExited(evt);
+            }
+        });
+        jPanel5.add(logout_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
+
+        cancel_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_15px_4.png"))); // NOI18N
+        cancel_lite.setToolTipText("Close");
+        cancel_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancel_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel_liteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel_liteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel_liteMouseExited(evt);
+            }
+        });
+        jPanel5.add(cancel_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
+
+        cancel_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_15px_3.png"))); // NOI18N
+        cancel_fill.setToolTipText("Close");
+        cancel_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancel_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel_fillMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel_fillMouseEntered(evt);
+            }
+        });
+        jPanel5.add(cancel_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
+
+        back_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_2.png"))); // NOI18N
+        back_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                back_liteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                back_liteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                back_liteMouseExited(evt);
+            }
+        });
+        jPanel5.add(back_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
+
+        back_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_1.png"))); // NOI18N
+        back_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                back_fillMouseClicked(evt);
+            }
+        });
+        jPanel5.add(back_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
+
+        help_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px_1.png"))); // NOI18N
+        help_lite.setToolTipText("");
+        help_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                help_liteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                help_liteMouseExited(evt);
+            }
+        });
+        jPanel5.add(help_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 20, 20));
+
+        help_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px.png"))); // NOI18N
+        jPanel5.add(help_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 20, 20));
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 20));
+
+        setSize(new java.awt.Dimension(856, 579));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1293,25 +1401,6 @@ else{
         }
     }//GEN-LAST:event_jButton3KeyPressed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        login_form  lf = new login_form();
-        lf.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        mainPage mp = new mainPage();
-        mp.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void roomKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_roomKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
@@ -1367,12 +1456,13 @@ else{
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         jTextArea1.setVisible(false);
+        
+         help_fill.setVisible(false);
+        minus_fill.setVisible(false);
+        cancel_fill.setVisible(false);
+        logout_fill.setVisible(false);
+        back_fill.setVisible(false);
     }//GEN-LAST:event_formWindowActivated
-
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        // TODO add your handling code here:
-        jTextArea1.setVisible(true);
-    }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
@@ -1383,6 +1473,151 @@ else{
         // TODO add your handling code here:
          jTextArea1.setVisible(false);
     }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x-xMouse, y-yMouse);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
+        // TODO add your handling code here:
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_minimizeMouseClicked
+
+    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
+        // TODO add your handling code here:
+
+        minus_fill.setVisible(true);
+        minimize.setVisible(false);
+    }//GEN-LAST:event_minimizeMouseEntered
+
+    private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
+        // TODO add your handling code here:
+
+        minus_fill.setVisible(false);
+        minimize.setVisible(true);
+    }//GEN-LAST:event_minimizeMouseExited
+
+    private void minus_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minus_fillMouseClicked
+        // TODO add your handling code here:
+
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_minus_fillMouseClicked
+
+    private void minus_fillMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minus_fillMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minus_fillMouseEntered
+
+    private void logout_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_fillMouseClicked
+        // TODO add your handling code here:
+
+        setVisible(false);
+        login_form lf = new login_form();
+        lf.setVisible(true);
+    }//GEN-LAST:event_logout_fillMouseClicked
+
+    private void logout_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_liteMouseClicked
+        // TODO add your handling code here:
+
+        setVisible(false);
+        login_form lf = new login_form();
+        lf.setVisible(true);
+    }//GEN-LAST:event_logout_liteMouseClicked
+
+    private void logout_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_liteMouseEntered
+        // TODO add your handling code here:
+
+        logout_fill.setVisible(true);
+        logout_lite.setVisible(false);
+    }//GEN-LAST:event_logout_liteMouseEntered
+
+    private void logout_liteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_liteMouseExited
+        // TODO add your handling code here:
+
+        logout_fill.setVisible(false);
+        logout_lite.setVisible(true);
+    }//GEN-LAST:event_logout_liteMouseExited
+
+    private void cancel_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_liteMouseClicked
+        // TODO add your handling code here:
+
+        System.exit(0);
+    }//GEN-LAST:event_cancel_liteMouseClicked
+
+    private void cancel_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_liteMouseEntered
+        // TODO add your handling code here:
+        cancel_fill.setToolTipText("Close");
+        cancel_fill.setVisible(true);
+
+        cancel_lite.setVisible(false);
+        cancel_lite.setToolTipText("Close");
+    }//GEN-LAST:event_cancel_liteMouseEntered
+
+    private void cancel_liteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_liteMouseExited
+        // TODO add your handling code here:
+        cancel_fill.setVisible(false);
+        cancel_lite.setVisible(true);
+    }//GEN-LAST:event_cancel_liteMouseExited
+
+    private void cancel_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_fillMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_cancel_fillMouseClicked
+
+    private void cancel_fillMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_fillMouseEntered
+        // TODO add your handling code here:
+        cancel_fill.setToolTipText("Close");
+    }//GEN-LAST:event_cancel_fillMouseEntered
+
+    private void back_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_liteMouseClicked
+        // TODO add your handling code here:
+
+        setVisible(false);
+        mainPage lf = new mainPage();
+        lf.setVisible(true);
+    }//GEN-LAST:event_back_liteMouseClicked
+
+    private void back_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_liteMouseEntered
+        // TODO add your handling code here:
+        back_fill.setVisible(true);
+        back_lite.setVisible(false);
+    }//GEN-LAST:event_back_liteMouseEntered
+
+    private void back_liteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_liteMouseExited
+        // TODO add your handling code here:
+        back_fill.setVisible(false);
+        back_lite.setVisible(true);
+    }//GEN-LAST:event_back_liteMouseExited
+
+    private void back_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_fillMouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+        mainPage lf = new mainPage();
+        lf.setVisible(true);
+    }//GEN-LAST:event_back_fillMouseClicked
+
+    private void help_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseEntered
+        // TODO add your handling code here:
+        help_fill.setVisible(true);
+        help_lite.setVisible(false);
+    }//GEN-LAST:event_help_liteMouseEntered
+
+    private void help_liteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseExited
+        // TODO add your handling code here:
+        help_fill.setVisible(false);
+        help_lite.setVisible(true);
+    }//GEN-LAST:event_help_liteMouseExited
 
     /**
      * @param args the command line arguments
@@ -1420,10 +1655,16 @@ else{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back_fill;
+    private javax.swing.JLabel back_lite;
     private javax.swing.JTextField bed;
+    private javax.swing.JLabel cancel_fill;
+    private javax.swing.JLabel cancel_lite;
     private javax.swing.JLabel d;
     private javax.swing.JTextField date_txt;
     private javax.swing.JTextField fname;
+    private javax.swing.JLabel help_fill;
+    private javax.swing.JLabel help_lite;
     private javax.swing.JTextField hostel_fee;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -1442,12 +1683,7 @@ else{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
@@ -1460,6 +1696,10 @@ else{
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField lname;
+    private javax.swing.JLabel logout_fill;
+    private javax.swing.JLabel logout_lite;
+    private javax.swing.JLabel minimize;
+    private javax.swing.JLabel minus_fill;
     private javax.swing.JTextField phone;
     private javax.swing.JTextField prog;
     private javax.swing.JTextField room;

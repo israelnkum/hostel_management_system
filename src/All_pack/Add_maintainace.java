@@ -5,6 +5,7 @@
  */
 package All_pack;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,6 +25,8 @@ public class Add_maintainace extends javax.swing.JFrame {
     ResultSet rs;
     PreparedStatement pst;
 
+    int xMouse;
+    int yMouse;
     /**
      * Creates new form Add_maintainace
      */
@@ -33,6 +36,11 @@ public class Add_maintainace extends javax.swing.JFrame {
           maint_date.setVisible(false);
            maint_time.setVisible(false);
          currentDate();
+         
+         
+         maintain_des.setBackground(new Color (0,0,0,0));
+         maintain_amt.setBackground(new Color (0,0,0,0));
+    
     }
 
     
@@ -78,6 +86,16 @@ public class Add_maintainace extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel17.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -295,13 +313,30 @@ public class Add_maintainace extends javax.swing.JFrame {
         if(!(Character.isDigit(check)
                 || check ==KeyEvent.VK_ENTER 
                 ||  check ==KeyEvent.VK_BACK_SPACE
-                ||  check ==KeyEvent.VK_DELETE  ))
+                ||  check ==KeyEvent.VK_DELETE 
+                || check ==KeyEvent.VK_PERIOD))
         {
         
             evt.consume();
            // JOptionPane.showMessageDialog(null, "Figures Only");
         }
     }//GEN-LAST:event_maintain_amtKeyTyped
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x - xMouse, y-yMouse);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_formMousePressed
 
     /**
      * @param args the command line arguments

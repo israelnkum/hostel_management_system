@@ -118,7 +118,7 @@ public class summary extends javax.swing.JFrame {
         
         catch (IOException e){
         
-            JOptionPane.showMessageDialog(null, e);
+         //   JOptionPane.showMessageDialog(null, e);
         
     }
     }
@@ -135,7 +135,7 @@ public class summary extends javax.swing.JFrame {
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog( null, e);
+        //    JOptionPane.showMessageDialog( null, e);
         }
         finally{
         
@@ -163,7 +163,7 @@ public class summary extends javax.swing.JFrame {
             jTable3.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog( null, e);
+       //     JOptionPane.showMessageDialog( null, e);
         }
         finally{
         
@@ -191,7 +191,7 @@ public class summary extends javax.swing.JFrame {
             payment_tbl.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog( null, e);
+        //    JOptionPane.showMessageDialog( null, e);
         }
         finally{
         
@@ -347,16 +347,25 @@ public class summary extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        jPanel3 = new javax.swing.JPanel();
+        minimize = new javax.swing.JLabel();
+        minus_fill = new javax.swing.JLabel();
+        logout_fill = new javax.swing.JLabel();
+        logout_lite = new javax.swing.JLabel();
+        cancel_lite = new javax.swing.JLabel();
+        cancel_fill = new javax.swing.JLabel();
+        back_lite = new javax.swing.JLabel();
+        back_fill = new javax.swing.JLabel();
+        help_lite = new javax.swing.JLabel();
+        help_fill = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setBackground(new java.awt.Color(0, 102, 0));
@@ -593,75 +602,137 @@ public class summary extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Payment", jPanel5);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 650));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 880, 650));
 
-        jMenu1.setText("File");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.setBackground(new java.awt.Color(219, 231, 217));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_20px.png"))); // NOI18N
-        jMenuItem3.setText("Back");
-        jMenuItem3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+        minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minus_15px_1.png"))); // NOI18N
+        minimize.setToolTipText("Resize down");
+        minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimizeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minimizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                minimizeMouseExited(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jPanel3.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -10, -1, 40));
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_20px.png"))); // NOI18N
-        jMenuItem1.setText("Logout");
-        jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+        minus_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/minus_fill.png"))); // NOI18N
+        minus_fill.setToolTipText("Resize down");
+        minus_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minus_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minus_fillMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minus_fillMouseEntered(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jPanel3.add(minus_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 20));
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_20px_2.png"))); // NOI18N
-        jMenuItem2.setText("Close");
-        jMenuItem2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+        logout_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_15px_3.png"))); // NOI18N
+        logout_fill.setToolTipText("Logout");
+        logout_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logout_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logout_fillMouseClicked(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jPanel3.add(logout_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
 
-        jMenuBar1.add(jMenu1);
+        logout_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_15px_4.png"))); // NOI18N
+        logout_lite.setToolTipText("Logout");
+        logout_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logout_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logout_liteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logout_liteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logout_liteMouseExited(evt);
+            }
+        });
+        jPanel3.add(logout_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
 
-        jMenu2.setText("jMenu2");
-        jMenu2.setAlignmentX(90000.0F);
-        jMenuBar1.add(jMenu2);
+        cancel_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_15px_4.png"))); // NOI18N
+        cancel_lite.setToolTipText("Close");
+        cancel_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancel_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel_liteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel_liteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel_liteMouseExited(evt);
+            }
+        });
+        jPanel3.add(cancel_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
 
-        jMenu3.setText("jMenu3");
-        jMenuBar1.add(jMenu3);
+        cancel_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_15px_3.png"))); // NOI18N
+        cancel_fill.setToolTipText("Close");
+        cancel_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancel_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel_fillMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel_fillMouseEntered(evt);
+            }
+        });
+        jPanel3.add(cancel_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
 
-        setJMenuBar(jMenuBar1);
+        back_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_2.png"))); // NOI18N
+        back_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                back_liteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                back_liteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                back_liteMouseExited(evt);
+            }
+        });
+        jPanel3.add(back_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
 
-        setSize(new java.awt.Dimension(875, 665));
+        back_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_1.png"))); // NOI18N
+        back_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                back_fillMouseClicked(evt);
+            }
+        });
+        jPanel3.add(back_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
+
+        help_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px_1.png"))); // NOI18N
+        help_lite.setToolTipText("");
+        help_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                help_liteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                help_liteMouseExited(evt);
+            }
+        });
+        jPanel3.add(help_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 0, -1, 20));
+
+        help_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px.png"))); // NOI18N
+        jPanel3.add(help_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 0, -1, 20));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 20));
+
+        setSize(new java.awt.Dimension(877, 668));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        mainPage mp = new mainPage();
-        mp.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        login_form mp = new login_form();
-        mp.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void search_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_search_1KeyReleased
         // TODO add your handling code here:
@@ -718,6 +789,146 @@ public class summary extends javax.swing.JFrame {
         writeToExcel();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
+        // TODO add your handling code here:
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_minimizeMouseClicked
+
+    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
+        // TODO add your handling code here:
+
+        minus_fill.setVisible(true);
+        minimize.setVisible(false);
+    }//GEN-LAST:event_minimizeMouseEntered
+
+    private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
+        // TODO add your handling code here:
+
+        minus_fill.setVisible(false);
+        minimize.setVisible(true);
+    }//GEN-LAST:event_minimizeMouseExited
+
+    private void minus_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minus_fillMouseClicked
+        // TODO add your handling code here:
+
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_minus_fillMouseClicked
+
+    private void minus_fillMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minus_fillMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minus_fillMouseEntered
+
+    private void logout_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_fillMouseClicked
+        // TODO add your handling code here:
+
+        setVisible(false);
+        login_form lf = new login_form();
+        lf.setVisible(true);
+    }//GEN-LAST:event_logout_fillMouseClicked
+
+    private void logout_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_liteMouseClicked
+        // TODO add your handling code here:
+
+        setVisible(false);
+        login_form lf = new login_form();
+        lf.setVisible(true);
+    }//GEN-LAST:event_logout_liteMouseClicked
+
+    private void logout_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_liteMouseEntered
+        // TODO add your handling code here:
+
+        logout_fill.setVisible(true);
+        logout_lite.setVisible(false);
+    }//GEN-LAST:event_logout_liteMouseEntered
+
+    private void logout_liteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_liteMouseExited
+        // TODO add your handling code here:
+
+        logout_fill.setVisible(false);
+        logout_lite.setVisible(true);
+    }//GEN-LAST:event_logout_liteMouseExited
+
+    private void cancel_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_liteMouseClicked
+        // TODO add your handling code here:
+
+        System.exit(0);
+    }//GEN-LAST:event_cancel_liteMouseClicked
+
+    private void cancel_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_liteMouseEntered
+        // TODO add your handling code here:
+        cancel_fill.setToolTipText("Close");
+        cancel_fill.setVisible(true);
+
+        cancel_lite.setVisible(false);
+        cancel_lite.setToolTipText("Close");
+    }//GEN-LAST:event_cancel_liteMouseEntered
+
+    private void cancel_liteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_liteMouseExited
+        // TODO add your handling code here:
+        cancel_fill.setVisible(false);
+        cancel_lite.setVisible(true);
+    }//GEN-LAST:event_cancel_liteMouseExited
+
+    private void cancel_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_fillMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_cancel_fillMouseClicked
+
+    private void cancel_fillMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_fillMouseEntered
+        // TODO add your handling code here:
+        cancel_fill.setToolTipText("Close");
+    }//GEN-LAST:event_cancel_fillMouseEntered
+
+    private void back_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_liteMouseClicked
+        // TODO add your handling code here:
+
+        setVisible(false);
+        mainPage lf = new mainPage();
+        lf.setVisible(true);
+    }//GEN-LAST:event_back_liteMouseClicked
+
+    private void back_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_liteMouseEntered
+        // TODO add your handling code here:
+        back_fill.setVisible(true);
+        back_lite.setVisible(false);
+    }//GEN-LAST:event_back_liteMouseEntered
+
+    private void back_liteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_liteMouseExited
+        // TODO add your handling code here:
+        back_fill.setVisible(false);
+        back_lite.setVisible(true);
+    }//GEN-LAST:event_back_liteMouseExited
+
+    private void back_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_fillMouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+        mainPage lf = new mainPage();
+        lf.setVisible(true);
+    }//GEN-LAST:event_back_fillMouseClicked
+
+    private void help_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseEntered
+        // TODO add your handling code here:
+        help_fill.setVisible(true);
+        help_lite.setVisible(false);
+
+    }//GEN-LAST:event_help_liteMouseEntered
+
+    private void help_liteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseExited
+        // TODO add your handling code here:
+        help_fill.setVisible(false);
+        help_lite.setVisible(true);
+    }//GEN-LAST:event_help_liteMouseExited
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        
+             help_fill.setVisible(false);
+        minus_fill.setVisible(false);
+        cancel_fill.setVisible(false);
+        logout_fill.setVisible(false);
+        back_fill.setVisible(false);
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -755,7 +966,13 @@ public class summary extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arreas;
+    private javax.swing.JLabel back_fill;
+    private javax.swing.JLabel back_lite;
+    private javax.swing.JLabel cancel_fill;
+    private javax.swing.JLabel cancel_lite;
     private javax.swing.JLabel feesPaid;
+    private javax.swing.JLabel help_fill;
+    private javax.swing.JLabel help_lite;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
@@ -779,15 +996,9 @@ public class summary extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
@@ -799,6 +1010,10 @@ public class summary extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel logout_fill;
+    private javax.swing.JLabel logout_lite;
+    private javax.swing.JLabel minimize;
+    private javax.swing.JLabel minus_fill;
     private javax.swing.JTable payment_tbl;
     private javax.swing.JTextField search_1;
     private javax.swing.JTextField std_filt;

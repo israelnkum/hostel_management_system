@@ -7,6 +7,7 @@ package All_pack;
 
 
 import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
@@ -53,7 +54,8 @@ public final class login_form extends javax.swing.JFrame {
            jLabel9.setVisible(false);
           internet_connection();
           
-        
+        userName.setBackground(new Color(0,0,0,0));
+        password.setBackground(new Color(0,0,0,0));
     }
     
     public void internet_connection(){
