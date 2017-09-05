@@ -64,54 +64,16 @@ public class payment extends javax.swing.JFrame {
               jTextField1.setBackground(new Color(0,0,0,0));
               search.setBackground(new Color(0,0,0,0));
               
-//internet_connection();
-        
-      //   internet_connection();
-        currentDate();
+
+      
      
         Update_table();
         Update_table_1();
-        
+          currentDate();
         
     }
      
-  /*public void internet_connection(){
-    
-        Thread timer = new Thread(){
-        @Override
-        public void run(){
-            
-       for(;;){
-           
-           Socket sock = new Socket();
-           InetSocketAddress address =new InetSocketAddress("www.google.com",80);
-           try{
-           
-               sock.connect(address);
-              //  connection.setVisible(true);
-               // no_connection.setVisible(false);
-           }
-           catch(IOException e){
-               // connection.setVisible(false);
-                   // jLabel12.setText("no Internet");
-               // no_connection.setVisible(true);
-            
-           }
-            try{
-                sleep(100);
-        }
-        catch(InterruptedException e){
-        
-            e.printStackTrace();
-        }
-            
-        }
-           
-       }
      
-        };
-        timer.start();
-    }*/     
      private void filter (String sql){
     
           model_1 =(DefaultTableModel) jTable2.getModel();
@@ -155,7 +117,7 @@ public class payment extends javax.swing.JFrame {
         int month = cal.get(Calendar.MONTH);
         int year = cal.get(Calendar.YEAR);
         int day = cal.get(Calendar.DAY_OF_MONTH);
-        date_txt.setText("  "+ year+"-"+(month+1)+"-"+day);
+        date_txt.setText("  "+ year+"/"+(month+1)+"/"+day);
        
    
     }
@@ -163,7 +125,7 @@ public class payment extends javax.swing.JFrame {
       private void Update_table(){
     
         try {
-          String sql ="SELECT customer_id as 'ID', fname as 'First Name', lname as 'Last Name' FROM new_info ";
+          String sql ="SELECT  hosteler_id as 'ID', fname as 'First Name', lname as 'Last Name' FROM new_hosteler ";
             pst=conn.prepareStatement(sql);
             
             rs=pst.executeQuery();
@@ -178,7 +140,7 @@ public class payment extends javax.swing.JFrame {
       private void Update_table_1(){
     
         try {
-          String sql ="SELECT pay_id as 'ID', fname as 'First Name',lname as ' Last Name', room_no as 'Room No', bed_no as 'Bed No', hostel_fee as 'Hostel Fee', amt_paid as 'Amount Paid', arreas as 'Arrears', date_ as 'Date' FROM payment_1 ";
+          String sql ="SELECT pay_id as 'ID', fname as 'First Name',lname as ' Last Name', room_no as 'Room No', bed_no as 'Bed No', hostel_fee as 'Hostel Fee', amt_paid as 'Amount Paid', arreas as 'Arrears', date_ as 'Date' FROM payment ";
             pst=conn.prepareStatement(sql);
             
             rs=pst.executeQuery();
@@ -913,13 +875,13 @@ public class payment extends javax.swing.JFrame {
             int row = jTable2.getSelectedRow();
             String Table_click=(jTable2.getModel().getValueAt(row,0).toString());
 
-            String sql ="SELECT * FROM new_info WHERE  customer_id = '"+Table_click+"'";
+            String sql ="SELECT * FROM new_hosteler WHERE  hosteler_id = '"+Table_click+"'";
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
 
             if(rs.next()){
 
-                  String dead = rs.getString("customer_id");
+                  String dead = rs.getString("hosteler_id");
                 cust_id.setText(dead);
                 
                 String layer = rs.getString("roo_no");
@@ -963,7 +925,7 @@ public class payment extends javax.swing.JFrame {
           arrears();
             try{
 
-            String sql = "Insert into payment_1( fname, lname, room_no, bed_no, hostel_fee, amt_paid, arreas,date_) values (?,?,?,?,?,?,?,?)";
+            String sql = "Insert into payment( fname, lname, room_no, bed_no, hostel_fee, amt_paid, arreas,date_) values (?,?,?,?,?,?,?,?)";
 
             pst=conn.prepareStatement(sql);
             pst.setString(1, fname.getText());
@@ -991,7 +953,7 @@ public class payment extends javax.swing.JFrame {
           
              jTextArea1.setText(null);
             
-        int ref = 125464 + (int) (Math.random()*534158);
+        int ref = 1254 + (int) (Math.random()*4158);
 
         Calendar timer = Calendar.getInstance();
         timer.getTime();
@@ -1001,24 +963,24 @@ public class payment extends javax.swing.JFrame {
         Tdate.format(timer.getTime());
 
         jTextArea1.append(
-            "================================\n"
+               "======================================\n"
             + "\t JODOK HOSTEL\n"
-            + "----------------------------------------------------------\n"
+            + "-------------------------------------------------------------------\n"
             + "Reference Number\t"+ref+"\n"
-            + "=================================\n"
-            + "=================================\n"
+            + "======================================\n"
+            + "======================================\n"
             + "Name:\t\t"+String.valueOf(full_name.getText()) +"\n"
             +"Room No:\t\t"+room.getText()+"\n"
             + "Bed No:\t\t"+bed.getText()+"\n"
             + "Hostel Fee:\t\t"+hostel.getText()+"\n"
             + "Amount Paid:\t\t"+amt.getText()+"\n"
-            + "=================================\n"
+            + "======================================\n"
             + "Arreas:\t\t"+arears.getText()+"\n"
-            + "================================\n"
+            + "======================================\n"
             + "Date:"+date_txt.getText()+"\t"+"Time:"+tTime.format(timer.getTime())+"\n"
-            + " ================================\n\n"
-            + "Signature:\t\t.....................\n"
-            + "*********************************\n"
+            + "======================================\n\n"
+            + "Signature:\t\t.....................\n\n"
+            + "************************************************************\n"
             + "\t THANK YOU..."
         );
         
@@ -1089,7 +1051,7 @@ public class payment extends javax.swing.JFrame {
                  int c = JOptionPane.showConfirmDialog(null, "Do you realy wanna Delete","Delete",JOptionPane.YES_NO_OPTION);
       
         if(c==0){
-        String sql =" DELETE FROM payment_1 WHERE pay_id =?";
+        String sql =" DELETE FROM payment WHERE pay_id =?";
         try{
         
             pst=conn.prepareStatement(sql);
@@ -1136,7 +1098,7 @@ public class payment extends javax.swing.JFrame {
             int row = jTable4.getSelectedRow();
             String Table_click=(jTable4.getModel().getValueAt(row,0).toString());
 
-            String sql ="SELECT * FROM payment_1 WHERE  pay_id = '"+Table_click+"'";
+            String sql ="SELECT * FROM payment WHERE  pay_id = '"+Table_click+"'";
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
 
@@ -1212,7 +1174,7 @@ public class payment extends javax.swing.JFrame {
                 String value3=String.valueOf(grand_amt.getText());
                
 
-                String sql ="update payment_1 set pay_id='"+value1+"', arreas='"+value2+"', amt_paid='"+value3+"'  where pay_id='"+value1+"'";
+                String sql ="update payment set pay_id='"+value1+"', arreas='"+value2+"', amt_paid='"+value3+"'  where pay_id='"+value1+"'";
 
                 pst=conn.prepareStatement(sql);
                 pst.execute();
@@ -1244,7 +1206,7 @@ public class payment extends javax.swing.JFrame {
        
        jTextArea1.setText(null);
        
-       int ref = 125464 + (int) (Math.random()*534158);
+       int ref = 1254 + (int) (Math.random()*4158);
 
         Calendar timer = Calendar.getInstance();
         timer.getTime();
@@ -1254,27 +1216,27 @@ public class payment extends javax.swing.JFrame {
         Tdate.format(timer.getTime());
 
         jTextArea1.append(
-            "================================\n"
+               "======================================\n"
             + "\t JODOK HOSTEL\n"
-            + "----------------------------------------------------------\n"
+            + "----------------------------------------------------------------------\n"
             + "Reference Number\t"+ref+"\n"
-            + "=================================\n"
-            + "=================================\n"
+            + "======================================\n"
+            + "======================================\n"
             + "Name:\t\t"+String.valueOf(full_name_1.getText()) +"\n"
             +"Room No:\t\t"+room_1.getText()+"\n"
             + "Bed No:\t\t"+bed_1.getText()+"\n"
             + "Hostel Fee:\t\t"+hostel_fee_1.getText()+"\n"
             
             + "Amount Left:\t\t"+amt_left.getText()+"\n"
-            + "=================================\n"
+            + "======================================\n"
             + "Amount Paid:\t\t"+amt_paid.getText()+"\n"
-            + "================================\n"
+            + "======================================\n"
             + "Arreas:\t\t"+new_ARREAS.getText()+"\n"
-            + "================================\n"
+            + "======================================\n"
             + "Date:"+date_txt.getText()+"\t"+"Time:"+tTime.format(timer.getTime())+"\n"
-            + " ================================\n\n"
-            + "Signature:\t\t.....................\n"
-            + "************************************************\n"
+            + "======================================\n\n"
+            + "Signature:\t\t.....................\n\n"
+            + "************************************************************\n"
             + "\t THANK YOU...");
     }//GEN-LAST:event_save_btnActionPerformed
 
@@ -1366,7 +1328,7 @@ public class payment extends javax.swing.JFrame {
                 String value3=String.valueOf(grand_amt.getText());
                
 
-                String sql ="update payment_1 set pay_id='"+value1+"', arreas='"+value2+"', amt_paid='"+value3+"'  where pay_id='"+value1+"'";
+                String sql ="update payment set pay_id='"+value1+"', arreas='"+value2+"', amt_paid='"+value3+"'  where pay_id='"+value1+"'";
 
                 pst=conn.prepareStatement(sql);
                 pst.execute();
@@ -1398,7 +1360,7 @@ public class payment extends javax.swing.JFrame {
        
        jTextArea1.setText(null);
        
-       int ref = 125464 + (int) (Math.random()*534158);
+       int ref = 1254 + (int) (Math.random()*4158);
 
         Calendar timer = Calendar.getInstance();
         timer.getTime();
@@ -1408,27 +1370,27 @@ public class payment extends javax.swing.JFrame {
         Tdate.format(timer.getTime());
 
         jTextArea1.append(
-            "================================\n"
+               "======================================\n"
             + "\t JODOK HOSTEL\n"
-            + "----------------------------------------------------------\n"
+            + "----------------------------------------------------------------------\n"
             + "Reference Number\t"+ref+"\n"
-            + "=================================\n"
-            + "=================================\n"
+            + "======================================\n"
+            + "======================================\n"
             + "Name:\t\t"+String.valueOf(full_name_1.getText()) +"\n"
             +"Room No:\t\t"+room_1.getText()+"\n"
             + "Bed No:\t\t"+bed_1.getText()+"\n"
             + "Hostel Fee:\t\t"+hostel_fee_1.getText()+"\n"
             
             + "Amount Left:\t\t"+amt_left.getText()+"\n"
-            + "=================================\n"
+            + "======================================\n"
             + "Amount Paid:\t\t"+amt_paid.getText()+"\n"
-            + "================================\n"
+            + "======================================\n"
             + "Arreas:\t\t"+new_ARREAS.getText()+"\n"
-            + "================================\n"
+            + "======================================\n"
             + "Date:"+date_txt.getText()+"\t"+"Time:"+tTime.format(timer.getTime())+"\n"
-            + " ================================\n\n"
-            + "Signature:\t\t.....................\n"
-            + "************************************************\n"
+            + "======================================\n\n"
+            + "Signature:\t\t.....................\n\n"
+            + "************************************************************\n"
             + "\t THANK YOU...");
       
        }
@@ -1448,7 +1410,7 @@ public class payment extends javax.swing.JFrame {
           arrears();
             try{
 
-            String sql = "Insert into payment_1( fname, lname, room_no, bed_no, hostel_fee, amt_paid,arreas, date_) values (?,?,?,?,?,?,?,?)";
+            String sql = "Insert into payment( fname, lname, room_no, bed_no, hostel_fee, amt_paid,arreas, date_) values (?,?,?,?,?,?,?,?)";
 
             pst=conn.prepareStatement(sql);
             pst.setString(1, fname.getText());
@@ -1476,7 +1438,7 @@ public class payment extends javax.swing.JFrame {
           
              jTextArea1.setText(null);
             
-        int ref = 125464 + (int) (Math.random()*534158);
+        int ref = 1254 + (int) (Math.random()*4158);
 
         Calendar timer = Calendar.getInstance();
         timer.getTime();
@@ -1486,24 +1448,24 @@ public class payment extends javax.swing.JFrame {
         Tdate.format(timer.getTime());
 
         jTextArea1.append(
-            "================================\n"
+               "======================================\n"
             + "\t JODOK HOSTEL\n"
-            + "----------------------------------------------------------\n"
+            + "----------------------------------------------------------------------\n"
             + "Reference Number\t"+ref+"\n"
-            + "=================================\n"
-            + "=================================\n"
+            + "======================================\n"
+            + "======================================\n"
             + "Name:\t\t"+String.valueOf(full_name.getText()) +"\n"
             +"Room No:\t\t"+room.getText()+"\n"
             + "Bed No:\t\t"+bed.getText()+"\n"
             + "Hostel Fee:\t\t"+hostel.getText()+"\n"
             + "Amount Paid:\t\t"+amt.getText()+"\n"
-            + "=================================\n"
+            + "======================================\n"
             + "Arreas:\t\t"+arears.getText()+"\n"
-            + "================================\n"
+            + "======================================\n"
             + "Date:"+date_txt.getText()+"\t"+"Time:"+tTime.format(timer.getTime())+"\n"
-            + " ================================\n\n"
-            + "Signature:\t\t.....................\n"
-            + "*********************************\n"
+            + "======================================\n\n"
+            + "Signature:\t\t.....................\n\n"
+            + "************************************************************\n"
             + "\t THANK YOU..."
         );
         

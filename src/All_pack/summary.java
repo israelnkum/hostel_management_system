@@ -54,7 +54,7 @@ public class summary extends javax.swing.JFrame {
          conn = java_connection.getConnection();
       
          model_1 =(DefaultTableModel) jTable3.getModel(); 
-     model = (DefaultTableModel) jTable1.getModel();
+    //  model = (DefaultTableModel) jTable1.getModel();
 
         Update_table();
         Student();
@@ -74,10 +74,7 @@ public class summary extends javax.swing.JFrame {
     }
     
     private void writeToExcel(){
-        
-      
-                   
-    
+
     XSSFWorkbook wb = new XSSFWorkbook();
         XSSFSheet ws = wb.createSheet();
         
@@ -126,13 +123,13 @@ public class summary extends javax.swing.JFrame {
     private void Update_table(){
     
         try {
-           String sql="SELECT room_no as 'Room Number', bed_no as 'Bed Number'   FROM payment_1";
+           String sql="SELECT room_no as 'Room Number', bed_no as 'Bed Number'   FROM payment";
            
             pst=conn.prepareStatement(sql);
             
             rs=pst.executeQuery();
             
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+          //  jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
         //    JOptionPane.showMessageDialog( null, e);
@@ -154,7 +151,7 @@ public class summary extends javax.swing.JFrame {
     private void Student(){
     
         try {
-           String sql="SELECT  customer_id as 'ID', fname as 'First Name', lname as 'Last Name',program as 'Program', roo_no as 'Room Number', bed_no as 'Bed Number'   FROM new_info";
+           String sql="SELECT  hosteler_id as 'ID', fname as 'First Name', lname as 'Last Name',program as 'Program', roo_no as 'Room Number', bed_no as 'Bed Number'   FROM new_hosteler";
            
             pst=conn.prepareStatement(sql);
             
@@ -178,11 +175,11 @@ public class summary extends javax.swing.JFrame {
       }
     
     
-    // pulling data from the payment database to update the payment_table
+    
     private void Update_Payment(){
     
         try {
-           String sql="SELECT fname as 'First Name', lname as 'Last Name', room_no as 'Room', bed_no as 'Bed', hostel_fee as 'Hostel Fee', amt_paid as 'Amount Paid', arreas as 'Arrears', date_ as 'Date Paid'  FROM payment_1";
+           String sql="SELECT fname as 'First Name', lname as 'Last Name', room_no as 'Room', bed_no as 'Bed', hostel_fee as 'Hostel Fee', amt_paid as 'Amount Paid', arreas as 'Arrears', date_ as 'Date Paid'  FROM payment";
            
             pst=conn.prepareStatement(sql);
             
@@ -280,7 +277,7 @@ public class summary extends javax.swing.JFrame {
 
           try{
           
-              String sql =" Select count(fname) from new_info";
+              String sql =" Select count(fname) from new_hosteler";
               pst=conn.prepareStatement(sql);
               rs=pst.executeQuery();
               if(rs.next()){
@@ -305,18 +302,6 @@ public class summary extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         student = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -344,14 +329,13 @@ public class summary extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         minimize = new javax.swing.JLabel();
+        logout_lite = new javax.swing.JLabel();
         minus_fill = new javax.swing.JLabel();
         logout_fill = new javax.swing.JLabel();
-        logout_lite = new javax.swing.JLabel();
         cancel_lite = new javax.swing.JLabel();
         cancel_fill = new javax.swing.JLabel();
         back_lite = new javax.swing.JLabel();
@@ -372,56 +356,6 @@ public class summary extends javax.swing.JFrame {
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 400, 390));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 140, 150));
-
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 0), 1, true), "Total Room's", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 0, 24), new java.awt.Color(0, 51, 0))); // NOI18N
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 180, 60));
-
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 0), 1, true), "Total Bed's", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 0, 24), new java.awt.Color(0, 51, 0))); // NOI18N
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, 180, 60));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 160, 40));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 51, 0));
-        jLabel2.setText("Search:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
-
-        jButton2.setText("Print");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
-
-        jLabel17.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 102, 0));
-        jLabel17.setText("JODOK  HOSTEL");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 620));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 690));
-
-        jTabbedPane1.addTab("Hostel", jPanel1);
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -584,14 +518,6 @@ public class summary extends javax.swing.JFrame {
         jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
         jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 270, 10));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, -1, -1));
-
         jLabel22.setFont(new java.awt.Font("Segoe UI Light", 0, 70)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 102, 0));
         jLabel22.setText("JODOK ");
@@ -623,6 +549,22 @@ public class summary extends javax.swing.JFrame {
         });
         jPanel3.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -10, -1, 40));
 
+        logout_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_15px_4.png"))); // NOI18N
+        logout_lite.setToolTipText("Logout");
+        logout_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logout_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logout_liteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logout_liteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logout_liteMouseExited(evt);
+            }
+        });
+        jPanel3.add(logout_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
+
         minus_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/minus_fill.png"))); // NOI18N
         minus_fill.setToolTipText("Resize down");
         minus_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -644,23 +586,7 @@ public class summary extends javax.swing.JFrame {
                 logout_fillMouseClicked(evt);
             }
         });
-        jPanel3.add(logout_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
-
-        logout_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout Rounded Left_15px_4.png"))); // NOI18N
-        logout_lite.setToolTipText("Logout");
-        logout_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        logout_lite.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logout_liteMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                logout_liteMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                logout_liteMouseExited(evt);
-            }
-        });
-        jPanel3.add(logout_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
+        jPanel3.add(logout_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -300, 875, 621));
 
         cancel_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_15px_4.png"))); // NOI18N
         cancel_lite.setToolTipText("Close");
@@ -734,61 +660,6 @@ public class summary extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void search_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_search_1KeyReleased
-        // TODO add your handling code here:
-        String txt_1=search_1.getText();
-        filter (txt_1);
-        
-    }//GEN-LAST:event_search_1KeyReleased
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        
-         MessageFormat header = new MessageFormat("Payment Summary");
-         MessageFormat footer = new MessageFormat("Page{0,number,integer}");
-        
-        try{
-             
-             payment_tbl.print(JTable.PrintMode.NORMAL, header, footer);
-
-
-    }catch(Exception e)
-    {
-           System.err.format("Cannont print %s%n",e.getMessage());
-
-    }
-        
- 
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-         MessageFormat header = new MessageFormat("Student Summary");
-         MessageFormat footer = new MessageFormat("Page{0,number,integer}");
-        
-        try{
-             
-             jTable3.print(JTable.PrintMode.NORMAL, header, footer);
-
-
-    }catch(Exception e)
-    {
-           System.err.format("Cannont print %s%n",e.getMessage());
-
-    }
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void std_filtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_std_filtKeyReleased
-        // TODO add your handling code here:
-        String txt_1=std_filt.getText();
-        student_filter (txt_1);
-    }//GEN-LAST:event_std_filtKeyReleased
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        writeToExcel();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
         // TODO add your handling code here:
         this.setState(ICONIFIED);
@@ -818,14 +689,6 @@ public class summary extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_minus_fillMouseEntered
 
-    private void logout_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_fillMouseClicked
-        // TODO add your handling code here:
-
-        setVisible(false);
-        login_form lf = new login_form();
-        lf.setVisible(true);
-    }//GEN-LAST:event_logout_fillMouseClicked
-
     private void logout_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_liteMouseClicked
         // TODO add your handling code here:
 
@@ -837,14 +700,14 @@ public class summary extends javax.swing.JFrame {
     private void logout_liteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_liteMouseEntered
         // TODO add your handling code here:
 
-        logout_fill.setVisible(true);
+      //  logout_fill.setVisible(true);
         logout_lite.setVisible(false);
     }//GEN-LAST:event_logout_liteMouseEntered
 
     private void logout_liteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_liteMouseExited
         // TODO add your handling code here:
 
-        logout_fill.setVisible(false);
+     //   logout_fill.setVisible(false);
         logout_lite.setVisible(true);
     }//GEN-LAST:event_logout_liteMouseExited
 
@@ -925,9 +788,64 @@ public class summary extends javax.swing.JFrame {
              help_fill.setVisible(false);
         minus_fill.setVisible(false);
         cancel_fill.setVisible(false);
-        logout_fill.setVisible(false);
+     //   logout_fill.setVisible(false);
         back_fill.setVisible(false);
     }//GEN-LAST:event_formWindowActivated
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+
+        MessageFormat header = new MessageFormat("Payment Summary");
+        MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+
+        try{
+
+            payment_tbl.print(JTable.PrintMode.NORMAL, header, footer);
+
+        }catch(Exception e)
+        {
+            System.err.format("Cannont print %s%n",e.getMessage());
+
+        }
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void search_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_search_1KeyReleased
+        // TODO add your handling code here:
+        String txt_1=search_1.getText();
+        filter (txt_1);
+
+    }//GEN-LAST:event_search_1KeyReleased
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        MessageFormat header = new MessageFormat("Student Summary");
+        MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+
+        try{
+
+            jTable3.print(JTable.PrintMode.NORMAL, header, footer);
+
+        }catch(Exception e)
+        {
+            System.err.format("Cannont print %s%n",e.getMessage());
+
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void std_filtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_std_filtKeyReleased
+        // TODO add your handling code here:
+        String txt_1=std_filt.getText();
+        student_filter (txt_1);
+    }//GEN-LAST:event_std_filtKeyReleased
+
+    private void logout_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout_fillMouseClicked
+        // TODO add your handling code here:
+
+        setVisible(false);
+        login_form lf = new login_form();
+        lf.setVisible(true);
+    }//GEN-LAST:event_logout_fillMouseClicked
 
     /**
      * @param args the command line arguments
@@ -973,43 +891,30 @@ public class summary extends javax.swing.JFrame {
     private javax.swing.JLabel feesPaid;
     private javax.swing.JLabel help_fill;
     private javax.swing.JLabel help_lite;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel logout_fill;
     private javax.swing.JLabel logout_lite;
     private javax.swing.JLabel minimize;

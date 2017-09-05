@@ -44,6 +44,7 @@ public class new_info extends javax.swing.JFrame {
        hostel_fee.setBackground(new Color(0,0,0,0));
          phone.setBackground(new Color(0,0,0,0));
        date_txt.setBackground(new Color(0,0,0,0));
+       jTextPane3.setBackground(new Color(0,0,0,0));
         
     }
     
@@ -71,6 +72,8 @@ public class new_info extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextPane3 = new javax.swing.JTextPane();
         d = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -91,8 +94,6 @@ public class new_info extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -138,6 +139,18 @@ public class new_info extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane5.setBackground(new java.awt.Color(0, 102, 0));
+
+        jTextPane3.setEditable(false);
+        jTextPane3.setBackground(new java.awt.Color(0, 102, 0));
+        jTextPane3.setBorder(null);
+        jTextPane3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextPane3.setText("Add Button:\n\nFill all the neccessary information about the new \nhosteler and press enter or click the add button \nto add new hosteler\n\nReset Button:\n\nThe reset Button clear's every information \nprovided in the filed with just a single clik.\n\nBack Button:\n \nThis button takes you back to the previous page.");
+        jTextPane3.setOpaque(false);
+        jScrollPane5.setViewportView(jTextPane3);
+
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 350, 300));
 
         d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Male User_100px_4.png"))); // NOI18N
         d.setText("jLabel2");
@@ -257,6 +270,11 @@ public class new_info extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(91, 199, 126));
@@ -269,6 +287,11 @@ public class new_info extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 530, -1, -1));
@@ -291,17 +314,6 @@ public class new_info extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 530, -1, -1));
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(214, 239, 220));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Add Button:\n\nFill all the neccessary information about the new \nhosteler and press enter or click the add button \nto add new hosteler\n\nReset Button:\n\nThe reset Button clear's every information \nprovided in the filed with just a single clik.\n\nBack Button:\n \nThis button takes you back to the previous page.");
-        jScrollPane1.setViewportView(jTextArea1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 410, 350));
 
         jSeparator10.setBackground(new java.awt.Color(0, 51, 0));
         jSeparator10.setForeground(new java.awt.Color(0, 51, 0));
@@ -381,6 +393,11 @@ public class new_info extends javax.swing.JFrame {
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(219, 231, 217));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+        });
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minus_15px_1.png"))); // NOI18N
@@ -491,7 +508,11 @@ public class new_info extends javax.swing.JFrame {
 
         help_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px_1.png"))); // NOI18N
         help_lite.setToolTipText("");
+        help_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         help_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                help_liteMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 help_liteMouseEntered(evt);
             }
@@ -499,10 +520,16 @@ public class new_info extends javax.swing.JFrame {
                 help_liteMouseExited(evt);
             }
         });
-        jPanel5.add(help_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 20, 20));
+        jPanel5.add(help_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 20, 20));
 
         help_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px.png"))); // NOI18N
-        jPanel5.add(help_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 20, 20));
+        help_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        help_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                help_fillMouseClicked(evt);
+            }
+        });
+        jPanel5.add(help_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 20, 20));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 20));
 
@@ -548,7 +575,7 @@ public class new_info extends javax.swing.JFrame {
 
 else{
 
-     String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+     String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -569,7 +596,7 @@ else{
               try {
           
                 
-                    String sql = "Insert into new_info(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
+                    String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
                     pst.setString(1, fname.getText());
@@ -621,7 +648,7 @@ else{
         
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-                 if(
+                  if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -637,7 +664,7 @@ else{
 
 else{
 
-     String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+     String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -658,7 +685,7 @@ else{
               try {
           
                 
-                    String sql = "Insert into new_info(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
+                    String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
                     pst.setString(1, fname.getText());
@@ -706,9 +733,9 @@ else{
 
     private void lnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lnameKeyPressed
         // TODO add your handling code here:
-           if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-                 if(
+                  if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -724,7 +751,7 @@ else{
 
 else{
 
-     String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+     String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -745,7 +772,7 @@ else{
               try {
           
                 
-                    String sql = "Insert into new_info(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
+                    String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
                     pst.setString(1, fname.getText());
@@ -793,9 +820,9 @@ else{
 
     private void progKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_progKeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-                 if(
+                  if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -811,7 +838,7 @@ else{
 
 else{
 
-     String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+     String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -832,7 +859,7 @@ else{
               try {
           
                 
-                    String sql = "Insert into new_info(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
+                    String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
                     pst.setString(1, fname.getText());
@@ -880,9 +907,10 @@ else{
 
     private void roomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_roomKeyPressed
         // TODO add your handling code here:
-          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+          
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-                 if(
+                  if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -898,7 +926,7 @@ else{
 
 else{
 
-     String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+     String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -919,7 +947,7 @@ else{
               try {
           
                 
-                    String sql = "Insert into new_info(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
+                    String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
                     pst.setString(1, fname.getText());
@@ -967,9 +995,9 @@ else{
 
     private void bedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bedKeyPressed
         // TODO add your handling code here:
-          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-                 if(
+                  if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -985,7 +1013,7 @@ else{
 
 else{
 
-     String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+     String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -1006,7 +1034,7 @@ else{
               try {
           
                 
-                    String sql = "Insert into new_info(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
+                    String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
                     pst.setString(1, fname.getText());
@@ -1054,9 +1082,9 @@ else{
 
     private void hostel_feeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hostel_feeKeyPressed
         // TODO add your handling code here:
-          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-                 if(
+                  if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -1072,7 +1100,7 @@ else{
 
 else{
 
-     String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+     String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -1093,7 +1121,7 @@ else{
               try {
           
                 
-                    String sql = "Insert into new_info(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
+                    String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
                     pst.setString(1, fname.getText());
@@ -1144,7 +1172,7 @@ else{
         
          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-                 if(
+                  if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -1160,7 +1188,7 @@ else{
 
 else{
 
-     String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+     String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -1181,7 +1209,7 @@ else{
               try {
           
                 
-                    String sql = "Insert into new_info(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
+                    String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
                     pst.setString(1, fname.getText());
@@ -1231,7 +1259,7 @@ else{
         // TODO add your handling code here:
           if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-                 if(
+                  if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -1247,7 +1275,7 @@ else{
 
 else{
 
-     String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+     String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -1268,7 +1296,7 @@ else{
               try {
           
                 
-                    String sql = "Insert into new_info(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
+                    String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
                     pst.setString(1, fname.getText());
@@ -1316,9 +1344,9 @@ else{
 
     private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
         // TODO add your handling code here:
-           if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         
-                 if(
+                  if(
         fname.getText().isEmpty()
         ||lname.getText().isEmpty()
         ||prog.getText().isEmpty()
@@ -1334,7 +1362,7 @@ else{
 
 else{
 
-     String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+     String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -1355,7 +1383,7 @@ else{
               try {
           
                 
-                    String sql = "Insert into new_info(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
+                    String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
                     pst.setString(1, fname.getText());
@@ -1455,7 +1483,7 @@ else{
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        jTextArea1.setVisible(false);
+        jScrollPane5.setVisible(false);
         
          help_fill.setVisible(false);
         minus_fill.setVisible(false);
@@ -1466,12 +1494,13 @@ else{
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
-         jTextArea1.setVisible(false);
+         jScrollPane5.setVisible(false);
+         
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
-         jTextArea1.setVisible(false);
+         jScrollPane5.setVisible(false);
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
@@ -1619,6 +1648,47 @@ else{
         help_lite.setVisible(true);
     }//GEN-LAST:event_help_liteMouseExited
 
+    private void help_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseClicked
+        // TODO add your handling code here:
+        jScrollPane5.setVisible(true);
+    }//GEN-LAST:event_help_liteMouseClicked
+
+    private void help_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_fillMouseClicked
+        // TODO add your handling code here:
+        jScrollPane5.setVisible(true);
+    }//GEN-LAST:event_help_fillMouseClicked
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // TODO add your handling code here:
+        jScrollPane5.setVisible(true);
+    }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        // TODO add your handling code here:
+        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+             fname.setText(null);
+        lname.setText(null);
+        prog.setText(null);
+        bed.setText(null);
+        room.setText(null);
+        hostel_fee.setText(null);
+        phone.setText(null);
+        }
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        // TODO add your handling code here:
+        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+            setVisible(false);
+        mainPage mp = new mainPage();
+        mp.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton2KeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1684,7 +1754,7 @@ else{
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1694,7 +1764,7 @@ else{
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextField lname;
     private javax.swing.JLabel logout_fill;
     private javax.swing.JLabel logout_lite;

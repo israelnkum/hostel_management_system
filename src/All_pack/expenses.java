@@ -52,7 +52,9 @@ public class expenses extends javax.swing.JFrame {
         other_id.setVisible(false);
         others_date_update.setVisible(false);
         others_time_update.setVisible(false);
-        
+          jTextPane2.setBackground(new Color(0,0,0,0));
+           jTextPane3.setBackground(new Color(0,0,0,0));
+            jTextPane4.setBackground(new Color(0,0,0,0));
         bill_search.setBackground(new Color(0,0,0,0));
         maint_search.setBackground(new Color(0,0,0,0));    
         other_search.setBackground(new Color(0,0,0,0));    
@@ -106,7 +108,7 @@ public class expenses extends javax.swing.JFrame {
             bill_table.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
-    //   JOptionPane.showMessageDialog(null, "Check your internet");
+  JOptionPane.showMessageDialog(null,e);
   
         }
         }
@@ -216,6 +218,8 @@ public class expenses extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         other_tbl = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -244,6 +248,8 @@ public class expenses extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextPane3 = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -271,6 +277,8 @@ public class expenses extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextPane4 = new javax.swing.JTextPane();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -348,6 +356,9 @@ public class expenses extends javax.swing.JFrame {
             }
         });
         addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
             }
@@ -362,10 +373,32 @@ public class expenses extends javax.swing.JFrame {
         other_tbl.setForeground(new java.awt.Color(0, 0, 0));
         other_tbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         other_tbl.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        other_tbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                other_tblMouseClicked(evt);
+            }
+        });
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane4.setBackground(new java.awt.Color(0, 102, 0));
+
+        jTextPane2.setEditable(false);
+        jTextPane2.setBackground(new java.awt.Color(0, 102, 0));
+        jTextPane2.setBorder(null);
+        jTextPane2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextPane2.setText("Click to Navigate through the tabs and add or \nupdate where neccessary\n------------------------------------------------------\n\nThe Search Bar\n------------------------------------------------------\nThis helps to filter the table dynamically;\neither by text,numbers,symbols,date etc.\n\nThe Add button\n------------------------------------------------------\nAdd's new data to the existing data\n\nThe Update & Save Button \n------------------------------------------------------\nThe Update and the Save button is always \ninactive. Select any column in the table to \nactivate the update button.\n\nClick on the update button to activate the \ndescription and amount box and click \nsave after update is done.\n\nThe Print Button\n------------------------------------------------------\nClick to print or export the table to Pdf for later \nuse.\n\nThe Delete Button\n------------------------------------------------------\nSelect and column and click on delete.\n\nThe Refresh Button\n-------------------------------------------------------\nClick on refresh after updateing, deleting and\nadding.");
+        jTextPane2.setOpaque(false);
+        jScrollPane4.setViewportView(jTextPane2);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, -30, 350, 500));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 150));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -383,6 +416,11 @@ public class expenses extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 50)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 82, 12));
         jLabel4.setText("J O D O K ");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 320, 50));
 
         jButton5.setBackground(new java.awt.Color(218, 230, 216));
@@ -423,12 +461,22 @@ public class expenses extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 82, 12));
         jLabel6.setText("H O S T E L");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 130, 70));
 
         bill_search.setBackground(new java.awt.Color(221, 231, 220));
         bill_search.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         bill_search.setForeground(new java.awt.Color(0, 0, 0));
         bill_search.setBorder(null);
+        bill_search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bill_searchMouseClicked(evt);
+            }
+        });
         bill_search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 bill_searchKeyReleased(evt);
@@ -540,6 +588,11 @@ public class expenses extends javax.swing.JFrame {
         jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 1120));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -550,6 +603,18 @@ public class expenses extends javax.swing.JFrame {
         other_tbl.addTab("Bills", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane5.setBackground(new java.awt.Color(0, 102, 0));
+
+        jTextPane3.setEditable(false);
+        jTextPane3.setBackground(new java.awt.Color(0, 102, 0));
+        jTextPane3.setBorder(null);
+        jTextPane3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextPane3.setText("Click to Navigate through the tabs and add or \nupdate where neccessary\n------------------------------------------------------\n\nThe Search Bar\n------------------------------------------------------\nThis helps to filter the table dynamically;\neither by text,numbers,symbols,date etc.\n\nThe Add button\n------------------------------------------------------\nAdd's new data to the existing data\n\nThe Update & Save Button \n------------------------------------------------------\nThe Update and the Save button is always \ninactive. Select any column in the table to \nactivate the update button.\n\nClick on the update button to activate the \ndescription and amount box and click \nsave after update is done.\n\nThe Print Button\n------------------------------------------------------\nClick to print or export the table to Pdf for later \nuse.\n\nThe Delete Button\n------------------------------------------------------\nSelect and column and click on delete.\n\nThe Refresh Button\n-------------------------------------------------------\nClick on refresh after updateing, deleting and\nadding.");
+        jTextPane3.setOpaque(false);
+        jScrollPane5.setViewportView(jTextPane3);
+
+        jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, -30, 350, 480));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 150));
@@ -573,6 +638,11 @@ public class expenses extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Arial", 0, 50)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 82, 12));
         jLabel12.setText("J O D O K ");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 250, 50));
 
         jButton6.setBackground(new java.awt.Color(218, 230, 216));
@@ -580,6 +650,11 @@ public class expenses extends javax.swing.JFrame {
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Add List_20px.png"))); // NOI18N
         jButton6.setText("Add");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -612,6 +687,11 @@ public class expenses extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 82, 12));
         jLabel13.setText("H O S T E L");
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 130, 50));
 
         amt_update_maint.setBackground(new java.awt.Color(204, 228, 202));
@@ -634,6 +714,11 @@ public class expenses extends javax.swing.JFrame {
         maint_search.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         maint_search.setForeground(new java.awt.Color(0, 0, 0));
         maint_search.setBorder(null);
+        maint_search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                maint_searchMouseClicked(evt);
+            }
+        });
         maint_search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 maint_searchKeyReleased(evt);
@@ -723,11 +808,28 @@ public class expenses extends javax.swing.JFrame {
         jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, -1));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 1120));
 
         other_tbl.addTab("Maintenace", jPanel2);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane6.setBackground(new java.awt.Color(0, 102, 0));
+
+        jTextPane4.setEditable(false);
+        jTextPane4.setBackground(new java.awt.Color(0, 102, 0));
+        jTextPane4.setBorder(null);
+        jTextPane4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextPane4.setText("Click to Navigate through the tabs and add or \nupdate where neccessary\n------------------------------------------------------\n\nThe Search Bar\n------------------------------------------------------\nThis helps to filter the table dynamically;\neither by text,numbers,symbols,date etc.\n\nThe Add button\n------------------------------------------------------\nAdd's new data to the existing data\n\nThe Update & Save Button \n------------------------------------------------------\nThe Update and the Save button is always \ninactive. Select any column in the table to \nactivate the update button.\n\nClick on the update button to activate the \ndescription and amount box and click \nsave after update is done.\n\nThe Print Button\n------------------------------------------------------\nClick to print or export the table to Pdf for later \nuse.\n\nThe Delete Button\n------------------------------------------------------\nSelect and column and click on delete.\n\nThe Refresh Button\n-------------------------------------------------------\nClick on refresh after updateing, deleting and\nadding.");
+        jTextPane4.setOpaque(false);
+        jScrollPane6.setViewportView(jTextPane4);
+
+        jPanel3.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 350, 480));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 150));
@@ -773,6 +875,11 @@ public class expenses extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 82, 12));
         jLabel20.setText("H O S T E L");
+        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 130, 70));
         jPanel3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 240, -1));
 
@@ -780,6 +887,11 @@ public class expenses extends javax.swing.JFrame {
         other_search.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         other_search.setForeground(new java.awt.Color(0, 0, 0));
         other_search.setBorder(null);
+        other_search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                other_searchMouseClicked(evt);
+            }
+        });
         other_search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 other_searchKeyReleased(evt);
@@ -923,6 +1035,11 @@ public class expenses extends javax.swing.JFrame {
         getContentPane().add(other_tbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 980, 570));
 
         jPanel5.setBackground(new java.awt.Color(219, 231, 217));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+        });
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minus_15px_1.png"))); // NOI18N
@@ -1033,7 +1150,11 @@ public class expenses extends javax.swing.JFrame {
 
         help_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px_1.png"))); // NOI18N
         help_lite.setToolTipText("");
+        help_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         help_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                help_liteMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 help_liteMouseEntered(evt);
             }
@@ -1044,6 +1165,12 @@ public class expenses extends javax.swing.JFrame {
         jPanel5.add(help_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 0, 20, 20));
 
         help_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px.png"))); // NOI18N
+        help_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        help_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                help_fillMouseClicked(evt);
+            }
+        });
         jPanel5.add(help_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 0, 20, 20));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 20));
@@ -1291,7 +1418,9 @@ public class expenses extends javax.swing.JFrame {
 
     private void othrsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_othrsMouseClicked
         // TODO add your handling code here:
-       
+         jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
         update_btn.setEnabled(true);
         dis_update.setEnabled(false);
         amt_update.setEnabled(false);
@@ -1331,12 +1460,18 @@ public class expenses extends javax.swing.JFrame {
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         // TODO add your handling code here:
+          jScrollPane6.setVisible(false);
+           jScrollPane5.setVisible(false);
+        jScrollPane4.setVisible(false);
        
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         
+         jScrollPane6.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane4.setVisible(false);
          help_fill.setVisible(false);
         minus_fill.setVisible(false);
         cancel_fill.setVisible(false);
@@ -1508,6 +1643,7 @@ public class expenses extends javax.swing.JFrame {
 
     private void maintenace_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maintenace_tableMouseClicked
         // TODO add your handling code here:
+         jScrollPane5.setVisible(false);
          update_btn_maint.setEnabled(true);
         dis_update_maint.setEnabled(false);
         amt_update_maint.setEnabled(false);
@@ -1599,6 +1735,8 @@ public class expenses extends javax.swing.JFrame {
 
     private void bill_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bill_tableMouseClicked
         // TODO add your handling code here:.
+         jScrollPane4.setVisible(false);
+         
         update_btn_bill.setEnabled(true);
         dis_update_bill.setEnabled(false);
         amt_update_bill.setEnabled(false);
@@ -1796,6 +1934,129 @@ public class expenses extends javax.swing.JFrame {
         help_lite.setVisible(true);
     }//GEN-LAST:event_help_liteMouseExited
 
+    private void help_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseClicked
+        // TODO add your handling code here:
+         jScrollPane4.setVisible(true);
+         jScrollPane5.setVisible(true);
+         jScrollPane6.setVisible(true);
+    }//GEN-LAST:event_help_liteMouseClicked
+
+    private void help_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_fillMouseClicked
+        // TODO add your handling code here:
+         jScrollPane4.setVisible(true);
+         jScrollPane5.setVisible(true);
+         jScrollPane6.setVisible(true);
+    }//GEN-LAST:event_help_fillMouseClicked
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+         // jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+         jScrollPane4.setVisible(false);
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // TODO add your handling code here:
+         jScrollPane4.setVisible(false);
+        //   jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+         jScrollPane4.setVisible(false);
+        //   jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+         jScrollPane4.setVisible(false);
+         //  jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+         jScrollPane4.setVisible(false);
+       
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void bill_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bill_searchMouseClicked
+        // TODO add your handling code here: 
+          jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+        jScrollPane4.setVisible(false);
+    }//GEN-LAST:event_bill_searchMouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+        jScrollPane5.setVisible(false);
+          jScrollPane4.setVisible(false);
+      
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
+
+    private void other_tblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_other_tblMouseClicked
+        // TODO add your handling code here:
+        jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_other_tblMouseClicked
+
+    private void other_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_other_searchMouseClicked
+        // TODO add your handling code here:
+          jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_other_searchMouseClicked
+
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+        // TODO add your handling code here:
+          jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jLabel20MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        // TODO add your handling code here:
+          jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void maint_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maint_searchMouseClicked
+        // TODO add your handling code here:
+          jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_maint_searchMouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        // TODO add your handling code here:
+          jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+          jScrollPane4.setVisible(false);
+        jScrollPane5.setVisible(false);
+        jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jButton6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1903,12 +2164,18 @@ public class expenses extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPane3;
+    private javax.swing.JTextPane jTextPane4;
     private javax.swing.JLabel logout_fill;
     private javax.swing.JLabel logout_lite;
     private javax.swing.JTextField maint_date;

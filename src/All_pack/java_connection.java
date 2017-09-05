@@ -3,6 +3,7 @@ package All_pack;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -10,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class java_connection {
 
- //  DefaultTableModel model_4 = new DefaultTableModel();
+
     public static Connection getConnection(){
         
          Connection conn = null;
@@ -19,12 +20,12 @@ public class java_connection {
              
              Class.forName("com.mysql.jdbc.Driver");
              
-             conn=DriverManager.getConnection("jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12191764","sql12191764","bi2hZUJGKl");
-             
+         conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_management_system","root","");
+           
          }
-         catch (Exception e){
-         
-             JOptionPane.showMessageDialog(null, "Check your internet connection","No internet",JOptionPane.ERROR_MESSAGE);
+         catch (ClassNotFoundException | SQLException e){
+         JOptionPane.showMessageDialog(null,e);
+     // JOptionPane.showMessageDialog(null, "Check your internet connection","No internet",JOptionPane.ERROR_MESSAGE);
          }
         return conn;
          

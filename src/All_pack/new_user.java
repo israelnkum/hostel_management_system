@@ -6,12 +6,22 @@
 package All_pack;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
  * @author oSikaNi iSraeL
  */
 public class new_user extends javax.swing.JFrame {
+    
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pst;
 
     int xMouse;
     int yMouse;
@@ -20,6 +30,7 @@ public class new_user extends javax.swing.JFrame {
      */
     public new_user() {
         initComponents();
+         conn = java_connection.getConnection();
         
           user_name.setBackground(new Color(0,0,0,0));
        f_name.setBackground(new Color(0,0,0,0));
@@ -27,7 +38,9 @@ public class new_user extends javax.swing.JFrame {
        phone.setBackground(new Color(0,0,0,0));
          pass.setBackground(new Color(0,0,0,0));
        ansa.setBackground(new Color(0,0,0,0));
-      //   phone.setBackground(new Color(0,0,0,0));
+       
+        
+         jTextPane2.setBackground(new Color(0,0,0,0));
      //  date_txt.setBackground(new Color(0,0,0,0));
     }
 
@@ -40,6 +53,8 @@ public class new_user extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -67,9 +82,10 @@ public class new_user extends javax.swing.JFrame {
         ansa = new javax.swing.JTextField();
         pass = new javax.swing.JTextField();
         user_name = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        genda = new javax.swing.JComboBox<>();
+        sec_Ques = new javax.swing.JComboBox<>();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jButton3 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -102,6 +118,18 @@ public class new_user extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane2.setBackground(new java.awt.Color(0, 102, 0));
+
+        jTextPane2.setEditable(false);
+        jTextPane2.setBackground(new java.awt.Color(0, 102, 0));
+        jTextPane2.setBorder(null);
+        jTextPane2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextPane2.setText("Add Button\n------------------------------------------------------------\nFill all relevant information of the new user and\nclick on the add button to add new user.\n\nReset Button\n------------------------------------------------------------\nThe reset button clear's every information at ones \nwhen clicked.\n\nBack Button\n------------------------------------------------------------\nThis will take you back to the main page when \nclicked.");
+        jTextPane2.setOpaque(false);
+        jScrollPane2.setViewportView(jTextPane2);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 350, 240));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 260, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -135,32 +163,42 @@ public class new_user extends javax.swing.JFrame {
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 160, -1));
 
         jButton1.setBackground(new java.awt.Color(211, 228, 210));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 51, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cancel_20px_2.png"))); // NOI18N
-        jButton1.setText("Cancel");
-        jButton1.setToolTipText("Retrieve password");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_2.png"))); // NOI18N
+        jButton1.setText("Back");
+        jButton1.setToolTipText("Go back");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 540, 120, 30));
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 540, 80, 30));
 
         jButton2.setBackground(new java.awt.Color(211, 228, 210));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 51, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Add User Male_20px_1.png"))); // NOI18N
         jButton2.setText("Add");
-        jButton2.setToolTipText("Search");
+        jButton2.setToolTipText("Add new user");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 540, 90, 30));
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 540, 80, 30));
 
         jSeparator3.setBackground(new java.awt.Color(0, 51, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 51, 0));
@@ -177,6 +215,11 @@ public class new_user extends javax.swing.JFrame {
         phone.setForeground(new java.awt.Color(0, 0, 0));
         phone.setBorder(null);
         phone.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        phone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                phoneKeyPressed(evt);
+            }
+        });
         getContentPane().add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 260, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Name_20px_2.png"))); // NOI18N
@@ -210,6 +253,11 @@ public class new_user extends javax.swing.JFrame {
         f_name.setForeground(new java.awt.Color(0, 0, 0));
         f_name.setBorder(null);
         f_name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        f_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                f_nameKeyPressed(evt);
+            }
+        });
         getContentPane().add(f_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 260, 40));
 
         l_name.setBackground(new java.awt.Color(211, 228, 210));
@@ -217,12 +265,22 @@ public class new_user extends javax.swing.JFrame {
         l_name.setForeground(new java.awt.Color(0, 0, 0));
         l_name.setBorder(null);
         l_name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        l_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                l_nameKeyPressed(evt);
+            }
+        });
         getContentPane().add(l_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 260, 40));
 
         ansa.setBackground(new java.awt.Color(211, 228, 210));
         ansa.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ansa.setForeground(new java.awt.Color(0, 0, 0));
         ansa.setBorder(null);
+        ansa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ansaKeyPressed(evt);
+            }
+        });
         getContentPane().add(ansa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 260, 40));
 
         pass.setBackground(new java.awt.Color(179, 222, 166));
@@ -230,25 +288,69 @@ public class new_user extends javax.swing.JFrame {
         pass.setForeground(new java.awt.Color(0, 0, 0));
         pass.setBorder(null);
         pass.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        pass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passKeyPressed(evt);
+            }
+        });
         getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 260, 40));
 
         user_name.setBackground(new java.awt.Color(211, 228, 210));
         user_name.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         user_name.setForeground(new java.awt.Color(0, 0, 0));
         user_name.setBorder(null);
+        user_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                user_nameKeyPressed(evt);
+            }
+        });
         getContentPane().add(user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, 260, 40));
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 130, -1));
+        genda.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        genda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose one...", "Male", "Female" }));
+        genda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                gendaKeyPressed(evt);
+            }
+        });
+        getContentPane().add(genda, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 130, -1));
 
-        jComboBox2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What is your mother's maiden name?", "What is the name of your favorite teacher?", "Who is your best friend?", "What color is your favorite?", "Which day were you born?", " " }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 310, 30));
+        sec_Ques.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        sec_Ques.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose one...", "What is your mother's maiden name?", "What is the name of your favorite teacher?", "Who is your best friend?", "What color is your favorite?", "Which day were you born?", " " }));
+        sec_Ques.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sec_QuesKeyPressed(evt);
+            }
+        });
+        getContentPane().add(sec_Ques, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 310, 30));
 
         jDateChooser1.setDateFormatString(" yyyy-MM-dd");
         jDateChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jDateChooser1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jDateChooser1KeyPressed(evt);
+            }
+        });
         getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 200, 30));
+
+        jButton3.setBackground(new java.awt.Color(211, 228, 210));
+        jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 51, 0));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Reset_15px_2.png"))); // NOI18N
+        jButton3.setText("Reset");
+        jButton3.setToolTipText("Clear all fields");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 540, -1, 30));
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 51, 0));
@@ -256,6 +358,14 @@ public class new_user extends javax.swing.JFrame {
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 160, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+        });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 930, 600));
 
         jPanel5.setBackground(new java.awt.Color(219, 231, 217));
@@ -369,7 +479,11 @@ public class new_user extends javax.swing.JFrame {
 
         help_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px_1.png"))); // NOI18N
         help_lite.setToolTipText("");
+        help_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         help_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                help_liteMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 help_liteMouseEntered(evt);
             }
@@ -380,6 +494,12 @@ public class new_user extends javax.swing.JFrame {
         jPanel5.add(help_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 20, 20));
 
         help_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px.png"))); // NOI18N
+        help_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        help_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                help_fillMouseClicked(evt);
+            }
+        });
         jPanel5.add(help_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 20, 20));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 20));
@@ -390,6 +510,60 @@ public class new_user extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+         
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
@@ -546,13 +720,655 @@ public class new_user extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        
+        jScrollPane2.setVisible(false);
          help_fill.setVisible(false);
         minus_fill.setVisible(false);
         cancel_fill.setVisible(false);
         logout_fill.setVisible(false);
         back_fill.setVisible(false);
     }//GEN-LAST:event_formWindowActivated
+
+    private void help_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseClicked
+        // TODO add your handling code here:
+        jScrollPane2.setVisible(true);
+    }//GEN-LAST:event_help_liteMouseClicked
+
+    private void help_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_fillMouseClicked
+        // TODO add your handling code here:
+        jScrollPane2.setVisible(true);
+    }//GEN-LAST:event_help_fillMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        jScrollPane2.setVisible(false);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void user_nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_user_nameKeyPressed
+        // TODO add your handling code here:
+        
+        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+              if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+        }
+    }//GEN-LAST:event_user_nameKeyPressed
+
+    private void f_nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_f_nameKeyPressed
+        // TODO add your handling code here:
+          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+              if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+        }
+    }//GEN-LAST:event_f_nameKeyPressed
+
+    private void l_nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_l_nameKeyPressed
+       if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+              if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+        }
+    }//GEN-LAST:event_l_nameKeyPressed
+
+    private void phoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneKeyPressed
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+              if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+        }
+    }//GEN-LAST:event_phoneKeyPressed
+
+    private void passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passKeyPressed
+          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+              if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+        }
+    }//GEN-LAST:event_passKeyPressed
+
+    private void sec_QuesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sec_QuesKeyPressed
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+              if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+        }
+    }//GEN-LAST:event_sec_QuesKeyPressed
+
+    private void ansaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ansaKeyPressed
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+              if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+        }
+    }//GEN-LAST:event_ansaKeyPressed
+
+    private void gendaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gendaKeyPressed
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+              if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+        }
+    }//GEN-LAST:event_gendaKeyPressed
+
+    private void jDateChooser1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooser1KeyPressed
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+              if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+        }
+    }//GEN-LAST:event_jDateChooser1KeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        
+              if(
+                    user_name.getText().isEmpty()
+                    ||f_name.getText().isEmpty()
+                    ||l_name.getText().isEmpty()
+                    ||phone.getText().isEmpty()
+                    ||sec_Ques.getSelectedItem().equals("Choose one...")
+                    ||pass.getText().isEmpty()
+                    ||ansa.getText().isEmpty()
+                    ||genda.getSelectedItem().equals("Choose one...")
+                    ||((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText().isEmpty())
+                    {
+                    
+                        JOptionPane.showMessageDialog(null, "Fill all information");
+                    }
+        
+        else{
+            
+            
+         try{
+                
+                    String sql = "Insert into new_user(username, fname, lname, phone, user_password ,sec_ques,answer,  gender,doB) values (?,?,?,?,?,?,?,?,?)";
+                    
+                    pst=conn.prepareStatement(sql);
+                    pst.setString(1, user_name.getText());
+                    pst.setString(2, f_name.getText());
+                    pst.setString(3, l_name.getText());
+                    pst.setString(4, phone.getText());
+                    pst.setString(5, pass.getText());
+                    pst.setString(6, (String) sec_Ques.getSelectedItem());
+                    pst.setString(7, ansa.getText());
+                    pst.setString(8, (String) genda.getSelectedItem());
+                    pst.setString(9, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                    
+                    pst.execute();
+                   
+                    JOptionPane.showMessageDialog(null," Success");
+                    
+                    user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+    
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog( null, e);
+}
+        }
+        }
+    }//GEN-LAST:event_jButton2KeyPressed
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+          
+              user_name.setText(null);
+                    f_name.setText(null);
+                    l_name.setText(null);
+                    phone.setText(null);
+                    sec_Ques.setSelectedItem("Choose one...");
+                    pass.setText(null);
+                    ansa.setText(null);
+                     genda.setSelectedItem("Choose one...");
+                    jDateChooser1.setDate(null);
+          }
+    }//GEN-LAST:event_jButton3KeyPressed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+   
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+          
+       setVisible(false);
+        mainPage mp =new mainPage();
+        mp.setVisible(true);
+          }
+    }//GEN-LAST:event_jButton1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -596,12 +1412,12 @@ public class new_user extends javax.swing.JFrame {
     private javax.swing.JLabel cancel_fill;
     private javax.swing.JLabel cancel_lite;
     private javax.swing.JTextField f_name;
+    private javax.swing.JComboBox<String> genda;
     private javax.swing.JLabel help_fill;
     private javax.swing.JLabel help_lite;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton jButton3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -618,6 +1434,7 @@ public class new_user extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -625,6 +1442,7 @@ public class new_user extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextField l_name;
     private javax.swing.JLabel logout_fill;
     private javax.swing.JLabel logout_lite;
@@ -632,6 +1450,7 @@ public class new_user extends javax.swing.JFrame {
     private javax.swing.JLabel minus_fill;
     private javax.swing.JTextField pass;
     private javax.swing.JTextField phone;
+    private javax.swing.JComboBox<String> sec_Ques;
     private javax.swing.JTextField user_name;
     // End of variables declaration//GEN-END:variables
 }

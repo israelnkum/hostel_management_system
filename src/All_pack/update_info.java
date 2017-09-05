@@ -52,8 +52,8 @@ public class update_info extends javax.swing.JFrame {
      private void Update_table(){
     
         try {
-          String sql ="SELECT customer_id as 'ID ',fname as 'First Name',lname as ' Last Name', program as 'Program', roo_no as 'Room No:',"
-                  + " bed_no as 'Bird No:', hostel_fee as 'Hostel Fee', phone as 'Phone Number', date_reg as 'Date Registered' FROM new_info ";
+          String sql ="SELECT hosteler_id as 'ID ',fname as 'First Name',lname as ' Last Name', program as 'Program', roo_no as 'Room No:',"
+                  + " bed_no as 'Bird No:', hostel_fee as 'Hostel Fee', phone as 'Phone Number', date_reg as 'Date Registered' FROM new_hosteler ";
             pst=conn.prepareStatement(sql);
             
             rs=pst.executeQuery();
@@ -573,13 +573,13 @@ public class update_info extends javax.swing.JFrame {
             int row = jTable1.getSelectedRow();
             String Table_click=(jTable1.getModel().getValueAt(row,0).toString());
 
-            String sql ="SELECT * FROM new_info WHERE  customer_id = '"+Table_click+"'";
+            String sql ="SELECT * FROM new_hosteler WHERE hosteler_id = '"+Table_click+"'";
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
 
             if(rs.next()){
 
-                String id_ = rs.getString("customer_id");
+                String id_ = rs.getString("hosteler_id");
                 id.setText(id_);
                 
                 String f_name = rs.getString("fname");
@@ -629,7 +629,7 @@ public class update_info extends javax.swing.JFrame {
     private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
         // TODO add your handling code here:
 
-          String sql_1 = "select * from new_info where  roo_no=? and bed_no=?";
+          String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
        
             pst=conn.prepareStatement(sql_1);
@@ -656,10 +656,10 @@ public class update_info extends javax.swing.JFrame {
                 String value9=((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText();
                
 
-                String sql ="update new_info set customer_id='"+value1+"', fname='"+value2+"', "
+                String sql ="update new_hosteler set hosteler_id='"+value1+"', fname='"+value2+"', "
                         + "lname='"+value3+"', program='"+value4+"', roo_no='"+value5+"',"
                         + "bed_no='"+value6+"', hostel_fee='"+value7+"', phone='"+value8+"',"
-                        + "date_reg='"+value9+"'  where customer_id='"+value1+"'";
+                        + "date_reg='"+value9+"'  where hosteler_id='"+value1+"'";
 
                 pst=conn.prepareStatement(sql);
                 pst.execute();
@@ -807,7 +807,7 @@ public class update_info extends javax.swing.JFrame {
                  int c = JOptionPane.showConfirmDialog(null, "Do you realy wanna Delete","Delete",JOptionPane.YES_NO_OPTION);
       
         if(c==0){
-        String sql =" DELETE FROM new_info WHERE customer_id =?";
+        String sql =" DELETE FROM new_hosteler WHERE hosteler_id =?";
         try{
         
             pst=conn.prepareStatement(sql);
