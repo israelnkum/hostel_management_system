@@ -61,7 +61,22 @@ public class new_info extends javax.swing.JFrame {
    
     }
     
-    
+        
+     /*   public void my_Arrears(){
+        
+            String hostel = String.valueOf(hostel_fee.getText());
+            
+            double new_hostel = Double.parseDouble(hostel);
+            
+            String arrears_1 = String.valueOf(amt_paying.getText());
+            
+            double new_arrears = Double.parseDouble(arrears_1);
+            
+            double amt_left = new_hostel-new_arrears;
+            
+            arrears.setText(Double.toString(amt_left));
+        }
+    */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,7 +94,6 @@ public class new_info extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
-        jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
         date_txt = new javax.swing.JTextField();
@@ -95,6 +109,7 @@ public class new_info extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jSeparator10 = new javax.swing.JSeparator();
+        jSeparator11 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -150,18 +165,17 @@ public class new_info extends javax.swing.JFrame {
         jTextPane3.setOpaque(false);
         jScrollPane5.setViewportView(jTextPane3);
 
-        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 350, 300));
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 350, 300));
 
         d.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Male User_100px_4.png"))); // NOI18N
         d.setText("jLabel2");
-        getContentPane().add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 100, 90));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 250, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 250, -1));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 250, -1));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 250, -1));
-        getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 250, -1));
-        getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 250, -1));
-        getContentPane().add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, 250, -1));
+        getContentPane().add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 110, 110));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 250, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 250, -1));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 250, -1));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 250, -1));
+        getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 250, -1));
+        getContentPane().add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 530, 250, -1));
 
         date_txt.setEditable(false);
         date_txt.setBackground(new java.awt.Color(145, 216, 169));
@@ -173,7 +187,7 @@ public class new_info extends javax.swing.JFrame {
                 date_txtKeyPressed(evt);
             }
         });
-        getContentPane().add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 480, 250, 30));
+        getContentPane().add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, 250, 30));
 
         lname.setBackground(new java.awt.Color(195, 230, 201));
         lname.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -183,7 +197,7 @@ public class new_info extends javax.swing.JFrame {
                 lnameKeyPressed(evt);
             }
         });
-        getContentPane().add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 250, 30));
+        getContentPane().add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 250, 30));
 
         prog.setBackground(new java.awt.Color(214, 239, 220));
         prog.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -193,7 +207,7 @@ public class new_info extends javax.swing.JFrame {
                 progKeyPressed(evt);
             }
         });
-        getContentPane().add(prog, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 250, 30));
+        getContentPane().add(prog, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 250, 30));
 
         room.setBackground(new java.awt.Color(214, 239, 220));
         room.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -206,7 +220,7 @@ public class new_info extends javax.swing.JFrame {
                 roomKeyTyped(evt);
             }
         });
-        getContentPane().add(room, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 250, 30));
+        getContentPane().add(room, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 250, 30));
 
         bed.setBackground(new java.awt.Color(214, 239, 220));
         bed.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -219,7 +233,7 @@ public class new_info extends javax.swing.JFrame {
                 bedKeyTyped(evt);
             }
         });
-        getContentPane().add(bed, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 250, 30));
+        getContentPane().add(bed, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 250, 30));
 
         fname.setBackground(new java.awt.Color(202, 229, 203));
         fname.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -229,7 +243,7 @@ public class new_info extends javax.swing.JFrame {
                 fnameKeyPressed(evt);
             }
         });
-        getContentPane().add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 250, 30));
+        getContentPane().add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 250, 30));
 
         hostel_fee.setBackground(new java.awt.Color(205, 234, 211));
         hostel_fee.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -242,8 +256,8 @@ public class new_info extends javax.swing.JFrame {
                 hostel_feeKeyTyped(evt);
             }
         });
-        getContentPane().add(hostel_fee, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 250, 30));
-        getContentPane().add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 250, -1));
+        getContentPane().add(hostel_fee, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, 250, 30));
+        getContentPane().add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 250, -1));
 
         phone.setBackground(new java.awt.Color(170, 223, 183));
         phone.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -256,7 +270,7 @@ public class new_info extends javax.swing.JFrame {
                 phoneKeyTyped(evt);
             }
         });
-        getContentPane().add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 250, 30));
+        getContentPane().add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 250, 30));
 
         jButton1.setBackground(new java.awt.Color(91, 199, 126));
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -275,7 +289,7 @@ public class new_info extends javax.swing.JFrame {
                 jButton1KeyPressed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 540, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(91, 199, 126));
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -294,7 +308,7 @@ public class new_info extends javax.swing.JFrame {
                 jButton2KeyPressed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 530, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 540, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(91, 199, 126));
         jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -313,12 +327,13 @@ public class new_info extends javax.swing.JFrame {
                 jButton3KeyPressed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 530, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 540, -1, -1));
 
         jSeparator10.setBackground(new java.awt.Color(0, 51, 0));
         jSeparator10.setForeground(new java.awt.Color(0, 51, 0));
         jSeparator10.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, 230));
+        getContentPane().add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 250, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 51, 0));
@@ -336,42 +351,42 @@ public class new_info extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Program:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Last Name:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Room No:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Date:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Phone No:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Hostel Fee:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("First Name:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Bed No:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/new_.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -485,6 +500,7 @@ public class new_info extends javax.swing.JFrame {
         jPanel5.add(cancel_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
 
         back_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_2.png"))); // NOI18N
+        back_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back_lite.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_liteMouseClicked(evt);
@@ -499,6 +515,7 @@ public class new_info extends javax.swing.JFrame {
         jPanel5.add(back_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
 
         back_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_1.png"))); // NOI18N
+        back_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back_fill.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_fillMouseClicked(evt);
@@ -546,6 +563,7 @@ public class new_info extends javax.swing.JFrame {
         room.setText(null);
         hostel_fee.setText(null);
         phone.setText(null);
+     //   amt_paying.setText("0");
 
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -595,7 +613,7 @@ else{
            
               try {
           
-                
+                  
                     String sql = "Insert into new_hosteler(fname,lname,program,roo_no,bed_no,hostel_fee,  phone,date_reg) values (?,?,?,?,?,?,?,?)";
                     
                     pst=conn.prepareStatement(sql);
@@ -610,16 +628,17 @@ else{
                     
                     pst.execute();
                    
-                    JOptionPane.showMessageDialog(null," Success");
+                    
+           JOptionPane.showMessageDialog(null," Success");
                     
                     fname.setText(null);
                     lname.setText(null);
                     prog.setText(null);
-                    room.setText(null);
-                    
+                    room.setText(null);           
                     bed.setText(null);
                     hostel_fee.setText(null);
                     phone.setText(null);
+                 
                     
           
         
@@ -627,6 +646,32 @@ else{
         catch (Exception e) {
             JOptionPane.showMessageDialog( null, e);
         }
+              
+              
+            /*  try{
+            
+            String sql_2="Insert into payment(fname,lname,room_no,bed_no,hostel_fee,  amt_paid, arreas, date_) values (?,?,?,?,?,?,?,?)";
+        pst=conn.prepareStatement(sql_2);
+        
+                    pst.setString(1, fname.getText());
+                    pst.setString(2, lname.getText());
+                 
+                    pst.setString(3, room.getText());
+                    pst.setString(4, bed.getText());
+                    pst.setString(5, hostel_fee.getText());
+                    pst.setString(6, amt_paying.getText());
+                    pst.setString(7, arrears.getText());
+                    pst.setString(8, date_txt.getText());
+                    
+                    pst.execute();
+        
+        
+        
+                    amt_paying.setText("0");
+        }
+        catch(Exception e){
+        
+        }*/
                 
             }
        
@@ -636,6 +681,8 @@ else{
         
         JOptionPane.showMessageDialog(null, e);
         }
+        
+        
            
        
 }
@@ -1660,7 +1707,7 @@ else{
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
-        jScrollPane5.setVisible(true);
+        jScrollPane5.setVisible(false);
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
@@ -1756,11 +1803,11 @@ else{
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;

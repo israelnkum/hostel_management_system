@@ -200,6 +200,8 @@ public class payment extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextPane4 = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -297,10 +299,16 @@ public class payment extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
+
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(219, 231, 217));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 0), 1, true), "Hosteler's", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI Light", 0, 18), new java.awt.Color(0, 51, 0))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable2.setBackground(new java.awt.Color(187, 224, 190));
@@ -323,7 +331,7 @@ public class payment extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 330, 280));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 330, 280));
 
         jTextField1.setBackground(new java.awt.Color(219, 231, 217));
         jTextField1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -334,20 +342,37 @@ public class payment extends javax.swing.JFrame {
                 jTextField1KeyReleased(evt);
             }
         });
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 220, 30));
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 220, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Search_20px_3.png"))); // NOI18N
         jLabel11.setText("Search");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 220, 10));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 40));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 220, 10));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 360, 350));
 
         jPanel4.setBackground(new java.awt.Color(219, 231, 217));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
+        });
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane6.setBackground(new java.awt.Color(0, 102, 0));
+
+        jTextPane4.setEditable(false);
+        jTextPane4.setBackground(new java.awt.Color(0, 102, 0));
+        jTextPane4.setBorder(null);
+        jTextPane4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextPane4.setText("Navigate through the tabs to see the\nreceipt and payment.\n\nNOTE:\n\nIf New payment, select or search\nhostler's name from the first table \nand enter the amount paying and\nclick pay.\n\nClick the Refresh button to see it \nin the payment table.\n\nIf Arrears payment, select or search\nhosteler's name from the payment table \nand click on update to enable the amount \nfield and enter the amount paying. \n\nClick save to update payment.\nClick refresh to see new arreas of hosteler\nin the payment table.\n\nSelect a column and click delete to delete \ninfo where neccessary");
+        jTextPane4.setOpaque(false);
+        jScrollPane6.setViewportView(jTextPane4);
+
+        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 350, 180));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -382,6 +407,11 @@ public class payment extends javax.swing.JFrame {
         bed.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         bed.setBorder(null);
         bed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bedMouseClicked(evt);
+            }
+        });
         jPanel4.add(bed, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 180, 40));
 
         hostel.setEditable(false);
@@ -389,6 +419,11 @@ public class payment extends javax.swing.JFrame {
         hostel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         hostel.setBorder(null);
         hostel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hostel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hostelMouseClicked(evt);
+            }
+        });
         jPanel4.add(hostel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 180, 40));
 
         hostel_fee_1.setEditable(false);
@@ -397,6 +432,11 @@ public class payment extends javax.swing.JFrame {
         hostel_fee_1.setForeground(new java.awt.Color(0, 0, 0));
         hostel_fee_1.setBorder(null);
         hostel_fee_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hostel_fee_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hostel_fee_1MouseClicked(evt);
+            }
+        });
         jPanel4.add(hostel_fee_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 180, 40));
 
         amt.setBackground(new java.awt.Color(219, 231, 217));
@@ -418,13 +458,18 @@ public class payment extends javax.swing.JFrame {
         date_txt.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         date_txt.setBorder(null);
         date_txt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 120, 40));
+        jPanel4.add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 180, 40));
 
         room.setEditable(false);
         room.setBackground(new java.awt.Color(219, 231, 217));
         room.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         room.setBorder(null);
         room.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        room.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                roomMouseClicked(evt);
+            }
+        });
         jPanel4.add(room, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 180, 40));
         jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 180, 10));
         jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 180, 10));
@@ -441,6 +486,11 @@ public class payment extends javax.swing.JFrame {
         new_amt.setBackground(new java.awt.Color(219, 231, 217));
         new_amt.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         new_amt.setBorder(null);
+        new_amt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                new_amtMouseClicked(evt);
+            }
+        });
         new_amt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 new_amtKeyPressed(evt);
@@ -457,6 +507,11 @@ public class payment extends javax.swing.JFrame {
         bed_1.setToolTipText("");
         bed_1.setBorder(null);
         bed_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bed_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bed_1MouseClicked(evt);
+            }
+        });
         jPanel4.add(bed_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 180, 40));
 
         room_1.setEditable(false);
@@ -464,6 +519,11 @@ public class payment extends javax.swing.JFrame {
         room_1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         room_1.setBorder(null);
         room_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        room_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                room_1MouseClicked(evt);
+            }
+        });
         jPanel4.add(room_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 180, 40));
 
         date_txt_1.setEditable(false);
@@ -492,6 +552,11 @@ public class payment extends javax.swing.JFrame {
         full_name.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         full_name.setBorder(null);
         full_name.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        full_name.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                full_nameMouseClicked(evt);
+            }
+        });
         jPanel4.add(full_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 290, 50));
 
         full_name_1.setEditable(false);
@@ -499,6 +564,11 @@ public class payment extends javax.swing.JFrame {
         full_name_1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         full_name_1.setBorder(null);
         full_name_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        full_name_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                full_name_1MouseClicked(evt);
+            }
+        });
         jPanel4.add(full_name_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 29, 290, 50));
 
         arreas_1.setEditable(false);
@@ -521,6 +591,11 @@ public class payment extends javax.swing.JFrame {
         payment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cash in Hand_20px_1.png"))); // NOI18N
         payment.setText("Pay");
         payment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        payment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                paymentMouseClicked(evt);
+            }
+        });
         payment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paymentActionPerformed(evt);
@@ -533,6 +608,11 @@ public class payment extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Money_20px.png"))); // NOI18N
         jLabel10.setText("Arrears");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
 
         refresh.setBackground(new java.awt.Color(219, 231, 217));
@@ -541,6 +621,11 @@ public class payment extends javax.swing.JFrame {
         refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Refresh_20px.png"))); // NOI18N
         refresh.setText("Refresh");
         refresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        refresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refreshMouseClicked(evt);
+            }
+        });
         refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshActionPerformed(evt);
@@ -580,6 +665,11 @@ public class payment extends javax.swing.JFrame {
         save_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Save_20px_1.png"))); // NOI18N
         save_btn.setText("Save");
         save_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        save_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                save_btnMouseClicked(evt);
+            }
+        });
         save_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 save_btnActionPerformed(evt);
@@ -590,15 +680,15 @@ public class payment extends javax.swing.JFrame {
         jPanel4.add(f_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
         jPanel4.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 180, 10));
         jPanel4.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 140, 10));
-        jPanel4.add(amt_paid, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 110, 30));
-        jPanel4.add(amt_left, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 130, 30));
+        jPanel4.add(amt_paid, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 60, 30));
+        jPanel4.add(amt_left, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 40, 30));
         jPanel4.add(new_ARREAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 80, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 630, 350));
 
         pay.setEditable(false);
         jPanel1.add(pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, -1, -1));
-        jPanel1.add(balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, 50, 30));
+        jPanel1.add(balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 350, 50, 30));
 
         jTable4.setBackground(new java.awt.Color(187, 224, 190));
         jTable4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -623,15 +713,15 @@ public class payment extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jTable4);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 1010, 200));
-        jPanel1.add(grand_toal, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 390, 80, -1));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 1010, 200));
+        jPanel1.add(grand_toal, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, 80, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Search_20px_3.png"))); // NOI18N
         jLabel12.setText("Search");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
-        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 240, 10));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 240, 10));
 
         search.setBackground(new java.awt.Color(187, 224, 190));
         search.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -642,18 +732,18 @@ public class payment extends javax.swing.JFrame {
                 searchKeyReleased(evt);
             }
         });
-        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 240, 30));
+        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 240, 30));
         jPanel1.add(grand_amt, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 350, 70, 20));
         jPanel1.add(cust_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 360, 20, 40));
         jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 90, 20));
 
         fname.setBackground(new java.awt.Color(219, 231, 217));
         fname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 50, 10));
-        jPanel1.add(arears, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 100, 40));
+        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 50, 10));
+        jPanel1.add(arears, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 100, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1030, 620));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1040, 630));
 
         jTabbedPane1.addTab("Payment", jPanel1);
 
@@ -697,13 +787,18 @@ public class payment extends javax.swing.JFrame {
         jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 30, 180));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 630));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 630));
 
         jTabbedPane1.addTab("Reciept", jPanel2);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1040, 730));
 
         jPanel5.setBackground(new java.awt.Color(219, 231, 217));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+        });
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minus_15px_1.png"))); // NOI18N
@@ -791,6 +886,7 @@ public class payment extends javax.swing.JFrame {
         jPanel5.add(cancel_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
 
         back_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_2.png"))); // NOI18N
+        back_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back_lite.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_liteMouseClicked(evt);
@@ -805,6 +901,7 @@ public class payment extends javax.swing.JFrame {
         jPanel5.add(back_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
 
         back_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_1.png"))); // NOI18N
+        back_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back_fill.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_fillMouseClicked(evt);
@@ -814,7 +911,11 @@ public class payment extends javax.swing.JFrame {
 
         help_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px_1.png"))); // NOI18N
         help_lite.setToolTipText("");
+        help_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         help_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                help_liteMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 help_liteMouseEntered(evt);
             }
@@ -825,16 +926,24 @@ public class payment extends javax.swing.JFrame {
         jPanel5.add(help_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 0, 20, 20));
 
         help_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px.png"))); // NOI18N
+        help_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        help_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                help_fillMouseClicked(evt);
+            }
+        });
         jPanel5.add(help_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 0, 20, 20));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 20));
 
-        setSize(new java.awt.Dimension(1034, 682));
+        setSize(new java.awt.Dimension(1037, 696));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
+        
+        jScrollPane6.setVisible(false);
     help_fill.setVisible(false);
         minus_fill.setVisible(false);
         cancel_fill.setVisible(false);
@@ -848,6 +957,7 @@ public class payment extends javax.swing.JFrame {
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
         save_btn.setEnabled(false);
         amt.setEnabled(true);
          Update_btn.setEnabled(false);
@@ -1074,6 +1184,7 @@ public class payment extends javax.swing.JFrame {
 
     private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
         // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
          Update_btn.setEnabled(true);
         new_amt.setEnabled(false);
         payment.setEnabled(false);
@@ -1424,7 +1535,7 @@ public class payment extends javax.swing.JFrame {
 
             pst.execute();
 
-            JOptionPane.showMessageDialog(null, "New Infomation Added");
+            JOptionPane.showMessageDialog(null, "Success");
 
             
 
@@ -1658,6 +1769,96 @@ public class payment extends javax.swing.JFrame {
         help_lite.setVisible(true);
     }//GEN-LAST:event_help_liteMouseExited
 
+    private void help_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(true);
+    }//GEN-LAST:event_help_liteMouseClicked
+
+    private void help_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_fillMouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(true);
+    }//GEN-LAST:event_help_fillMouseClicked
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void full_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_full_nameMouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_full_nameMouseClicked
+
+    private void roomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roomMouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_roomMouseClicked
+
+    private void bedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bedMouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_bedMouseClicked
+
+    private void hostelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hostelMouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_hostelMouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void paymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paymentMouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_paymentMouseClicked
+
+    private void save_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_save_btnMouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_save_btnMouseClicked
+
+    private void refreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshMouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_refreshMouseClicked
+
+    private void new_amtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_new_amtMouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_new_amtMouseClicked
+
+    private void hostel_fee_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hostel_fee_1MouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_hostel_fee_1MouseClicked
+
+    private void bed_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bed_1MouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_bed_1MouseClicked
+
+    private void room_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_room_1MouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_room_1MouseClicked
+
+    private void full_name_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_full_name_1MouseClicked
+        // TODO add your handling code here:
+         jScrollPane6.setVisible(false);
+    }//GEN-LAST:event_full_name_1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1748,6 +1949,7 @@ public class payment extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -1764,6 +1966,7 @@ public class payment extends javax.swing.JFrame {
     private javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextPane jTextPane4;
     private javax.swing.JTextField l_name;
     private javax.swing.JTextField lname;
     private javax.swing.JLabel logout_fill;

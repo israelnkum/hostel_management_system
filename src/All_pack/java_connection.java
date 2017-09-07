@@ -24,6 +24,8 @@ public class java_connection {
            
          }
          catch (ClassNotFoundException | SQLException e){
+             
+             
          JOptionPane.showMessageDialog(null,e);
      // JOptionPane.showMessageDialog(null, "Check your internet connection","No internet",JOptionPane.ERROR_MESSAGE);
          }

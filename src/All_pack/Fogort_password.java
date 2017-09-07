@@ -5,7 +5,14 @@
  */
 package All_pack;
 
+import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,7 +20,9 @@ import java.awt.Color;
  */
 public class Fogort_password extends javax.swing.JFrame {
     
-    
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pst;
     int xMouse;
     int yMouse;
 
@@ -22,16 +31,93 @@ public class Fogort_password extends javax.swing.JFrame {
      */
     public Fogort_password() {
         initComponents();
-        
+        conn = java_connection.getConnection();
        user_name.setBackground(new Color(0,0,0,0));
        f_name.setBackground(new Color(0,0,0,0));
        l_name.setBackground(new Color(0,0,0,0));
        sec_ques.setBackground(new Color(0,0,0,0));
-       password.setBackground(new Color(0,0,0,0));
+       ansa.setBackground(new Color(0,0,0,0));
        jTextPane1.setBackground(new Color(0,0,0,0));
        
                 
     }
+    
+    
+    public void search(){
+    
+        String user_search =user_name.getText();
+         String sql = "SELECT * from new_user where username='"+user_search+"' ";
+        try{
+  
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+            
+            if(rs.next()){
+            
+                f_name.setText(rs.getString(3));
+                 l_name.setText(rs.getString(4));
+                 sec_ques.setText(rs.getString(7));
+                   ansa.setEnabled(true);
+                
+                   
+                   
+             
+                rs.close();
+                pst.close();
+            }
+            else{
+                 
+                ansa.setEnabled(false);
+             f_name.setText(null);
+                 l_name.setText(null);
+                 sec_ques.setText(null);
+            }
+      
+        
+        }
+        catch(Exception e){
+        
+            JOptionPane.showMessageDialog(null,e);
+        }
+  
+    }
+    
+    public void retrieve(){
+    
+    
+         
+             
+          //  String a1=user_name.getText();
+              String a2=ansa.getText();
+              
+              String sql ="select  * from new_user  where answer='"+a2+"'";
+          
+          try{
+              pst=conn.prepareStatement(sql);
+              rs=pst.executeQuery();
+              if(rs.next()){
+              
+                  
+                   password1.setText(rs.getString(6));
+              }
+             else{
+                
+                
+             password1.setText(null);
+              
+            }
+          
+          }
+          
+          
+          
+          catch(Exception e){
+              
+               JOptionPane.showMessageDialog(null, e);
+          
+          }
+          }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,8 +136,6 @@ public class Fogort_password extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
@@ -66,9 +150,10 @@ public class Fogort_password extends javax.swing.JFrame {
         f_name = new javax.swing.JTextField();
         l_name = new javax.swing.JTextField();
         sec_ques = new javax.swing.JTextField();
-        password = new javax.swing.JTextField();
+        ansa = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         user_name = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         minimize = new javax.swing.JLabel();
@@ -108,7 +193,7 @@ public class Fogort_password extends javax.swing.JFrame {
         jTextPane1.setBackground(new java.awt.Color(0, 102, 0));
         jTextPane1.setBorder(null);
         jTextPane1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTextPane1.setText("              \n              *****To Retrieve Password******\n  ------------------------------------------------------------\n\n1. Enter your Username and Click on the search \n    button\n\n2. Answer your security question and click on the\n    retrieve button.");
+        jTextPane1.setText("              \n              *****To Retrieve Password******\n  ------------------------------------------------------------\n\n1. Enter your Username\n    * if your username is correct, your details will\n      appear automatically, else it wont.\n\n2. Answer your security question and your \n    password will also be retrieved.");
         jTextPane1.setOpaque(false);
         jScrollPane2.setViewportView(jTextPane1);
 
@@ -139,29 +224,12 @@ public class Fogort_password extends javax.swing.JFrame {
         jLabel12.setText("Username:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(211, 228, 210));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Unlock 2_20px.png"))); // NOI18N
-        jButton1.setToolTipText("Retrieve password");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 400, 30, -1));
-
-        jButton2.setBackground(new java.awt.Color(211, 228, 210));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Search_20px_3.png"))); // NOI18N
-        jButton2.setToolTipText("Search");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 50, 30, 30));
-
         jSeparator3.setBackground(new java.awt.Color(0, 51, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 51, 0));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, 230));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 260, -1));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 260, 10));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 340, 10));
         getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 260, -1));
         getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, 260, -1));
 
@@ -216,21 +284,52 @@ public class Fogort_password extends javax.swing.JFrame {
         sec_ques.setForeground(new java.awt.Color(0, 0, 0));
         sec_ques.setBorder(null);
         sec_ques.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(sec_ques, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 260, 40));
+        getContentPane().add(sec_ques, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 340, 40));
 
-        password.setBackground(new java.awt.Color(179, 222, 166));
-        password.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        password.setForeground(new java.awt.Color(0, 0, 0));
-        password.setBorder(null);
-        password.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 260, 40));
+        ansa.setBackground(new java.awt.Color(179, 222, 166));
+        ansa.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ansa.setForeground(new java.awt.Color(0, 0, 0));
+        ansa.setBorder(null);
+        ansa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        ansa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ansaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ansaKeyTyped(evt);
+            }
+        });
+        getContentPane().add(ansa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 260, 40));
         getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 260, -1));
 
         user_name.setBackground(new java.awt.Color(211, 228, 210));
         user_name.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         user_name.setForeground(new java.awt.Color(0, 0, 0));
         user_name.setBorder(null);
+        user_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                user_nameKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                user_nameKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                user_nameKeyTyped(evt);
+            }
+        });
         getContentPane().add(user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, 260, 40));
+
+        jButton1.setBackground(new java.awt.Color(211, 228, 210));
+        jButton1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 0));
+        jButton1.setText("Change password");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 470, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -328,6 +427,7 @@ public class Fogort_password extends javax.swing.JFrame {
         jPanel1.add(cancel_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
 
         back_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_2.png"))); // NOI18N
+        back_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back_lite.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_liteMouseClicked(evt);
@@ -342,6 +442,7 @@ public class Fogort_password extends javax.swing.JFrame {
         jPanel1.add(back_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
 
         back_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_1.png"))); // NOI18N
+        back_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back_fill.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_fillMouseClicked(evt);
@@ -379,10 +480,6 @@ public class Fogort_password extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(930, 509));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         // TODO add your handling code here:
@@ -521,6 +618,8 @@ public class Fogort_password extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
+        
+          ansa.setEnabled(false);
     jScrollPane2.setVisible(false);
         help_fill.setVisible(false);
         minus_fill.setVisible(false);
@@ -556,6 +655,70 @@ public class Fogort_password extends javax.swing.JFrame {
         // TODO add your handling code here:
         jScrollPane2.setVisible(false);
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void user_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_user_nameKeyReleased
+        // TODO add your handling code here:
+        
+        
+        if(user_name.getText().isEmpty()){
+         f_name.setText(null);
+             l_name.setText(null);
+            sec_ques.setText(null);
+        }
+        else{
+         search();
+        }
+       
+    }//GEN-LAST:event_user_nameKeyReleased
+
+    private void user_nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_user_nameKeyPressed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_user_nameKeyPressed
+
+    private void user_nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_user_nameKeyTyped
+        // TODO add your handling code here:
+        
+         char c =evt.getKeyChar();
+        if(c==KeyEvent.VK_BACKSPACE){
+
+         f_name.setText(null);
+             l_name.setText(null);
+            sec_ques.setText(null);
+       
+      
+       //  search();
+       
+        }
+    }//GEN-LAST:event_user_nameKeyTyped
+
+    private void ansaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ansaKeyReleased
+        // TODO add your handling code here:
+
+        retrieve();
+    }//GEN-LAST:event_ansaKeyReleased
+
+    private void ansaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ansaKeyTyped
+        // TODO add your handling code here:
+        
+        char c =evt.getKeyChar();
+        if(c==KeyEvent.VK_BACKSPACE){
+
+         password1.setText(null);
+           
+       
+      
+       //  search();
+       
+        }
+    }//GEN-LAST:event_ansaKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        change_Password  fp = new change_Password();
+        fp.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -593,6 +756,7 @@ public class Fogort_password extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ansa;
     private javax.swing.JLabel back_fill;
     private javax.swing.JLabel back_lite;
     private javax.swing.JLabel cancel_fill;
@@ -601,7 +765,6 @@ public class Fogort_password extends javax.swing.JFrame {
     private javax.swing.JLabel help_fill;
     private javax.swing.JLabel help_lite;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -628,7 +791,6 @@ public class Fogort_password extends javax.swing.JFrame {
     private javax.swing.JLabel logout_lite;
     private javax.swing.JLabel minimize;
     private javax.swing.JLabel minus_fill;
-    private javax.swing.JTextField password;
     private javax.swing.JTextField password1;
     private javax.swing.JTextField sec_ques;
     private javax.swing.JTextField user_name;

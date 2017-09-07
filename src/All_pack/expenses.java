@@ -391,7 +391,7 @@ public class expenses extends javax.swing.JFrame {
         jTextPane2.setOpaque(false);
         jScrollPane4.setViewportView(jTextPane2);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, -30, 350, 500));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 350, 500));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -614,7 +614,7 @@ public class expenses extends javax.swing.JFrame {
         jTextPane3.setOpaque(false);
         jScrollPane5.setViewportView(jTextPane3);
 
-        jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, -30, 350, 480));
+        jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 350, 480));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 150));
@@ -829,7 +829,7 @@ public class expenses extends javax.swing.JFrame {
         jTextPane4.setOpaque(false);
         jScrollPane6.setViewportView(jTextPane4);
 
-        jPanel3.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 350, 480));
+        jPanel3.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 350, 480));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 150));
@@ -1127,6 +1127,7 @@ public class expenses extends javax.swing.JFrame {
         jPanel5.add(cancel_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
 
         back_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_2.png"))); // NOI18N
+        back_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back_lite.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_liteMouseClicked(evt);
@@ -1141,6 +1142,7 @@ public class expenses extends javax.swing.JFrame {
         jPanel5.add(back_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
 
         back_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_1.png"))); // NOI18N
+        back_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back_fill.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_fillMouseClicked(evt);

@@ -5,6 +5,7 @@
  */
 package All_pack;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +37,7 @@ public class update_info extends javax.swing.JFrame {
         conn = java_connection.getConnection();
         initComponents();
        id.setVisible(false);
-        
+        jTextPane3.setBackground(new Color(0,0,0,0));
         Update_table();
     }
     
@@ -53,7 +54,7 @@ public class update_info extends javax.swing.JFrame {
     
         try {
           String sql ="SELECT hosteler_id as 'ID ',fname as 'First Name',lname as ' Last Name', program as 'Program', roo_no as 'Room No:',"
-                  + " bed_no as 'Bird No:', hostel_fee as 'Hostel Fee', phone as 'Phone Number', date_reg as 'Date Registered' FROM new_hosteler ";
+                  + " bed_no as 'Bed No:', hostel_fee as 'Hostel Fee', phone as 'Phone Number', date_reg as 'Date Registered' FROM new_hosteler ";
             pst=conn.prepareStatement(sql);
             
             rs=pst.executeQuery();
@@ -76,6 +77,8 @@ public class update_info extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextPane3 = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -97,6 +100,7 @@ public class update_info extends javax.swing.JFrame {
         hostel_fee = new javax.swing.JTextField();
         phone = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        loader = new javax.swing.JLabel();
         lname = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -142,6 +146,18 @@ public class update_info extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane5.setBackground(new java.awt.Color(0, 102, 0));
+
+        jTextPane3.setEditable(false);
+        jTextPane3.setBackground(new java.awt.Color(0, 102, 0));
+        jTextPane3.setBorder(null);
+        jTextPane3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextPane3.setText("Search Bar:\nUse the search bar to filter the table dynamically.\n\nUpdate Button:\n\nTo update hosteler info,\n\n*  Select the a column you want to update to\n   enable the update button and then click the\n   update button also enable the fields and \n   update info where neccessary.\n\nSave Button:\n\n* After updating click on save to update user info.\n\nRefreh Button:\n\n* Click on the refresh button to see the recent update.\n\n\n");
+        jTextPane3.setOpaque(false);
+        jScrollPane5.setViewportView(jTextPane3);
+
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 350, 300));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 140, 120));
@@ -227,12 +243,22 @@ public class update_info extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 82, 12));
         jLabel5.setText("H O S T E L");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, 210, 70));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 470, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 60)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 82, 12));
         jLabel4.setText("J O D O K ");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 440, 70));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -273,6 +299,9 @@ public class update_info extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Room No:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 330, -1, -1));
+
+        loader.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/ajax-loader(1).gif"))); // NOI18N
+        getContentPane().add(loader, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 600, -1, -1));
 
         lname.setBackground(new java.awt.Color(195, 230, 201));
         lname.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -350,6 +379,11 @@ public class update_info extends javax.swing.JFrame {
         referesh.setText("Refresh");
         referesh.setBorderPainted(false);
         referesh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        referesh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refereshMouseClicked(evt);
+            }
+        });
         referesh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refereshActionPerformed(evt);
@@ -358,9 +392,19 @@ public class update_info extends javax.swing.JFrame {
         getContentPane().add(referesh, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, 100, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/31.jpg"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1200, 630));
 
         jPanel3.setBackground(new java.awt.Color(219, 231, 217));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minus_15px_1.png"))); // NOI18N
@@ -448,6 +492,7 @@ public class update_info extends javax.swing.JFrame {
         jPanel3.add(cancel_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 20));
 
         back_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_2.png"))); // NOI18N
+        back_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back_lite.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_liteMouseClicked(evt);
@@ -462,6 +507,7 @@ public class update_info extends javax.swing.JFrame {
         jPanel3.add(back_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 20));
 
         back_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Go Back_15px_1.png"))); // NOI18N
+        back_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back_fill.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_fillMouseClicked(evt);
@@ -471,7 +517,11 @@ public class update_info extends javax.swing.JFrame {
 
         help_lite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px_1.png"))); // NOI18N
         help_lite.setToolTipText("");
+        help_lite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         help_lite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                help_liteMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 help_liteMouseEntered(evt);
             }
@@ -482,6 +532,12 @@ public class update_info extends javax.swing.JFrame {
         jPanel3.add(help_lite, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, -1, 20));
 
         help_fill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Help_15px.png"))); // NOI18N
+        help_fill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        help_fill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                help_fillMouseClicked(evt);
+            }
+        });
         jPanel3.add(help_fill, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, -1, 20));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 20));
@@ -497,7 +553,7 @@ public class update_info extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         
-        
+        jScrollPane5.setVisible(false);
          help_fill.setVisible(false);
         minus_fill.setVisible(false);
         cancel_fill.setVisible(false);
@@ -566,6 +622,7 @@ public class update_info extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
+        jScrollPane5.setVisible(false);
         update_btn.setEnabled(true);
         
         try{
@@ -627,7 +684,7 @@ public class update_info extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
-        // TODO add your handling code here:
+        
 
           String sql_1 = "select * from new_hosteler where  roo_no=? and bed_no=?";
         try{
@@ -640,7 +697,7 @@ public class update_info extends javax.swing.JFrame {
             
             
             if(rs.next() ){
-                //JOptionPane.showMessageDialog(null, "Room or Bed Numbers Already Occupied");
+           
                 int c = JOptionPane.showConfirmDialog(null,"Room or Bed Number is already Occupied\nDo you want to continue?","Confrim",JOptionPane.YES_NO_OPTION);
              if(c==0){
              
@@ -975,6 +1032,41 @@ public class update_info extends javax.swing.JFrame {
         help_lite.setVisible(true);
     }//GEN-LAST:event_help_liteMouseExited
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        jScrollPane5.setVisible(false);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        jScrollPane5.setVisible(false);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        jScrollPane5.setVisible(false);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void refereshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refereshMouseClicked
+        // TODO add your handling code here:
+        jScrollPane5.setVisible(false);
+    }//GEN-LAST:event_refereshMouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+        jScrollPane5.setVisible(false);
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void help_liteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_liteMouseClicked
+        // TODO add your handling code here:
+        jScrollPane5.setVisible(true);
+    }//GEN-LAST:event_help_liteMouseClicked
+
+    private void help_fillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_help_fillMouseClicked
+        // TODO add your handling code here:
+          jScrollPane5.setVisible(true);
+    }//GEN-LAST:event_help_fillMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1040,6 +1132,7 @@ public class update_info extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
@@ -1051,7 +1144,9 @@ public class update_info extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextField lname;
+    private javax.swing.JLabel loader;
     private javax.swing.JLabel logout_fill;
     private javax.swing.JLabel logout_lite;
     private javax.swing.JLabel minimize;
